@@ -4,7 +4,8 @@ import RecipeService from "../services/RecipeService";
 export default class SearchRecipeComponent extends React.Component {
   constructor() {
     super();
-    this.state = {keyword: ''};
+    this.state = {keyword: '',
+  recipes: []};
   }
 
   keywordChanged = (event) => {
@@ -12,10 +13,14 @@ export default class SearchRecipeComponent extends React.Component {
   }
 
   searchRecipe = (results) =>
-      RecipeService.searchRecipe(results).then((response) => this.renderRecipes(response));
+      RecipeService.searchRecipe(results).then((response) => 
+        this.renderRecipes(response));
 
-  renderRecipes = (results) =>
-      console.log(results);
+  renderRecipes = (results) => {
+    this.setState({recipes: results.results});
+    console.log(this.state.recipes);
+  }
+
 
   render() {
     return(
@@ -33,6 +38,9 @@ export default class SearchRecipeComponent extends React.Component {
               </button>
             </div>
           </div>
+          {
+            this.state.recipes.map((recipe, index) => <li className="list-group-item" key={index}>{recipe.title} {recipe.image}</li>)
+          }
         </div>
     )
   }
