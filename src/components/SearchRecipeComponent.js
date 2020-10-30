@@ -1,5 +1,6 @@
 import React from "react";
 import RecipeService from "../services/RecipeService";
+import RecipeRowComponent from "./RecipeRowComponent";
 
 export default class SearchRecipeComponent extends React.Component {
   constructor() {
@@ -38,9 +39,7 @@ export default class SearchRecipeComponent extends React.Component {
               </button>
             </div>
           </div>
-          {
-            this.state.recipes.map((recipe, index) => <li className="list-group-item" key={index}>{recipe.title} {recipe.image}</li>)
-          }
+          { this.state.recipes.map(recipe => <RecipeRowComponent key={recipe.id} title={recipe.title} image={recipe.image}/>)}
         </div>
     )
   }
