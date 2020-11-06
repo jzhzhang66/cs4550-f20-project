@@ -1,47 +1,47 @@
 import React from "react";
-import RecipeService from "../services/RecipeService";
-import RecipeRowComponent from "./RecipeRowComponent";
 
-export default class SearchRecipeComponent extends React.Component {
-  constructor() {
-    super();
-    this.state = {keyword: '',
-  recipes: []};
-  }
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-  keywordChanged = (event) => {
-    this.setState({keyword: event.target.value});
-  }
+import "./SearchRecipeComponent.css"
 
-  searchRecipe = (results) =>
-      RecipeService.searchRecipe(results).then((response) => 
-        this.renderRecipes(response));
+import {
+    findRecipes,
+    updateKeyword
+} from "../actions/recipeActions"
 
-  renderRecipes = (results) => {
-    this.setState({recipes: results.results});
-    console.log(this.state.recipes);
-  }
+const SearchRecipeComponent = (
+    { keyword, recipes = [],
+        findRecipes, updateKeyword }) =>
 
-
-  render() {
-    return(
-        <div className="container">
-          <h2>Search Recipes</h2>
-          <div className="input-group">
-            <input className="form-control"
-                   placeholder="keywords"
-                   value={this.state.keyword}
-                   onChange={this.keywordChanged}/>
-            <div className="input-group-append">
-              <button onClick={() => this.searchRecipe(this.state.keyword)}
-                      className="btn btn-primary">
-                Search
-              </button>
+    <div className="">
+        <h2>Search Recipes</h2>
+        <div className="">
+            <input className="form-control mx-auto search-fld"
+                placeholder="keywords"
+                value={keyword}
+                onChange={(event) => updateKeyword(event.target.value)} />
+            <div className="input-group-append mx-auto search-btn">
+                <button onClick={() => findRecipes(keyword)}
+                    className="btn btn-primary">
+                    Search
+            </button>
             </div>
-          </div>
-          { this.state.recipes.map(recipe => <RecipeRowComponent key={recipe.id} title={recipe.title} image={recipe.image}/>)}
         </div>
-    )
-  }
-}
+    </div>
+
+const stateToPropertyMapper = (state) => ({
+    recipes: state.recipeReducer.recipes,
+    keyword: state.recipeReducer.keyword
+})
+
+const propertyToDispatchMapper = (dispatch) => ({
+    findRecipes: (recipeName) => findRecipes(dispatch, recipeName),
+    updateKeyword: (keyword) => updateKeyword(dispatch, keyword)
+})
+
+export default connect
+    (stateToPropertyMapper,
+        propertyToDispatchMapper)
+    (SearchRecipeComponent)
 
