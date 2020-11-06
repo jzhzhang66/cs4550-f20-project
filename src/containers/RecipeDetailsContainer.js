@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-
+import './RecipeDetails.css';
 import IngredientsComponent from "../components/IngredientsComponent";
 
 import {
@@ -23,11 +23,13 @@ class RecipeDetailsContainer extends React.Component {
   render() {
     return (
         <div className="container">
-          <h1>{this.props.recipe.title}</h1>
+          <h1 className="title-header">{this.props.recipe.title}</h1>
+          <img className="recipe-image" src={this.props.recipe.image} alt="" />
+          <div className="recipe-info">
           <h3>Serving Size: {this.props.recipe.servings}</h3>
-          <img src={this.props.recipe.image} alt="" />
           <h3>Estimated Time: {this.props.recipe.readyInMinutes} minutes</h3>
-          <h3>Heath Score: {this.props.recipe.heathScore} </h3>
+          <h3>Health Score: {this.props.recipe.healthScore} </h3>
+          </div>
           <div className="col-3">
             <IngredientsComponent/>
           </div>

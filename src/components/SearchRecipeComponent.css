@@ -1,7 +1,22 @@
-.search-fld {
-    width:500px
-}
 
 .search-btn {
-    width:150px
+    width:150px;
+    margin: 20px;
+}
+
+.search-fld {
+    margin-top: 20px;
+}
+
+.search-bar {
+    display: flex
+}
+
+.search-recipes-header {
+    padding-top: 30px;
+}
+
+html, div, li {
+    background-color: rgb(217, 236, 247);
+    font-family: 'Playfair Display', serif;
 }

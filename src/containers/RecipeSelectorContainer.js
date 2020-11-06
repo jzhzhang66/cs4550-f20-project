@@ -13,7 +13,6 @@ class RecipeContainer extends React.Component {
   render() {
     return (
         <div className="container">
-          <h1>Recipe</h1>
           <SearchRecipeComponent/>
           <RecipeTableComponent/>
         </div>

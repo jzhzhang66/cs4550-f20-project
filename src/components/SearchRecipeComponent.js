@@ -14,16 +14,16 @@ const SearchRecipeComponent = (
     { keyword, recipes = [],
         findRecipes, updateKeyword }) =>
 
-    <div className="">
-        <h2>Search Recipes</h2>
-        <div className="">
+    <div>
+        <h1 className="search-recipes-header">Search Recipes</h1>
+        <div className="search-bar">
             <input className="form-control mx-auto search-fld"
                 placeholder="keywords"
                 value={keyword}
                 onChange={(event) => updateKeyword(event.target.value)} />
             <div className="input-group-append mx-auto search-btn">
                 <button onClick={() => findRecipes(keyword)}
-                    className="btn btn-primary">
+                    className="btn btn-secondary">
                     Search
             </button>
             </div>

@@ -20,7 +20,7 @@ const IngredientsComponent = (
             {
                 recipeIngredients.map(ingredient =>
                     <li className="list-group-item">
-                        {ingredient.name}
+                        {ingredient.name + " "}
                         Amount: {ingredient.measures.metric.amount} {ingredient.measures.metric.unitLong}
                     </li>
                 )
