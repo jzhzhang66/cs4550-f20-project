@@ -1,0 +1,20 @@
+.header {
+    margin-top: 40px;  
+    margin-left: 440px;
+}
+
+.followers-span {
+    padding-left: 180px;
+}
+
+.following-span {
+    padding-left: 160px;
+}
+
+.btn-padding {
+    padding-right: 20px;
+}
+
+.length {
+    padding-left: 60px;
+}
