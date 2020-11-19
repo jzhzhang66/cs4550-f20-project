@@ -17,6 +17,8 @@ import ProfilePageContainer from "./containers/ProfilePageContainer";
 import profileReducer from "./reducers/profileReducer";
 import homeReducer from "./reducers/homeReducer";
 import NavBarComponent from './components/NavBarComponent';
+import LoginPageContainer from './containers/LoginPageContainer';
+import RegistrationPageContainer from './containers/RegistrationPageContainer';
 
 const rootReducer = combineReducers({
   recipeReducer, profileReducer, homeReducer
@@ -33,6 +35,8 @@ ReactDOM.render(
       <Route path="/profile/:userId" exact component={OthersProfilePageContainer} />
       <Route path="/recipes" exact component={RecipeSelectorContainer} />
       <Route path="/recipes/:recipeId" exact component={RecipeDetailsContainer}/>
+      <Route path="/login" exact component={LoginPageContainer}/>
+      <Route path="/register" exact component={RegistrationPageContainer}/>
     </BrowserRouter>
   </Provider>
   ,
