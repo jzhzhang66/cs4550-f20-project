@@ -2,10 +2,11 @@ import React from 'react';
 import {Link} from "react-router-dom";
 
 class HomePageContainer extends React.Component {
-  state = {
-    popularRecipe: [],
-    favoriteRecipes: [],
-    recentRecipes: []
+  popularRecipe = []; // the most liked recipe from our database
+  favoriteRecipes = []; // the user's liked recipes
+  recentRecipes = []; // most recent recipes from our database
+
+  componentDidMount() {
   }
 
   render() {
@@ -32,10 +33,6 @@ class HomePageContainer extends React.Component {
               </button>
             </form>
           </nav>
-
-
-
-
 
 
         </div>
