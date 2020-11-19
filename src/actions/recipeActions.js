@@ -3,7 +3,6 @@ import RecipeService from "../services/RecipeService"
 export const FIND_RECIPES = "FIND_RECIPES"
 export const UPDATE_KEYWORD = "UPDATE_KEYWORD"
 export const FIND_RECIPE_INFO_BY_ID = "FIND_RECIPE_INFO_BY_ID"
-export const FIND_RANDOM_RECIPE = "FIND_RANDOM_RECIPE";
 
 export const findRecipes = (dispatch, recipeName) =>
     RecipeService.findRecipes(recipeName)
@@ -29,10 +28,4 @@ export const findRecipeInfoById = (dispatch, recipeId) =>
         }))
 
 
-export const findRandomRecipes = (dispatch, numRecipes) =>
-    RecipeService.findRandomRecipes(numRecipes)
-    .then(recipe =>
-        dispatch({
-          type: FIND_RANDOM_RECIPE,
-          recipe
-        }))
+

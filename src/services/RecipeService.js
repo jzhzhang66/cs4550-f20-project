@@ -28,8 +28,11 @@ export const findRecipeInfoById = (recipeId) =>
     .then(response => response.json())
 
 export const findRandomRecipes = (numRecipes) =>
-    fetch(`${url}/random?number=${numRecipes}`, {
-      method: "GET"
+    fetch(`${url}/random?apiKey=${key}&number=${numRecipes}`, {
+      "method": "GET",
+      "headers": {
+        "Content-Type": "application/json"
+      }
     }).then(response => response.json())
 
 

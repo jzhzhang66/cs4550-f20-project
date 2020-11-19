@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import "@fortawesome/fontawesome-free/css/all.css"
 import './index.css';
 
-import { BrowserRouter, Link, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
 
@@ -14,10 +14,11 @@ import RecipeDetailsContainer from "./containers/RecipeDetailsContainer";
 import HomePageContainer from "./containers/HomePageContainer";
 import ProfilePageContainer from "./containers/ProfilePageContainer";
 import profileReducer from "./reducers/profileReducer";
+import homeReducer from "./reducers/homeReducer";
 
 const rootReducer = combineReducers({
-  recipeReducer, profileReducer
-})
+  recipeReducer, profileReducer, homeReducer
+});
 
 const store = createStore(rootReducer)
 
