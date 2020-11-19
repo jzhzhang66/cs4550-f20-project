@@ -52,7 +52,7 @@ class RegistrationPageContainer extends React.Component {
                 <label class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
                     {/* Sign Up */}
-                    <button type="submit" formaction="../profile/profile.template.client.html" class="btn btn-primary btn-block wbdv-button wbdv-register">Sign Up</button>
+                    <button type="submit" formaction="../profile/profile.template.client.html" class="btn btn-outline-secondary btn-block wbdv-button wbdv-register">Sign Up</button>
                     {/* Login */}
                     <div class="row">
                         <div class="col-6">

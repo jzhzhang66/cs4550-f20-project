@@ -2,9 +2,6 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 
-
-
-
 // put the router in here
 class LoginPageContainer extends React.Component {
   constructor(props) {
@@ -19,7 +16,7 @@ class LoginPageContainer extends React.Component {
   render() {
     return (
         <div class="container">
-        <h1>Sign In</h1>
+        <h1 className="header-styling">Sign In</h1>
         <form>
             {/* Username */}
             <div class="form-group row">
@@ -44,7 +41,7 @@ class LoginPageContainer extends React.Component {
                 <div class="col-sm-10">
                     {/* Sign In */}
                     <button type="submit" formaction="/profile"
-                        class="btn btn-primary btn-block wbdv-button wbdv-login">Sign in</button>
+                        class="btn btn-outline-secondary btn-block wbdv-button wbdv-login">Sign in</button>
                     <div class="row">
                         {/* Forgot Password */}
                         <div class="col-6">

@@ -1,18 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import './NavBarComponent.css';
 
 const NavBarComponent = ({}) =>
-    <nav className="navbar sticky-top bg-light">
-        <Link to="/" className="navbar-brand">
+    <nav className="navbar sticky-top bg-light nav-styling">
+        <Link to="/" className="nav-link nav-item navbar-nav text-styling">
             Home
 </Link>
-        <Link to="/profile" className="nav-link nav-item navbar-nav">
+        <Link to="/profile" className="nav-link nav-item navbar-nav text-styling">
             Profile
 </Link>
-        <Link to="/login" className="nav-link nav-item">
+        <Link to="/login" className="nav-link nav-item text-styling">
             Login
 </Link>
-<Link to="/recipes" className="nav-link nav-item">
+<Link to="/recipes" className="nav-link nav-item text-styling">
             Search
 </Link>
         <form className="form-inline float-right">
