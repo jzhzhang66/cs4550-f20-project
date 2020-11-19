@@ -1,6 +1,6 @@
 .header {
+    text-align: center;
     margin-top: 40px;  
-    margin-left: 440px;
 }
 
 .followers-span {
@@ -17,4 +17,22 @@
 
 .length {
     padding-left: 60px;
+}
+
+.padding-top {
+    padding-top: 40px;
+}
+
+.header-padding {
+    padding-top: 40px;
+    padding-left: 190px;
+}
+
+.follow-button {
+    width: 50%;
+    font-size: 20px;
+}
+
+.name {
+    font-size: 60px;
 }

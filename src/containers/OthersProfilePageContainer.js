@@ -8,10 +8,11 @@ import {
 import MyRecipesComponent from '../components/MyRecipesComponent';
 import FavoriteRecipesComponent from '../components/FavoriteRecipesComponent';
 
-const ProfilePageContainer = ({ updateFollowersExpanded, updateFollowingExpanded, followingExpanded, followersExpanded,
+const OthersProfilePageContainer = ({ updateFollowersExpanded, updateFollowingExpanded, followingExpanded, followersExpanded,
     followers, following }) =>
     <div className="container">
-        <h1 className="header">My Profile</h1>
+        <h1 className="header name">Bohn Bu</h1>
+        <h1 className="text-center"><button className="btn btn-outline-success follow-button">Follow</button></h1>
         <div className="row">
             <div className="col-3">
                 <div>
@@ -42,11 +43,8 @@ const ProfilePageContainer = ({ updateFollowersExpanded, updateFollowingExpanded
                 </div>
             </div>
             <div className="col-7">
-                <h3 className="header-padding">My Recipes</h3>
+                <h3 className="header-padding">Bohn's Recipes</h3>
                 <MyRecipesComponent />
-            </div>
-            <div className="col-2">
-                <FavoriteRecipesComponent />
             </div>
         </div>
     </div>
@@ -65,4 +63,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
     (stateToPropertyMapper, propertyToDispatchMapper)
-    (ProfilePageContainer)
+    (OthersProfilePageContainer)    

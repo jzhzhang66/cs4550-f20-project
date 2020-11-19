@@ -12,6 +12,7 @@ import recipeReducer from "./reducers/recipeReducer";
 import profileReducer from './reducers/profileReducer';
 import RecipeDetailsContainer from "./containers/RecipeDetailsContainer";
 import ProfilePageContainer from './containers/ProfilePageContainer';
+import OthersProfilePageContainer from './containers/OthersProfilePageContainer';
 
 const rootReducer = combineReducers({
   recipeReducer,
@@ -24,6 +25,7 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Route path="/profile" exact component={ProfilePageContainer} />
+      <Route path="/profile/:userId" exact component={OthersProfilePageContainer} />
       <Route path="/recipes" exact component={RecipeSelectorContainer} />
       <Route path="/recipes/:recipeId" exact component={RecipeDetailsContainer}/>
     </BrowserRouter>
