@@ -1,7 +1,8 @@
 import {
     FIND_RECIPES,
     UPDATE_KEYWORD,
-    FIND_RECIPE_INFO_BY_ID
+    FIND_RECIPE_INFO_BY_ID,
+    FIND_RECIPE_INSTRUCTIONS_BY_ID
 } from "../actions/recipeActions"
 
 
@@ -9,11 +10,12 @@ import {
 const initialState = {
     recipes: [],
     recipe: {},
-    keyword: ""
+    keyword: "",
+    instructions: {}
 }
 
 const recipeReducer = (state = initialState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case FIND_RECIPES:
             debugger
             console.log(action.recipes)
@@ -26,12 +28,18 @@ const recipeReducer = (state = initialState, action) => {
                 ...state,
                 keyword: action.keyword
             }
-            case FIND_RECIPE_INFO_BY_ID:
-                debugger    
-                return {
-                    ...state,
-                    recipe: action.recipe
-                }
+        case FIND_RECIPE_INFO_BY_ID:
+            debugger
+            return {
+                ...state,
+                recipe: action.recipe
+            }
+        case FIND_RECIPE_INSTRUCTIONS_BY_ID:
+            debugger
+            return {
+                ...state,
+                instructions: action.instructions
+            }
         default:
             return state
     }
