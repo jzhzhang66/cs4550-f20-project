@@ -19,7 +19,7 @@ class HomePageContainer extends React.Component {
     return(
         <div className="container">
           {/*make navbar component*/}
-          <nav className="navbar sticky-top">
+          <nav className="navbar sticky-top bg-light">
             <Link to="/" className="navbar-brand">
               Home
             </Link>
@@ -39,9 +39,122 @@ class HomePageContainer extends React.Component {
             </form>
           </nav>
 
+          <h3>Most Popular Recipe</h3>
+          <div className="card-deck">
+            <div className="sm-col-6">
+              <div className="card">
+                <img src="https://picsum.photos/300/200" className="card-img-top"></img>
+                <div className="card-body">
+                  <h5 className="card-title">Recipe</h5>
+                  <p className="card-text">
+                    Recipe description</p>
+                  <a href="#" className="btn btn-primary">more...</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3>Recent Favorites</h3>
+            <div className="card-deck">
+              <div className="col-xs-12 col-sm-3">
+                <div className="card">
+                  <img src="https://picsum.photos/300/200" className="card-img-top"></img>
+                  <div className="card-body">
+                    <h5 className="card-title">Recipe</h5>
+                    <p className="card-text">
+                      Recipe description</p>
+                    <a href="#" className="btn btn-primary">more...</a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-3">
+                <div className="card">
+                  <img src="https://picsum.photos/300/200" className="card-img-top"></img>
+                  <div className="card-body">
+                    <h5 className="card-title">Recipe</h5>
+                    <p className="card-text">
+                      Recipe description</p>
+                    <a href="#" className="btn btn-primary">more...</a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-3">
+                <div className="card">
+                  <img src="https://picsum.photos/300/200" className="card-img-top"></img>
+                  <div className="card-body">
+                    <h5 className="card-title">Recipe</h5>
+                    <p className="card-text">
+                      Recipe description</p>
+                    <a href="#" className="btn btn-primary">more...</a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-3">
+                <div className="card">
+                  <img src="https://picsum.photos/300/200" className="card-img-top"></img>
+                  <div className="card-body">
+                    <h5 className="card-title">Recipe</h5>
+                    <p className="card-text">
+                      Recipe description</p>
+                    <a href="#" className="btn btn-primary">more...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h3>More recipes</h3>
+            <div className="card-deck">
+              <div className="col-xs-12 col-sm-3">
+                <div className="card">
+                  <img src="https://picsum.photos/300/200" className="card-img-top"></img>
+                  <div className="card-body">
+                    <h5 className="card-title">Recipe</h5>
+                    <p className="card-text">
+                      Recipe description</p>
+                    <a href="#" className="btn btn-primary">more...</a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-3">
+                <div className="card">
+                  <img src="https://picsum.photos/300/200" className="card-img-top"></img>
+                  <div className="card-body">
+                    <h5 className="card-title">Recipe</h5>
+                    <p className="card-text">
+                      Recipe description</p>
+                    <a href="#" className="btn btn-primary">more...</a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-3">
+                <div className="card">
+                  <img src="https://picsum.photos/300/200" className="card-img-top"></img>
+                  <div className="card-body">
+                    <h5 className="card-title">Recipe</h5>
+                    <p className="card-text">
+                      Recipe description</p>
+                    <a href="#" className="btn btn-primary">more...</a>
+                  </div>
+                </div>
+              </div>
+              <div className="col-xs-12 col-sm-3">
+                <div className="card">
+                  <img src="https://picsum.photos/300/200" className="card-img-top"></img>
+                  <div className="card-body">
+                    <h5 className="card-title">Recipe</h5>
+                    <p className="card-text">
+                      Recipe description</p>
+                    <a href="#" className="btn btn-primary">more...</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           {console.log(this.randomRecipes)}
-          <h1> recipes </h1>
           <ul>
             {this.randomRecipes.map(recipe => <li>{recipe.title}</li>)}
           </ul>
