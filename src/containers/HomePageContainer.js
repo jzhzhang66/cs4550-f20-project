@@ -5,7 +5,7 @@ import RecipeTableComponent from "../components/RecipeTableComponent";
 import {connect} from "react-redux";
 import {findRandomRecipes} from "../actions/homeActions";
 import NavBarComponent from '../components/NavBarComponent';
-import './HomePageContainer.css';
+import '../css/HomePageContainer.css';
 
 class HomePageContainer extends React.Component {
   popularRecipe = []; // the most liked recipe from our database

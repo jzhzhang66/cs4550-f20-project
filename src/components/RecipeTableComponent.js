@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import './RecipeTableComponent.css';
+import '../css/RecipeTableComponent.css';
 import '../App.css';
 
 const RecipeTableComponent = (

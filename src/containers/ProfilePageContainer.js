@@ -41,13 +41,6 @@ const ProfilePageContainer = ({ updateFollowersExpanded, updateFollowingExpanded
                         </ul>}
                 </div>
             </div>
-            <div className="col-7">
-                <h3 className="header-padding">My Recipes</h3>
-                <MyRecipesComponent />
-            </div>
-            <div className="col-2">
-                <FavoriteRecipesComponent />
-            </div>
         </div>
     </div>
 

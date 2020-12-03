@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './NavBarComponent.css';
+import '../css/NavBarComponent.css';
 
 const NavBarComponent = ({}) =>
     <nav className="navbar sticky-top bg-light nav-styling">

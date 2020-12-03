@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './RecipeDetails.css';
+import '../css/RecipeDetails.css';
 import IngredientsComponent from "../components/IngredientsComponent";
 import InstructionsComponent from "../components/InstructionsComponent";
 import {
