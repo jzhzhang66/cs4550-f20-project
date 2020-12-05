@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/FavoriteRecipesComponent.css';
+import '../css/FavoriteRecipes.css';
 
 const recipes = [
     { id: 123, title: 'tiramusu', time: '1 hour', servings: 2, created: '11/11/19' },
@@ -9,7 +9,7 @@ const recipes = [
     { id: 567, title: 'stir fried rice', time: '1 hour', servings: 2, created: '11/11/19' }
 ]
 
-const FavoriteRecipesComponent = () =>
+const FavoriteRecipes = () =>
     <div>
         <h3 >{"Favorites <3"}</h3>
         <ul className="list">
@@ -17,4 +17,4 @@ const FavoriteRecipesComponent = () =>
         </ul>
     </div>
 
-export default FavoriteRecipesComponent
+export default FavoriteRecipes

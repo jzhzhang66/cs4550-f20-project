@@ -8,17 +8,17 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
 
-import RecipeSelectorContainer from "./containers/RecipeSelectorContainer";
+import RecipeSelectorContainer from "./containers/RecipeSelector";
 import recipeReducer from "./reducers/recipeReducer";
-import RecipeDetailsContainer from "./containers/RecipeDetailsContainer";
-import OthersProfilePageContainer from './containers/OthersProfilePageContainer';
-import HomePageContainer from "./containers/HomePageContainer";
-import ProfilePageContainer from "./containers/ProfilePageContainer";
+import RecipeDetailsContainer from "./containers/RecipeDetails";
+import OthersProfilePageContainer from './containers/OthersProfilePage';
+import HomePageContainer from "./containers/HomePage";
+import ProfilePageContainer from "./containers/ProfilePage";
 import profileReducer from "./reducers/profileReducer";
 import homeReducer from "./reducers/homeReducer";
-import NavBarComponent from './components/NavBarComponent';
-import LoginPageContainer from './containers/LoginPageContainer';
-import RegistrationPageContainer from './containers/RegistrationPageContainer';
+import NavBar from './components/NavBar';
+import LoginPageContainer from './containers/LoginPage';
+import RegistrationPageContainer from './containers/RegistrationPage';
 
 const rootReducer = combineReducers({
   recipeReducer, profileReducer, homeReducer
@@ -29,7 +29,7 @@ const store = createStore(rootReducer)
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Route path="/" component={NavBarComponent}/>
+      <Route path="/" component={NavBar}/>
       <Route exact path="/" component={HomePageContainer}/>
       <Route path="/profile" exact component={ProfilePageContainer} />
       <Route path="/profile/:userId" exact component={OthersProfilePageContainer} />

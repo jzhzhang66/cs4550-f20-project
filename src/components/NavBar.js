@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../css/NavBarComponent.css';
+import '../css/NavBar.css';
 
-const NavBarComponent = ({}) =>
+const NavBar = ({}) =>
     <nav className="navbar sticky-top bg-light nav-styling">
         <Link to="/" className="nav-link nav-item navbar-nav text-styling">
             Home
@@ -26,4 +26,4 @@ const NavBarComponent = ({}) =>
         </form>
     </nav>
 
-export default NavBarComponent
+export default NavBar

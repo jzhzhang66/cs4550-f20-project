@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import SearchRecipeComponent from "../components/SearchRecipeComponent";
-import RecipeTableComponent from '../components/RecipeTableComponent';
+import SearchRecipeComponent from "../components/SearchRecipe";
+import RecipeTableComponent from '../components/RecipeTable';
 
 // put the router in here
 class RecipeContainer extends React.Component {

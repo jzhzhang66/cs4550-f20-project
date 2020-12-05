@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 
 // put the router in here
-class LoginPageContainer extends React.Component {
+class LoginPage extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -72,4 +72,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
     (stateToPropertyMapper, propertyToDispatchMapper)
-    (LoginPageContainer)
+    (LoginPage)

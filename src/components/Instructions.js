@@ -8,7 +8,7 @@ import {
 } from "../actions/recipeActions"
 
 // put the router in here
-const InstructionsComponent = (
+const Instructions = (
     { recipe = {}, recipeInstructions = {} }) =>
 
     <div className="">
@@ -46,4 +46,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
     (stateToPropertyMapper, propertyToDispatchMapper)
-    (InstructionsComponent)
+    (Instructions)

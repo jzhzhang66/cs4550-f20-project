@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import SearchRecipeComponent from "../components/SearchRecipeComponent";
-import RecipeTableComponent from "../components/RecipeTableComponent";
+import SearchRecipeComponent from "../components/SearchRecipe";
+import RecipeTableComponent from "../components/RecipeTable";
 import {connect} from "react-redux";
 import {findRandomRecipes} from "../actions/homeActions";
-import NavBarComponent from '../components/NavBarComponent';
-import '../css/HomePageContainer.css';
+import NavBar from '../components/NavBar';
+import '../css/HomePage.css';
 
-class HomePageContainer extends React.Component {
+class HomePage extends React.Component {
   popularRecipe = []; // the most liked recipe from our database
   favoriteRecipes = []; // the user's liked recipes
   recentRecipes = []; // most recent recipes from our database
@@ -157,4 +157,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
 (stateToPropertyMapper, propertyToDispatchMapper)
-(HomePageContainer)
+(HomePage)

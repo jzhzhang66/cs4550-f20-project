@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/MyRecipesComponent.css';
+import '../css/MyRecipes.css';
 const recipes = [
     { id: 123, title: 'tiramusu', time: '1 hour', servings: 2, created: '11/11/19' },
     { id: 234, title: 'chocolate cake', time: '1 hour', servings: 2, created: '11/11/19' },
@@ -7,7 +7,7 @@ const recipes = [
     { id: 456, title: 'tomato soup', time: '1 hour', servings: 2, created: '11/11/19' },
     { id: 567, title: 'stir fried rice', time: '1 hour', servings: 2, created: '11/11/19' }
 ]
-const MyRecipesComponent = () =>
+const MyRecipes = () =>
 
         <table className="table table-striped">
             <thead>
@@ -29,4 +29,4 @@ const MyRecipesComponent = () =>
             </tbody>
         </table>
 
-export default MyRecipesComponent
+export default MyRecipes
