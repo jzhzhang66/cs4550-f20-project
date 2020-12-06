@@ -41,6 +41,12 @@ const ProfilePage = ({ updateFollowersExpanded, updateFollowingExpanded, followi
                         </ul>}
                 </div>
             </div>
+            <div className="col-4">
+                <button className="btn btn-secondary create-meal-plan">Create Meal Plan</button>
+            </div>
+            <div className="col-5">
+                <button className="btn btn-secondary view-recipes">My Meal Plans</button>
+            </div>
         </div>
     </div>
 
