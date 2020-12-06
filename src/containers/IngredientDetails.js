@@ -1,3 +1,4 @@
+import React from "react";
 class IngredientDetails extends React.Component {
     constructor(props) {
         super(props)
@@ -9,3 +10,5 @@ class IngredientDetails extends React.Component {
         // figure out how ingredient information is organized and make user services for it to get the data
     }
 }
+
+export default IngredientDetails

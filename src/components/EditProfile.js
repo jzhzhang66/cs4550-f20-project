@@ -1,8 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-  editUser,
-    updateUser
+  editPassword,
+    updatePassword
 } from "../actions/userActions";
 
 const EditProfile = (username, password, isEditing, editPassword,
