@@ -5,28 +5,33 @@ import {
     updateFollowersExpanded,
     updateFollowingExpanded
 } from "../actions/profileActions"
-import MyRecipes from '../components/MyRecipes';
-import FavoriteRecipes from '../components/FavoriteRecipes';
 
 const ProfilePage = ({ updateFollowersExpanded, updateFollowingExpanded, followingExpanded, followersExpanded,
-    followers, following }) =>
+    followers, following, type }) =>
     <div className="container">
         <h1 className="header">My Profile</h1>
         <div className="row">
-            <div className="col-3">
+            <div className="col-4">
+                {type === "creator" &&
                 <div>
                     <h1 className="length">{followers.length}</h1>
                     <h3><b className="btn-padding">Followers</b>
-                        {!followersExpanded && <button onClick={() => updateFollowersExpanded(true)} className="btn btn-outline-secondary">expand</button>}
-                        {followersExpanded && <button onClick={() => updateFollowersExpanded(false)} className="btn btn-outline-secondary">contract</button>}
+                        {!followersExpanded && <button
+                            onClick={() => updateFollowersExpanded(true)}
+                            className="btn btn-outline-secondary">expand</button>}
+                        {followersExpanded && <button
+                            onClick={() => updateFollowersExpanded(false)}
+                            className="btn btn-outline-secondary">contract</button>}
                     </h3>
                     {followersExpanded &&
-                        <ul>
-                            {
-                                followers.map(follower => <li>{follower.name}</li>)
-                            }
-                        </ul>}
+                    <ul>
+                        {
+                            followers.map(follower => <li>{follower.name}</li>)
+                        }
+                    </ul>}
                 </div>
+                }
+                {type === "follower" &&
                 <div>
                     <h1 className="length padding-top">{following.length}</h1>
                     <h3><b className="btn-padding">Following</b>
@@ -40,6 +45,13 @@ const ProfilePage = ({ updateFollowersExpanded, updateFollowingExpanded, followi
                             }
                         </ul>}
                 </div>
+                    }
+            </div>
+            <div className="col-4">
+                <button className="btn btn-secondary create-meal-plan">Create Meal Plan</button>
+            </div>
+            <div className="col-3">
+                <button className="btn btn-secondary edit-profile">Edit Profile</button>
             </div>
             <div className="col-4">
                 <button className="btn btn-secondary create-meal-plan">Create Meal Plan</button>
@@ -54,7 +66,8 @@ const stateToPropertyMapper = (state) => ({
     followingExpanded: state.profileReducer.followingExpanded,
     followersExpanded: state.profileReducer.followersExpanded,
     following: state.profileReducer.following,
-    followers: state.profileReducer.followers
+    followers: state.profileReducer.followers,
+    type: state.userReducer.type
 })
 
 const propertyToDispatchMapper = (dispatch) => ({

@@ -16,12 +16,14 @@ import HomePageContainer from "./containers/HomePage";
 import ProfilePageContainer from "./containers/ProfilePage";
 import profileReducer from "./reducers/profileReducer";
 import homeReducer from "./reducers/homeReducer";
+import userReducer from "./reducers/userReducer";
 import NavBar from './components/NavBar';
 import LoginPageContainer from './containers/LoginPage';
 import RegistrationPageContainer from './containers/RegistrationPage';
+import EditProfile from "./components/EditProfile";
 
 const rootReducer = combineReducers({
-  recipeReducer, profileReducer, homeReducer
+  recipeReducer, profileReducer, homeReducer, userReducer
 });
 
 const store = createStore(rootReducer)
@@ -37,6 +39,7 @@ ReactDOM.render(
       <Route path="/recipes/:recipeId" exact component={RecipeDetailsContainer}/>
       <Route path="/login" exact component={LoginPageContainer}/>
       <Route path="/register" exact component={RegistrationPageContainer}/>
+      <Route path="/editProfile" exact component={EditProfile} />
     </BrowserRouter>
   </Provider>
   ,

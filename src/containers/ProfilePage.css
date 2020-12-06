@@ -36,3 +36,10 @@
 .name {
     font-size: 60px;
 }
+
+.create-meal-plan, .edit-profile {
+    width: 300px;
+    height: 100px;
+    font-size: 30px;
+    margin-top: 50px;
+}
