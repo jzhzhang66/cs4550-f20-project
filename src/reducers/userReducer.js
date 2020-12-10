@@ -6,6 +6,7 @@ const initialState = {
   type: "follower",
   username: "bohnstinkybu",
   password: "poopyhead",
+  isVerified: false,
   isEditing: false
 }
 

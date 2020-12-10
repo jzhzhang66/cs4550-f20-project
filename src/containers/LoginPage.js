@@ -1,17 +1,21 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
+import {getIsUserAndPass} from "../services/UserService";
 
 // put the router in here
 class LoginPage extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      username: '',
+      password: '',
+    }
   }
 
-  componentDidMount() {
-
+  handleLogin() {
+    getIsUserAndPass(this.state).then(newUser => this.props.history.push('/profile'))
   }
-
 
   render() {
     return (
@@ -24,7 +28,11 @@ class LoginPage extends React.Component {
                     Username
                 </label>
                 <div class="col-sm-10">
-                    <input class="form-control wbdv-field wbdv-username" id="username" placeholder="Alice"/>
+                    <input class="form-control wbdv-field wbdv-username"
+                           id="username"
+                           placeholder="Alice"
+                           value={this.state.username}
+                           onChange={(e) => this.setState({username: e.target.value})}/>
                 </div>
             </div>
             {/* Password */}
@@ -32,16 +40,21 @@ class LoginPage extends React.Component {
                 <label for="password" class="col-sm-2 col-form-label">
                     Password </label>
                 <div class="col-sm-10">
-                    <input type="password" class="form-control wbdv-field wbdv-password" id="password"
-                        placeholder="123qwe#$%"/>
+                    <input type="password" class="form-control wbdv-field wbdv-password"
+                           id="password"
+                           placeholder="123qwe#$%"
+                           value={this.state.password}
+                           onChange={(e) => this.setState({password: e.target.value})}/>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
                     {/* Sign In */}
-                    <button type="submit" formaction="/profile"
-                        class="btn btn-outline-secondary btn-block wbdv-button wbdv-login">Sign in</button>
+                    <button type="submit"
+                            // formaction="/profile"
+                            onClick={() => this.handleLogin()}
+                            class="btn btn-outline-secondary btn-block wbdv-button wbdv-login">Sign in</button>
                     <div class="row">
                         {/* Forgot Password */}
                         <div class="col-6">

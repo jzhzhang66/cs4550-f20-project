@@ -1,6 +1,7 @@
 const url = "https://cs4550-f20-project.herokuapp.com/api"
 const key = "faa54ae99c9a46efbb6498e0a9965093"
 
+// function verifies user exists?
 export const getIsUserAndPass = (user) => {
     fetch(`${url}/users/password`)
         .then(response => response.json())
@@ -31,7 +32,7 @@ export const addUser = (user) => {
         headers: {
             'content-type': 'application/json'
         }
-    })
+    }).then(response => response.json());
 }
 
 export const profile = (HttpSession) => {
