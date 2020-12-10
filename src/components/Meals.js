@@ -3,60 +3,60 @@ import { connect } from "react-redux";
 import "./Meals.css";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import {
-    deleteLesson,
-    createLesson,
-    updateLesson
-} from "../actions/lessonActions"
+    deleteMeal,
+    createMeal,
+    updateMeal
+} from "../actions/mealActions"
 
-const Meals = ({ lessons = [], dailyPlanId, mealPlan, deleteLesson, createLesson, updateLesson }) =>
+const Meals = ({ meals = [], dailyPlanId, mealPlan, deleteMeal, createMeal, updateMeal }) =>
 
 <div className="meals-container">
 <h3>Meals</h3>
 <ul className="nav nav-tabs">
     {
-        lessons.map(lesson =>
-            <li className="nav-item" key={lesson._id}>
-                <button type="button" className="btn btn-outline-danger inline " onClick={() => deleteLesson(lesson)}>
+        meals.map(meal =>
+            <li className="nav-item" key={meal._id}>
+                <button type="button" className="btn btn-outline-danger inline " onClick={() => deleteMeal(meal)}>
                     <i className="fa fa-trash"></i>
                 </button>
-                {lesson.editing &&
+                {meal.editing &&
                     <span>
                         <button type="button" className="btn btn-outline-secondary inline" onClick={() =>
-                            updateLesson({ ...lesson, editing: false })}>
+                            updateMeal({ ...meal, editing: false })}>
                             Ok
                      </button>
 
                         <input
                         className="form-control"
                             onChange={(event) =>
-                                updateLesson({ ...lesson, title: event.target.value })}
-                            value={lesson.title} />
+                                updateMeal({ ...meal, title: event.target.value })}
+                            value={meal.title} />
                     </span>}
                 {
-                    !lesson.editing &&
+                    !meal.editing &&
                     <label>
-                        <button type="button" className="btn btn-outline-success inline" onClick={() => updateLesson({ ...lesson, editing: true })}>
+                        <button type="button" className="btn btn-outline-success inline" onClick={() => updateMeal({ ...meal, editing: true })}>
                             <i className="fa fa-edit" />
                         </button>
-                        <Link className="link" to={`/edit/${mealPlan._id}/dailyPlans/${dailyPlanId}/lessons/${lesson._id}`}>{lesson.title}</Link>
+                        <Link className="link" to={`/edit/${mealPlan._id}/dailyPlans/${dailyPlanId}/meals/${meal._id}`}>{meal.title}</Link>
                     </label>}
             </li>)
     }
 </ul>
 <button type="button" className="btn btn-outline-secondary inline" onClick={() =>
-    createLesson(dailyPlanId, { title: "New Meal" })}>Create Meal</button>
+    createMeal(dailyPlanId, { title: "New Meal" })}>Create Meal</button>
 </div>
 
 const stateToPropertyMapper = (state) => ({
-    lessons: state.lessonReducer.lessons,
-    dailyPlanId: state.lessonReducer.dailyPlanId,
+    meals: state.mealReducer.meals,
+    dailyPlanId: state.mealReducer.dailyPlanId,
     mealPlan: state.mealPlanReducer.mealPlan
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-    deleteLesson: (lesson) => deleteLesson(dispatch, lesson),
-    createLesson: (dailyPlanId, lesson) => createLesson(dispatch, dailyPlanId, lesson),
-    updateLesson: (lesson) => updateLesson(dispatch, lesson)
+    deleteMeal: (meal) => deleteMeal(dispatch, meal),
+    createMeal: (dailyPlanId, meal) => createMeal(dispatch, dailyPlanId, meal),
+    updateMeal: (meal) => updateMeal(dispatch, meal)
 })
 
 export default connect

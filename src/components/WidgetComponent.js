@@ -61,7 +61,7 @@ const stateToPropertyMapper = (state) => ({
     widgets: state.widgetReducer.widgets,
     topicId: state.widgetReducer.topicId,
     lessonId: state.topicReducer.lessonId,
-    moduleId: state.lessonReducer.moduleId,
+    moduleId: state.mealReducer.moduleId,
     mealPlan: state.mealPlanReducer.mealPlan
 })
 

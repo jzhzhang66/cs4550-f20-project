@@ -55,7 +55,7 @@ const TopicPillsComponent = (
 const stateToPropertyMapper = (state) => ({
   topics: state.topicReducer.topics,
   lessonId: state.topicReducer.lessonId,
-  dailyPlanId: state.lessonReducer.dailyPlanId,
+  dailyPlanId: state.mealReducer.dailyPlanId,
   mealPlan: state.mealPlanReducer.mealPlan
 })
 

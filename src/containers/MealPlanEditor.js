@@ -10,10 +10,10 @@ import TopicPillsComponent from "../components/TopicPillsComponent";
 import { findDailyPlansForMealPlan} from "../actions/dailyPlanActions";
 import { findDailyPlan } from "../actions/dailyPlanActions";
 import { findMealPlanById } from "../actions/mealPlanActions";
-import { findLessonsForModule } from "../actions/lessonActions";
-import { findLesson } from "../actions/lessonActions"
+import { findMealsForDailyPlan } from "../actions/mealActions";
+import { findMeal } from "../actions/mealActions"
 import { findTopicsForLesson } from "../services/TopicService";
-import { findTopicForLesson } from "../actions/topicActions";
+import { findTopicForMeal } from "../actions/topicActions";
 import { findTopic } from "../actions/topicActions";
 import { findWidgetForTopic} from "../actions/widgetActions"
 import WidgetComponent from "../components/WidgetComponent";
@@ -26,17 +26,17 @@ class MealPlanEditor extends React.Component {
         const mealPlanId = this.props.match.params.mealPlanId
         debugger
         const dailyPlanId = this.props.match.params.dailyPlanId
-        const lessonId = this.props.match.params.lessonId
+        const mealId = this.props.match.params.mealId
         const topicId = this.props.match.params.topicId
         this.props.findMealPlanById(mealPlanId)
         this.props.findDailyPlansForMealPlan(mealPlanId)
         if (dailyPlanId) {
             this.props.findDailyPlan(dailyPlanId)
-            this.props.findLessonsForModule(dailyPlanId)
+            this.props.findMealsForDailyPlan(dailyPlanId)
         }
-        if (lessonId) {
-            this.props.findLessonById(lessonId)
-            this.props.findTopicsForLesson(lessonId)
+        if (mealId) {
+            this.props.findMeal(mealId)
+            this.props.findTopicsForLesson(mealId)
         }
         if (topicId) {
             this.props.findTopicById(topicId)
@@ -48,12 +48,12 @@ class MealPlanEditor extends React.Component {
         const dailyPlanId = this.props.match.params.dailyPlanId
         const previousDailyPlanId = prevProps.match.params.dailyPlanId
         if (dailyPlanId !== previousDailyPlanId) {
-            this.props.findLessonsForModule(dailyPlanId)
+            this.props.findMealsForDailyPlan(dailyPlanId)
         }
-        const lessonId = this.props.match.params.lessonId
-        const previousLessonId = prevProps.match.params.lessonId
-        if (lessonId !== previousLessonId) {
-            this.props.findTopicsForLesson(lessonId)
+        const mealId = this.props.match.params.mealId
+        const previousMealId = prevProps.match.params.mealId
+        if (mealId !== previousMealId) {
+            this.props.findTopicsForLesson(mealId)
         }
         const topicId = this.props.match.params.topicId
         console.log(topicId);
@@ -92,9 +92,9 @@ const propertyToDispatchMapper = (dispatch) => ({
     findDailyPlansForMealPlan: (mealPlanId) => findDailyPlansForMealPlan(dispatch, mealPlanId),
     findMealPlanById: (mealPlanId) => findMealPlanById(dispatch, mealPlanId),
     findDailyPlan: (dailyPlanId) => findDailyPlan(dispatch, dailyPlanId),
-    findLessonsForModule: (dailyPlanId) => findLessonsForModule(dispatch, dailyPlanId),
-    findLessonById: (lessonId) => findLesson(dispatch, lessonId),
-    findTopicsForLesson: (lessonId) => findTopicForLesson(dispatch, lessonId),
+    findMealsForDailyPlan: (dailyPlanId) => findMealsForDailyPlan(dispatch, dailyPlanId),
+    findMeal: (mealId) => findMeal(dispatch, mealId),
+    findTopicsForLesson: (mealId) => findTopicsForLesson(dispatch, mealId),
     findWidgetsForTopic: (topicId) => findWidgetForTopic(dispatch, topicId),
     findTopicById: (topicId) => findTopic(dispatch, topicId),
 })
