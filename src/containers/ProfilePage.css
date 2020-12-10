@@ -37,7 +37,7 @@
     font-size: 60px;
 }
 
-.create-meal-plan, .edit-profile {
+.create-meal-plan, .edit-profile, .my-meal-plans, .favorite-meal-plan {
     width: 300px;
     height: 100px;
     font-size: 30px;

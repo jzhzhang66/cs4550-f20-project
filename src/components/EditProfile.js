@@ -7,8 +7,7 @@ import {
 
 const EditProfile = (username, password, isEditing, editPassword,
     updatePassword) => {
-  debugger
-  console.log(password.password)
+  console.log(password)
   return <div className="container">
     <h1 className="header-styling">Edit Profile</h1>
     <form>
@@ -28,7 +27,7 @@ const EditProfile = (username, password, isEditing, editPassword,
           Password </label>
         <div className="col-sm-10">
           {!isEditing &&
-          <label>{password.password}</label>}
+          <label value={password.password}>{password.password}</label>}
           {isEditing &&
           <input type="password"
                  className="form-control wbdv-field wbdv-password"

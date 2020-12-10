@@ -16,14 +16,6 @@ const NavBar = ({}) =>
 <Link to="/recipes" className="nav-link nav-item text-styling">
             Search
 </Link>
-        <form className="form-inline float-right">
-            <input className="form-control mr-sm-2 wbdv-field wbdv-new-course"
-                placeholder="Search for a recipe"></input>
-            <button
-                className="btn btn-outline-primary my-2 my-sm-0">
-                <i className="fas fa-search"></i>
-            </button>
-        </form>
     </nav>
 
 export default NavBar
