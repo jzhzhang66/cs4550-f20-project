@@ -9,7 +9,7 @@ import {
 
 
 const TopicPillsComponent = (
-  { mealPlan, moduleId, lessonId, topics = [],
+  { mealPlan, dailyPlanId, lessonId, topics = [],
     deleteTopic, createTopic, updateTopic }) =>
 
   <div class="">
@@ -31,7 +31,7 @@ const TopicPillsComponent = (
             {
               !topic.editing &&
               <span>
-                <Link to={`/edit/${mealPlan._id}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}>
+                <Link to={`/edit/${mealPlan._id}/dailyPlans/${dailyPlanId}/lessons/${lessonId}/topics/${topic._id}`}>
                   {topic.title}
                 </Link>
                 <button onClick={() => updateTopic({ ...topic, editing: true })}>
@@ -55,7 +55,7 @@ const TopicPillsComponent = (
 const stateToPropertyMapper = (state) => ({
   topics: state.topicReducer.topics,
   lessonId: state.topicReducer.lessonId,
-  moduleId: state.lessonReducer.moduleId,
+  dailyPlanId: state.lessonReducer.dailyPlanId,
   mealPlan: state.mealPlanReducer.mealPlan
 })
 

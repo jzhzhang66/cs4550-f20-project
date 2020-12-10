@@ -2,46 +2,46 @@ import React from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import {
-  deleteModule,
-  createModule,
-  updateModule
-} from "../actions/moduleActions"
+  deleteDailyPlan,
+  createDailyPlan,
+  updateDailyPlan
+} from "../actions/dailyPlanActions"
 import "./DailyPlans.css";
 
 const DailyPlans = (
-  { mealPlan, modules = [],
-  deleteModule, createModule, updateModule}) =>
+  { mealPlan, dailyPlans = [],
+  deleteDailyPlan, createDailyPlan, updateDailyPlan}) =>
   <div>
   <h3 className="daily-plans-header">Daily Plans</h3>
   <div className="modules">
   <ul className="list-group">
       {
-          modules.map(module => 
-              <li className="list-group-item" key={module._id}>
-                  <button type="button" className="btn btn-outline-danger inline" onClick={() => deleteModule(module)}>
+          dailyPlans.map(dailyPlan =>
+              <li className="list-group-item" key={dailyPlan._id}>
+                  <button type="button" className="btn btn-outline-danger inline" onClick={() => deleteDailyPlan(dailyPlan)}>
                       <i className="fa fa-trash"></i>
                   </button>
-                  {module.editing &&
+                  {dailyPlan.editing &&
                       <span>
                           <button type="button" className="btn btn-outline-secondary inline" onClick={() =>
-                              updateModule({ ...module, editing: false })}>
+                              updateDailyPlan({ ...dailyPlan, editing: false })}>
                               Ok
                        </button>
 
                           <input
                           className="form-control"
                               onChange={(event) =>
-                                  updateModule({ ...module, title: event.target.value })}
-                              value={module.title} />
+                                  updateDailyPlan({ ...dailyPlan, title: event.target.value })}
+                              value={dailyPlan.title} />
 
                       </span>}
                   {
-                      !module.editing &&
+                      !dailyPlan.editing &&
                       <label>
-                          <button type="button" className="btn btn-outline-success inline" onClick={() => updateModule({ ...module, editing: true })}>
+                          <button type="button" className="btn btn-outline-success inline" onClick={() => updateDailyPlan({ ...dailyPlan, editing: true })}>
                           <i className="fa fa-edit" />
                           </button>
-                          <Link className="link" to={`/edit/${mealPlan._id}/modules/${module._id}`}>{module.title}</Link>
+                          <Link className="link" to={`/edit/${mealPlan._id}/dailyPlans/${dailyPlan._id}`}>{dailyPlan.title}</Link>
                       </label>}
 
               </li>
@@ -49,7 +49,7 @@ const DailyPlans = (
           )
       }
   </ul>
-  <button type="button" className="btn btn-outline-secondary inline create" onClick={() => createModule(mealPlan, { title: "New Module" })}>
+  <button type="button" className="btn btn-outline-secondary inline create" onClick={() => createDailyPlan(mealPlan, { title: "New Daily Plan" })}>
       Create Daily Plan
   </button>
 </div>
@@ -57,14 +57,14 @@ const DailyPlans = (
 
 
 const stateToPropertyMapper = (state) => ({
-  modules: state.moduleReducer.modules,
+  dailyPlans: state.dailyPlanReducer.dailyPlans,
   mealPlan: state.mealPlanReducer.mealPlan
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-  deleteModule: (module) => deleteModule(dispatch, module),
-  createModule: (course, module) => createModule(dispatch, course, module),
-  updateModule: (module) => updateModule(dispatch, module)
+  deleteDailyPlan: (dailyPlan) => deleteDailyPlan(dispatch, dailyPlan),
+  createDailyPlan: (mealPlan, dailyPlan) => createDailyPlan(dispatch, mealPlan, dailyPlan),
+  updateDailyPlan: (dailyPlan) => updateDailyPlan(dispatch, dailyPlan)
 })
 
 export default connect

@@ -8,7 +8,7 @@ import {
     updateLesson
 } from "../actions/lessonActions"
 
-const Meals = ({ lessons = [], moduleId, mealPlan, deleteLesson, createLesson, updateLesson }) =>
+const Meals = ({ lessons = [], dailyPlanId, mealPlan, deleteLesson, createLesson, updateLesson }) =>
 
 <div className="meals-container">
 <h3>Meals</h3>
@@ -38,24 +38,24 @@ const Meals = ({ lessons = [], moduleId, mealPlan, deleteLesson, createLesson, u
                         <button type="button" className="btn btn-outline-success inline" onClick={() => updateLesson({ ...lesson, editing: true })}>
                             <i className="fa fa-edit" />
                         </button>
-                        <Link className="link" to={`/edit/${mealPlan._id}/modules/${moduleId}/lessons/${lesson._id}`}>{lesson.title}</Link>
+                        <Link className="link" to={`/edit/${mealPlan._id}/dailyPlans/${dailyPlanId}/lessons/${lesson._id}`}>{lesson.title}</Link>
                     </label>}
             </li>)
     }
 </ul>
 <button type="button" className="btn btn-outline-secondary inline" onClick={() =>
-    createLesson(moduleId, { title: "New Meal" })}>Create Meal</button>
+    createLesson(dailyPlanId, { title: "New Meal" })}>Create Meal</button>
 </div>
 
 const stateToPropertyMapper = (state) => ({
     lessons: state.lessonReducer.lessons,
-    moduleId: state.lessonReducer.moduleId,
+    dailyPlanId: state.lessonReducer.dailyPlanId,
     mealPlan: state.mealPlanReducer.mealPlan
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
     deleteLesson: (lesson) => deleteLesson(dispatch, lesson),
-    createLesson: (moduleId, lesson) => createLesson(dispatch, moduleId, lesson),
+    createLesson: (dailyPlanId, lesson) => createLesson(dispatch, dailyPlanId, lesson),
     updateLesson: (lesson) => updateLesson(dispatch, lesson)
 })
 
