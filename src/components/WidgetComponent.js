@@ -5,16 +5,16 @@ import HeadingWidgetComponent from "./HeadingWidgetComponent";
 import ParagraphWidgetComponent from "./ParagraphWidgetComponent";
 import {
     deleteWidget,
-    createWidget,
     updateWidget,
-    saveWidget
+    saveWidget,
+    createWidget
 } from "../actions/widgetActions"
 import ImageWidgetComponent from "./ImageWidgetComponent";
 import ListWidgetComponent from "./ListWidgetComponent";
 
 
 const WidgetComponent = (
-    { course, moduleId, lessonId, topicId, widgets = [],
+    { mealPlan, moduleId, lessonId, topicId, widgets = [],
         deleteWidget, createWidget, updateWidget, saveWidget}) =>
 
     <div class="">
@@ -62,7 +62,7 @@ const stateToPropertyMapper = (state) => ({
     topicId: state.widgetReducer.topicId,
     lessonId: state.topicReducer.lessonId,
     moduleId: state.lessonReducer.moduleId,
-    course: state.courseReducer.course
+    mealPlan: state.mealPlanReducer.mealPlan
 })
 
 const propertyToDispatchMapper = (dispatch) => ({

@@ -1,20 +1,18 @@
 import {
-    FIND_COURSE_BY_ID
-  } from "../actions/courseActions"
-
-
+    FIND_MEAL_PLAN_BY_ID
+  } from "../actions/mealPlanActions"
 
 const initialState = {
-    courses: [],
-    course: {}
+    mealPlans: [],
+    mealPlan: {}
 }
 
 const courseReducer = (state = initialState, action) => {
     switch(action.type) {
-        case FIND_COURSE_BY_ID:
+        case FIND_MEAL_PLAN_BY_ID:
             return {
                 ...state,
-                course: action.course
+                mealPlan: action.mealPlan
             }
         default:
             return state

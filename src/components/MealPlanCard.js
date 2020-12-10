@@ -1,5 +1,5 @@
 import React from "react";
-import courseService from "../services/CourseService";
+import MealPlanService from "../services/MealPlanService";
 import MeanPlanTable from "./MealPlanTable";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import "./MealPlanCard.css"
@@ -8,7 +8,7 @@ import "./MealPlanCard.css"
 class MealPlanCard extends React.Component {
     state = {
         editing: false,
-        course: this.props.course
+        mealPlan: this.props.mealPlan
     }
     constructor(props) {
         super(props)
@@ -16,19 +16,19 @@ class MealPlanCard extends React.Component {
 
     updateTitle = (event) => {
         const newTitle = event.target.value
-        const course = {
-            ...this.state.course
+        const mealPlan = {
+            ...this.state.mealPlan
         }
-        course.title = newTitle
+        mealPlan.title = newTitle
         this.setState({
-            course: course
+            mealPlan: mealPlan
         })
         // this.props.updateTitle(course)
     }
 
     updateCourse = () => {
         this.setState({ editing: false })
-        this.props.updateCourse(this.state.course._id, this.state.course)
+        this.props.updateCourse(this.state.mealPlan._id, this.state.mealPlan)
     }
     render() {
         return (
@@ -36,20 +36,20 @@ class MealPlanCard extends React.Component {
                 <div class="card-body card-styling">
                     {
                         !this.state.editing &&
-                        <Link to={`/edit/${this.state.course._id}`}>
-                            <h5 class="card-title">{this.state.course.title}</h5>
+                        <Link to={`/edit/${this.state.mealPlan._id}`}>
+                            <h5 class="card-title">{this.state.mealPlan.title}</h5>
                         </Link>
                     }
                     {
                         this.state.editing &&
                         <input
                             onChange={this.updateTitle}
-                            value={this.state.course.title} 
+                            value={this.state.mealPlan.title}
                             className="form-control"/>
                     }
-                    <p class="card-text">Course Description. This Course is a great course and has cool things.</p>
+                    <p class="card-text">Meal Plan Description. This meal plan is a great meal plan and has cool things.</p>
                     <p class="card-text"><small class="text-muted">Last Updated: {this.props.course.lastUpdated}<br/>
-                    Owner: {this.props.course.owner}</small></p>
+                    Owner: {this.props.mealPlan.owner}</small></p>
                 </div>
                 <div class="card-footer">
                     {
@@ -71,7 +71,7 @@ class MealPlanCard extends React.Component {
                     {
                         !this.state.editing &&
                         <td className="priority-1">
-                            <button onClick={() => this.props.deleteCourse(this.props.course)} className="btn btn-outline-secondary">
+                            <button onClick={() => this.props.deleteCourse(this.props.mealPlan)} className="btn btn-outline-secondary">
                                 <i className="fa fa-times" aria-hidden="true"></i>
                             </button>
                         </td>

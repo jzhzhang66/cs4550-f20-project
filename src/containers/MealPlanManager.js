@@ -3,68 +3,68 @@ import "./MealPlanManager.css"
 import MealPlanRow from "../components/MealPlanRow";
 import MealPlanTable from "../components/MealPlanTable";
 import MealPlanGrid from "../components/MealPlanGrid";
-import courseService from "../services/CourseService";
+import mealPlanService from "../services/MealPlanService";
 import { act } from "react-dom/test-utils";
 import "../App.css";
 
 class MealPlanManager extends React.Component {
     state = {
-        courses: [],
+        mealPlans: [],
         title: "",
         isTable: true
     }
 
     componentDidMount() {
-        courseService.findAllCourses()
-            .then(courses => this.setState({
-                courses: courses
+        mealPlanService.findAllMealPlans()
+            .then(mealPlans => this.setState({
+                mealPlans: mealPlans
             }))
-        console.log(this.state.courses)
+        console.log(this.state.mealPlans)
     }
 
-    createCourse = () => {
-        const newCourse = {
+    createMealPlan = () => {
+        const newMealPlan = {
             title: this.state.title,
             owner: 'me',
             lastUpdated: 'today'
         }
-        console.log(newCourse)
+        console.log(newMealPlan)
 
-        courseService.createCourse(newCourse).then(actualCourse =>
+        mealPlanService.createMealPlan(newMealPlan).then(actualMealPlan =>
             this.setState(prevState => ({
-                courses: [
-                    ...prevState.courses, actualCourse
+                mealPlans: [
+                    ...prevState.mealPlans, actualMealPlan
                 ],
                 title: ""
             })))
     }
 
-    deleteCourse = (course) => {
-        courseService.deleteCourse(course._id).then(status =>
+    deleteMealPlan = (mealPlan) => {
+        mealPlanService.deleteMealPlan(mealPlan._id).then(status =>
             this.setState(prevState => ({
-                courses: prevState.courses.filter(c => c._id !== course._id)
+                mealPlans: prevState.mealPlans.filter(c => c._id !== mealPlan._id)
             }))
         )
     }
 
-    updateTitle = (course, number) => {
-        console.log(course)
-        const newCourses = {
-            ...this.state.courses
+    updateTitle = (mealPlan, number) => {
+        console.log(mealPlan)
+        const newMealPlans = {
+            ...this.state.mealPlans
         }
-        console.log(newCourses)
-        newCourses[number] = course
+        console.log(newMealPlans)
+        newMealPlans[number] = mealPlan
         this.setState({
-            courses: 
-                newCourses
+            mealPlans:
+                newMealPlans
         })
     }
 
-    updateCourse = (courseId, course) => {
-        courseService.updateCourse(courseId, course)
+    updateMealPlan = (mealPlanId, mealPlan) => {
+        mealPlanService.updateMealPlan(mealPlanId, mealPlan)
         .then(status => {
         this.setState(prevState => ({
-            courses: prevState.courses.map(c => c._id === courseId?course: c)
+            mealPlans: prevState.mealPlans.map(c => c._id === mealPlanId?mealPlan: c)
         }))
     })
     }
@@ -91,7 +91,7 @@ class MealPlanManager extends React.Component {
                     <div class="input-group mb-3">
                         <input type="text" value={this.state.title} onChange={this.enterTitle} class="form-control" placeholder="New Course Title" aria-label="Recipient's username" aria-describedby="basic-addon2" />
                         <div class="input-group-append">
-                            <button class="btn btn-outline-success" onClick={this.createCourse} type="button"><i className="fa fa-plus-circle"
+                            <button class="btn btn-outline-success" onClick={this.createMealPlan} type="button"><i className="fa fa-plus-circle"
                             aria-hidden="true"></i></button>
                         </div>
                     </div>
@@ -99,18 +99,18 @@ class MealPlanManager extends React.Component {
                 {
                     this.state.isTable &&
                     <MealPlanTable
-                    courses={this.state.courses}
-                    deleteCourse={this.deleteCourse}
-                    updateCourse={this.updateCourse} 
+                    mealPlans={this.state.mealPlans}
+                    deleteMealPlan={this.deleteMealPlan}
+                    updateMealPlan={this.updateMealPlan}
                     changeDisplay={this.changeDisplay}
                     updateTitle={this.updateTitle}/>
                 }
                 {
                     !this.state.isTable &&
                     <MealPlanGrid
-                    courses={this.state.courses}
-                    deleteCourse={this.deleteCourse}
-                    updateCourse={this.updateCourse} 
+                    mealPlans={this.state.mealPlans}
+                    deleteMealPlan={this.deleteMealPlan}
+                    updateMealPlan={this.updateMealPlan}
                     changeDisplay={this.changeDisplay}
                     updateTitle={this.updateTitle}/>
                 }

@@ -9,7 +9,7 @@ import {
 
 
 const TopicPillsComponent = (
-  { course, moduleId, lessonId, topics = [],
+  { mealPlan, moduleId, lessonId, topics = [],
     deleteTopic, createTopic, updateTopic }) =>
 
   <div class="">
@@ -31,7 +31,7 @@ const TopicPillsComponent = (
             {
               !topic.editing &&
               <span>
-                <Link to={`/edit/${course._id}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}>
+                <Link to={`/edit/${mealPlan._id}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}>
                   {topic.title}
                 </Link>
                 <button onClick={() => updateTopic({ ...topic, editing: true })}>
@@ -56,7 +56,7 @@ const stateToPropertyMapper = (state) => ({
   topics: state.topicReducer.topics,
   lessonId: state.topicReducer.lessonId,
   moduleId: state.lessonReducer.moduleId,
-  course: state.courseReducer.course
+  mealPlan: state.mealPlanReducer.mealPlan
 })
 
 const propertyToDispatchMapper = (dispatch) => ({

@@ -1,5 +1,5 @@
 import React from "react";
-import courseService from "../services/CourseService";
+import mealPlanService from "../services/MealPlanService";
 import MealPlanTable from "./MealPlanTable";
 import MealPlanCard from "./MealPlanCard"
 import "./MealPlanGrid.css"
@@ -8,7 +8,7 @@ import { BrowserRouter, Link, Route } from "react-router-dom";
 
 class MealPlanGrid extends React.Component {
     state = {
-        courses: this.props.courses
+        mealPlans: this.props.mealPlans
     }
     constructor(props) {
         super(props)
@@ -39,10 +39,10 @@ class MealPlanGrid extends React.Component {
                 <div class="card-columns"> */}
                 <div className="row">
                     {
-                        this.props.courses.map(course =>
+                        this.props.mealPlans.map(mealPlan =>
                             <MealPlanCard
-                                key={course._id}
-                                course={course}
+                                key={mealPlan._id}
+                                mealPlan={mealPlan}
                                 deleteCourse={this.props.deleteCourse}
                                 updateCourse={this.props.updateCourse}
                                 updateTitle={this.updateTitle} />

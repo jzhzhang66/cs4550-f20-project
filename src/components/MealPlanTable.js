@@ -1,11 +1,11 @@
 import React from "react";
 import MealPlanRow from "./MealPlanRow";
-import courseService from "../services/CourseService";
+import mealPlanService from "../services/MealPlanService";
 import { act } from "react-dom/test-utils";
 
 class MealPlanTable extends React.Component {
     state = {
-        courses: this.props.courses
+        mealPlans: this.props.mealPlans
     }
     constructor(props) {
         super(props)
@@ -40,10 +40,10 @@ class MealPlanTable extends React.Component {
 
                     <tbody>
                         {
-                            this.props.courses.map(course =>
+                            this.props.mealPlans.map(mealPlan =>
                                 <MealPlanRow
-                                    key={course._id}
-                                    course={course}
+                                    key={mealPlan._id}
+                                    mealPlan={mealPlan}
                                     deleteCourse={this.props.deleteCourse}
                                     updateCourse={this.props.updateCourse} 
                                     updateTitle={this.props.updateTitle}/>

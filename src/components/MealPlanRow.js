@@ -1,5 +1,5 @@
 import React from "react";
-import courseService from "../services/CourseService";
+import mealPlanService from "../services/MealPlanService";
 import MealPlanTable from "./MealPlanTable";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import { BrowserRouter, Link, Route } from "react-router-dom";
 class MealPlanRow extends React.Component {
     state = {
         editing: false,
-        course: this.props.course,
+        mealPlan: this.props.mealPlan,
         color: ""
     }
     constructor(props) {
@@ -16,19 +16,19 @@ class MealPlanRow extends React.Component {
 
     updateTitle = (event) => {
         const newTitle = event.target.value
-        const course = {
-            ...this.state.course
+        const mealPlan = {
+            ...this.state.mealPlan
         }
-        course.title = newTitle
+        mealPlan.title = newTitle
         this.setState({
-            course: course
+            mealPlan: mealPlan
         })
         // this.props.updateTitle(course)
     }
 
     updateCourse = () => {
         this.setState({ editing: false })
-        this.props.updateCourse(this.state.course._id, this.state.course)
+        this.props.updateCourse(this.state.mealPlan._id, this.state.mealPlan)
     }
 
     changeColor = () => {
@@ -43,19 +43,19 @@ class MealPlanRow extends React.Component {
                 <td className="priority-1">
                     {
                         !this.state.editing &&
-                        <Link to={`/edit/${this.state.course._id}`}>
-                            <i class="fa fa-file-text" aria-hidden="true"></i> {this.state.course.title}
+                        <Link to={`/edit/${this.state.mealPlan._id}`}>
+                            <i class="fa fa-file-text" aria-hidden="true"></i> {this.state.mealPlan.title}
                         </Link>
                     }
                     {
                         this.state.editing &&
                         <input
                             onChange={this.updateTitle}
-                            value={this.state.course.title} />
+                            value={this.state.mealPlan.title} />
                     }
                 </td>
-                <td className="priority-3">{this.props.course.owner}</td>
-                <td className="priority-2">{this.props.course.lastUpdated}</td>
+                <td className="priority-3">{this.props.mealPlan.owner}</td>
+                <td className="priority-2">{this.props.mealPlan.lastUpdated}</td>
                 <td className="priority-2"></td>
                 {
                     this.state.editing &&
@@ -74,7 +74,7 @@ class MealPlanRow extends React.Component {
                 {
                     !this.state.editing &&
                     <td className="priority-1">
-                        <i class="fa fa-trash" onClick={() => this.props.deleteCourse(this.props.course)} aria-hidden="true"></i>
+                        <i class="fa fa-trash" onClick={() => this.props.deleteCourse(this.props.mealPlan)} aria-hidden="true"></i>
                     </td>
                 }
             </tr>

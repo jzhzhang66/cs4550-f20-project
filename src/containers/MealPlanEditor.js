@@ -2,14 +2,14 @@ import { buildQueries } from "@testing-library/react";
 import "./MealPlanEditor.css";
 import React from "react";
 import { connect } from "react-redux";
-import CourseService from "../services/CourseService";
+import MealPlanService from "../services/MealPlanService";
 import ModuleService from "../services/ModuleService";
 import Meals from "../components/Meals";
 import DailyPlans from "../components/DailyPlans";
 import TopicPillsComponent from "../components/TopicPillsComponent";
 import { findModuleForCourse } from "../actions/moduleActions";
 import { findModule } from "../actions/moduleActions";
-import { findCourseById } from "../actions/courseActions";
+import { findMealPlanById } from "../actions/mealPlanActions";
 import { findLessonsForModule } from "../actions/lessonActions";
 import { findLesson } from "../actions/lessonActions"
 import { findTopicsForLesson } from "../services/TopicService";
@@ -23,12 +23,12 @@ import "../App.css";
 class MealPlanEditor extends React.Component {
     componentDidMount() {
         console.log(this.props)
-        const courseId = this.props.match.params.courseId
+        const mealPlanId = this.props.match.params.mealPlanId
         const moduleId = this.props.match.params.moduleId
         const lessonId = this.props.match.params.lessonId
         const topicId = this.props.match.params.topicId
-        this.props.findCourseById(courseId)
-        this.props.findModulesForCourse(courseId)
+        this.props.findMealPlanById(mealPlanId)
+        this.props.findModulesForCourse(mealPlanId)
         if (moduleId) {
             this.props.findModuleById(moduleId)
             this.props.findLessonsForModule(moduleId)
@@ -89,7 +89,7 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     findModulesForCourse: (courseId) => findModuleForCourse(dispatch, courseId),
-    findCourseById: (courseId) => findCourseById(dispatch, courseId),
+    findMealPlanById: (mealPlanId) => findMealPlanById(dispatch, mealPlanId),
     findModuleById: (moduleId) => findModule(dispatch, moduleId),
     findLessonsForModule: (moduleId) => findLessonsForModule(dispatch, moduleId),
     findLessonById: (lessonId) => findLesson(dispatch, lessonId),

@@ -9,7 +9,7 @@ import {
 import "./DailyPlans.css";
 
 const DailyPlans = (
-  { course, modules = [],
+  { mealPlan, modules = [],
   deleteModule, createModule, updateModule}) =>
   <div>
   <h3 className="daily-plans-header">Daily Plans</h3>
@@ -41,7 +41,7 @@ const DailyPlans = (
                           <button type="button" className="btn btn-outline-success inline" onClick={() => updateModule({ ...module, editing: true })}>
                           <i className="fa fa-edit" />
                           </button>
-                          <Link className="link" to={`/edit/${course._id}/modules/${module._id}`}>{module.title}</Link>
+                          <Link className="link" to={`/edit/${mealPlan._id}/modules/${module._id}`}>{module.title}</Link>
                       </label>}
 
               </li>
@@ -49,7 +49,7 @@ const DailyPlans = (
           )
       }
   </ul>
-  <button type="button" className="btn btn-outline-secondary inline create" onClick={() => createModule(course, { title: "New Module" })}>
+  <button type="button" className="btn btn-outline-secondary inline create" onClick={() => createModule(mealPlan, { title: "New Module" })}>
       Create Daily Plan
   </button>
 </div>
@@ -58,7 +58,7 @@ const DailyPlans = (
 
 const stateToPropertyMapper = (state) => ({
   modules: state.moduleReducer.modules,
-  course: state.courseReducer.course
+  mealPlan: state.mealPlanReducer.mealPlan
 })
 
 const propertyToDispatchMapper = (dispatch) => ({

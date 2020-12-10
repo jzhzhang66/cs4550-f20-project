@@ -24,13 +24,13 @@ import EditProfile from "./components/EditProfile";
 import MealPlanEditor from "./containers/MealPlanEditor";
 import MealPlanManager from "./containers/MealPlanManager";
 import moduleReducer from "./reducers/moduleReducer"
-import courseReducer from "./reducers/courseReducer"
+import mealPlanReducer from "./reducers/mealPlanReducer"
 import lessonReducer from "./reducers/lessonReducer"
 import topicReducer from "./reducers/topicReducer"
 import widgetReducer from "./reducers/widgetReducer"
 
 const rootReducer = combineReducers({
-  recipeReducer, profileReducer, homeReducer, userReducer, courseReducer, lessonReducer, moduleReducer, topicReducer, widgetReducer
+  recipeReducer, profileReducer, homeReducer, userReducer, mealPlanReducer, lessonReducer, moduleReducer, topicReducer, widgetReducer
 });
 
 const store = createStore(rootReducer)

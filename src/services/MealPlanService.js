@@ -1,24 +1,24 @@
 const url2 = 'https://wbdv-generic-server.herokuapp.com/api/jannunzi/courses'
 const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/courses2'
 
-export const findAllCourses = () =>
+export const findAllMealPlans = () =>
     fetch(url).then(response => response.json())
 
 
-export const findCourseById = (courseId) =>
-    fetch(`${url}/${courseId}`, {
+export const findMealPlanById = (mealPlanId) =>
+    fetch(`${url}/${mealPlanId}`, {
         method: "GET"
     })
         .then(response => response.json())
 
-export const deleteCourse = (courseId) =>
-    fetch(`${url}/${courseId}`, { method: "DELETE" })
+export const deleteMealPlan = (mealPlanId) =>
+    fetch(`${url}/${mealPlanId}`, { method: "DELETE" })
         .then(response => response.json())
 
-export const createCourse = (newCourse) =>
+export const createMealPlan = (newMealPlan) =>
     fetch(url, {
         method: "POST",
-        body: JSON.stringify(newCourse),
+        body: JSON.stringify(newMealPlan),
         headers: {
             "content-type": "application/json"
         }
@@ -26,10 +26,10 @@ export const createCourse = (newCourse) =>
         .then(response => response.json())
 
 
-export const updateCourse = (courseId, course) =>
-    fetch(`${url}/${courseId}`, {
+export const updateMealPlan = (mealPlanId, mealPlan) =>
+    fetch(`${url}/${mealPlanId}`, {
         method: "PUT",
-        body: JSON.stringify(course),
+        body: JSON.stringify(mealPlan),
         headers: {
             "content-type": "application/json"
         }
@@ -38,9 +38,9 @@ export const updateCourse = (courseId, course) =>
 
 
 export default {
-    findAllCourses,
-    deleteCourse,
-    createCourse,
-    updateCourse,
-    findCourseById
+    findAllMealPlans,
+    deleteMealPlan,
+    createMealPlan,
+    updateMealPlan,
+    findMealPlanById
 }
