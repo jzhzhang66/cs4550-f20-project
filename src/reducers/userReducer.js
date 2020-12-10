@@ -3,7 +3,7 @@ import {
 } from "../actions/userActions";
 
 const initialState = {
-  type: "follower",
+  type: "creator",
   username: "bohnstinkybu",
   password: "poopyhead",
   isEditing: false

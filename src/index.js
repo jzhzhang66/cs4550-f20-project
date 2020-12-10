@@ -21,9 +21,16 @@ import NavBar from './components/NavBar';
 import LoginPageContainer from './containers/LoginPage';
 import RegistrationPageContainer from './containers/RegistrationPage';
 import EditProfile from "./components/EditProfile";
+import MealPlanEditor from "./containers/MealPlanEditor";
+import MealPlanManager from "./containers/MealPlanManager";
+import moduleReducer from "./reducers/moduleReducer"
+import courseReducer from "./reducers/courseReducer"
+import lessonReducer from "./reducers/lessonReducer"
+import topicReducer from "./reducers/topicReducer"
+import widgetReducer from "./reducers/widgetReducer"
 
 const rootReducer = combineReducers({
-  recipeReducer, profileReducer, homeReducer, userReducer
+  recipeReducer, profileReducer, homeReducer, userReducer, courseReducer, lessonReducer, moduleReducer, topicReducer, widgetReducer
 });
 
 const store = createStore(rootReducer)
@@ -39,7 +46,15 @@ ReactDOM.render(
       <Route path="/recipes/:recipeId" exact component={RecipeDetailsContainer}/>
       <Route path="/login" exact component={LoginPageContainer}/>
       <Route path="/register" exact component={RegistrationPageContainer}/>
-      <Route path="/editProfile" exact component={EditProfile} />
+      <Route path="/editprofile" exact component={EditProfile} />
+      <Route path="/mealplans" exact component={MealPlanManager} />
+      <Route path={["/edit/:courseId", 
+      "/edit/:courseId/modules/:moduleId", 
+      "/edit/:courseId/modules/:moduleId/lessons/:lessonId",
+      "/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId",
+      "/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId/widgets/:widgetId"]}
+        exact
+        component={MealPlanEditor} />
     </BrowserRouter>
   </Provider>
   ,
