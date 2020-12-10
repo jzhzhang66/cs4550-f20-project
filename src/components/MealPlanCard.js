@@ -1,11 +1,11 @@
 import React from "react";
 import courseService from "../services/CourseService";
-import CourseTableContainer from "./CourseTableComponent";
+import MeanPlanTable from "./MealPlanTable";
 import { BrowserRouter, Link, Route } from "react-router-dom";
-import "./CourseCardComponent.css"
+import "./MealPlanCard.css"
 
 
-class CourseCardComponent extends React.Component {
+class MealPlanCard extends React.Component {
     state = {
         editing: false,
         course: this.props.course
@@ -83,4 +83,4 @@ class CourseCardComponent extends React.Component {
 }
 
 
-export default CourseCardComponent
+export default MealPlanCard

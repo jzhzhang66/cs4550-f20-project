@@ -1,12 +1,12 @@
 import React from "react";
 import courseService from "../services/CourseService";
-import CourseTableContainer from "./CourseTableComponent";
-import CourseCardComponent from "./CourseCardComponent"
-import "./CourseGridComponent.css"
+import MealPlanTable from "./MealPlanTable";
+import MealPlanCard from "./MealPlanCard"
+import "./MealPlanGrid.css"
 import { BrowserRouter, Link, Route } from "react-router-dom";
 
 
-class CourseGridComponent extends React.Component {
+class MealPlanGrid extends React.Component {
     state = {
         courses: this.props.courses
     }
@@ -40,7 +40,7 @@ class CourseGridComponent extends React.Component {
                 <div className="row">
                     {
                         this.props.courses.map(course =>
-                            <CourseCardComponent
+                            <MealPlanCard
                                 key={course._id}
                                 course={course}
                                 deleteCourse={this.props.deleteCourse}
@@ -55,4 +55,4 @@ class CourseGridComponent extends React.Component {
 }
 
 
-export default CourseGridComponent
+export default MealPlanGrid

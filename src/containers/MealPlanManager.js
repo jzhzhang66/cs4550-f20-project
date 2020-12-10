@@ -1,8 +1,8 @@
 import React from "react";
 import "./MealPlanManager.css"
-import CourseRowComponent from "../components/CourseRowComponent";
-import CourseTableComponent from "../components/CourseTableComponent";
-import CourseGridComponent from "../components/CourseGridComponent"
+import MealPlanRow from "../components/MealPlanRow";
+import MealPlanTable from "../components/MealPlanTable";
+import MealPlanGrid from "../components/MealPlanGrid";
 import courseService from "../services/CourseService";
 import { act } from "react-dom/test-utils";
 import "../App.css";
@@ -95,15 +95,10 @@ class MealPlanManager extends React.Component {
                             aria-hidden="true"></i></button>
                         </div>
                     </div>
-                    {/* <form class="col-sm-6 float-left">
-                        <input className="" onChange={this.enterTitle} type="text" size="20" placeholder="New Course Title" aria-label="Search" />
-                        <button onClick={this.createCourse} className="btn btn-outline-success my-2 my-sm-0" type="button"><i className="fa fa-plus-circle"
-                            aria-hidden="true"></i></button>
-                    </form> */}
                 </nav>
                 {
                     this.state.isTable &&
-                    <CourseTableComponent
+                    <MealPlanTable
                     courses={this.state.courses}
                     deleteCourse={this.deleteCourse}
                     updateCourse={this.updateCourse} 
@@ -112,7 +107,7 @@ class MealPlanManager extends React.Component {
                 }
                 {
                     !this.state.isTable &&
-                    <CourseGridComponent
+                    <MealPlanGrid
                     courses={this.state.courses}
                     deleteCourse={this.deleteCourse}
                     updateCourse={this.updateCourse} 

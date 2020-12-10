@@ -1,9 +1,9 @@
 import React from "react";
-import CourseRowComponent from "./CourseRowComponent";
+import MealPlanRow from "./MealPlanRow";
 import courseService from "../services/CourseService";
 import { act } from "react-dom/test-utils";
 
-class CourseTableComponent extends React.Component {
+class MealPlanTable extends React.Component {
     state = {
         courses: this.props.courses
     }
@@ -41,7 +41,7 @@ class CourseTableComponent extends React.Component {
                     <tbody>
                         {
                             this.props.courses.map(course =>
-                                <CourseRowComponent
+                                <MealPlanRow
                                     key={course._id}
                                     course={course}
                                     deleteCourse={this.props.deleteCourse}
@@ -57,4 +57,4 @@ class CourseTableComponent extends React.Component {
 }
 
 
-export default CourseTableComponent
+export default MealPlanTable
