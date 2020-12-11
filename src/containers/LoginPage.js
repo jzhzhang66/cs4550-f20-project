@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
-import {getIsUserAndPass} from "../services/UserService";
+import {getIsUser, getIsUserAndPass} from "../services/UserService";
 
 // put the router in here
 class LoginPage extends React.Component {
@@ -13,8 +13,17 @@ class LoginPage extends React.Component {
     }
   }
 
+  // validation checks: does username already exist? is username/password input non-empty?
   handleLogin() {
-    getIsUserAndPass(this.state).then(newUser => this.props.history.push('/profile'))
+    if (this.state.username === '' || this.state.password === '') {
+      alert("Empty username or password")
+    } else if (getIsUser(this.state.username)) {
+      alert("Username already exists, please try another")
+    } else if (getIsUserAndPass(this.state)) {
+      this.props.history.push('/profile')
+    } else {
+      alert("Username and password don't match, please try again")
+    }
   }
 
   render() {
@@ -80,7 +89,6 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-
 })
 
 export default connect

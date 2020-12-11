@@ -1,28 +1,33 @@
 import React from 'react';
-import { connect } from "react-redux";
-import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
-import {addUser} from "../services/UserService";
-
+import {connect} from "react-redux";
+import {Link, BrowserRouter as Router, Route} from 'react-router-dom';
+import {addUser, getIsUser} from "../services/UserService";
 
 // put the router in here
 class RegistrationPage extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       username: '',
       password: '',
-      type: '',
+      userType: '',
       verifyPassword: ''
     }
   }
-  // this should handle all validation
-  handleSubmit() {
-    if (this.state.password !== this.state.verifyPassword) {
+
+  //TODO getIsUser not working
+  // validation checks: are all fields filled? do passwords match? is username available?
+  handleSubmit(user) {
+    if (this.state.password === '' || this.state.username === ''
+        || this.state.verifyPassword === '' || this.state.userType === '') {
+      alert("Please fill out all fields")
+    } else if (this.state.password !== this.state.verifyPassword) {
       alert("Passwords don't match");
-    } else if(this.props.getIsUser(this.state.username)) {
+    } else if (getIsUser(this.state.username)) {
       alert("Username already taken")
     } else {
-      addUser(this.state).then(newUser => this.props.history.push('/profile'))
+      addUser(user).then(newUser => this.props.history.push('/profile'))
+      // addUser(user).then(newUser => console.log(newUser))
     }
   }
 
@@ -30,7 +35,6 @@ class RegistrationPage extends React.Component {
     return (
         <div className="container">
           <h1>Sign Up</h1>
-
           <form>
             {/* Username */}
             <div className="form-group row">
@@ -42,7 +46,8 @@ class RegistrationPage extends React.Component {
                        id="usernameFld"
                        placeholder="Alice"
                        value={this.state.username}
-                       onChange={(e) => this.setState({username: e.target.value})}/>
+                       onChange={(e) => this.setState(
+                           {username: e.target.value})}/>
               </div>
             </div>
             {/* Password */}
@@ -55,36 +60,45 @@ class RegistrationPage extends React.Component {
                        id="passwordFld"
                        placeholder="123qwe#$%"
                        value={this.state.password}
-                       onChange={(e) => this.setState({password: e.target.value})}/>
+                       onChange={(e) => this.setState(
+                           {password: e.target.value})}/>
               </div>
             </div>
             {/* Verify Password */}
             <div className="form-group row">
-              <label for="verifyPasswordFld" className="col-sm-2 col-form-label">
+              <label for="verifyPasswordFld"
+                     className="col-sm-2 col-form-label">
                 Verify Password </label>
               <div className="col-sm-10">
                 <input type="password"
                        className="form-control wbdv-field wbdv-password-verify"
                        id="verifyPasswordFld"
-                       onChange={(e) => this.setState({verifyPassword: e.target.value})}
+                       onChange={(e) => this.setState(
+                           {verifyPassword: e.target.value})}
                        value={this.state.verifyPassword}
                        placeholder="123qwe#$%"/>
               </div>
             </div>
             <div className="form-group row">
-              <label for="typeDropdown" className="col-sm-2 col-form-label">Type:</label>
+              <label for="typeDropdown"
+                     className="col-sm-2 col-form-label">Type</label>
               <div className="col-sm-10">
                 {/*Type*/}
-                <div className="dropdown">
-                  <button className="btn dropdown-toggle"
-                          type="button"
-                          id="typeDropdown">
-                  </button>
-                  <div className="dropdown-menu"
-                       aria-labelledby="dropdownMenuButton">
-                    <a className="dropdown-item">Planner</a>
-                    <a className="dropdown-item">Follower</a>
-                  </div>
+                <div className="form-check">
+                  <input className="form-check-input" type="radio"
+                         name="userTypeRadio" id="follower"
+                         value={this.state.userType}
+                         onChange={() => this.setState({userType: 'follower'})}/>
+                  <label className="form-check-label"
+                         for="follower">Follower</label>
+                </div>
+                <div className="form-check">
+                  <input className="form-check-input" type="radio"
+                         name="userTypeRadio" id="creator"
+                         value={this.state.userType}
+                         onChange={() => this.setState({userType: 'creator'})}/>
+                  <label className="form-check-label"
+                         htmlFor="creator">Creator</label>
                 </div>
               </div>
             </div>
@@ -95,29 +109,28 @@ class RegistrationPage extends React.Component {
                 <button type="submit"
                     // formAction="../profile/profile.template.client.html"
                         className="btn btn-outline-secondary btn-block wbdv-button wbdv-register"
-                        onClick={() => this.handleSubmit()}>
+                        onClick={() => this.handleSubmit(this.state)}>
                   Sign Up
                 </button>
                 {/* Login */}
                 <div className="row">
-                  <div className="col-6">
+                  <div className="col-sm-10">
                     <Link to="/login" class="wbdv-link wbdv-login">Login</Link>
                   </div>
                 </div>
               </div>
             </div>
           </form>
+
         </div>
     )
   }
 }
 
-const stateToPropertyMapper = (state) => ({
-
-})
+const stateToPropertyMapper = (state) => ({})
 
 const propertyToDispatchMapper = (dispatch) => ({
-    getIsUser: (username) => getIsUser(dispatch, username)
+  // getIsUser: (username) => getIsUser(dispatch, username)
 })
 
 export default connect

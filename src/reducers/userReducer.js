@@ -7,8 +7,7 @@ const initialState = {
   username: "bohnstinkybu",
   password: "poopyhead",
   verifyPassword: '',
-  isEditing: false,
-  validUsername: false
+  isEditing: false
 }
 
 const userReducer = (state = initialState, action) => {

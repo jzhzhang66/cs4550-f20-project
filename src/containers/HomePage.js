@@ -35,7 +35,39 @@ class HomePage extends React.Component {
           </div>
 
           <div>
-            <h3 className="header-styling">Your Recently Followed</h3>
+            <h3 className="header-styling">Your Recently Favorited Meal Plans (follower)</h3>
+            <div id="carouselExampleControls" className="carousel slide"
+                 data-ride="carousel">
+              <div className="carousel-inner">
+                <div className="carousel-item active">
+                  <img className="d-block w-100" src="https://picsum.photos/300/200" alt="First slide"></img>
+                </div>
+                <div className="carousel-item">
+                  <img className="d-block w-100" src="https://picsum.photos/300/200" alt="Second slide"></img>
+                </div>
+                <div className="carousel-item">
+                  <img className="d-block w-100" src="https://picsum.photos/300/200" alt="Third slide"></img>
+                </div>
+              </div>
+              <a className="carousel-control-prev"
+                 role="button"
+                 data-slide="prev">
+                <span className="carousel-control-prev-icon"
+                      aria-hidden="true"></span>
+                <span className="sr-only">Previous</span>
+              </a>
+              <a className="carousel-control-next"
+                 href="#carouselExampleControls" role="button"
+                 data-slide="next">
+                <span className="carousel-control-next-icon"
+                      aria-hidden="true"></span>
+                <span className="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h3 className="header-styling">Your Recently Created Meal Plans (creator)</h3>
             <div id="carouselExampleControls" className="carousel slide"
                  data-ride="carousel">
               <div className="carousel-inner">

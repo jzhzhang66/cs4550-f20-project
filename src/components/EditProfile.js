@@ -4,27 +4,40 @@ import {
   editPassword,
   updatePassword
 } from "../actions/userActions";
+import {profile, updateUser} from "../services/UserService";
 
 class EditProfile extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: this.props.username,
-      password: this.props.password,
+      userId: '',
+      username: '',
+      password: '',
+      userType: '',
       verifyPassword: '',
-      isEditing: false
+      isEditing: true
     }
   }
 
-  // put validation in here
+  componentDidMount() {
+    profile().then(profile => this.setState({
+      username: profile.username,
+      password: profile.password,
+      userId: profile.userId,
+      userType: profile.userType
+    }))
+  }
+
+  // validation: does verify password match?
   handleSubmit() {
-    if (this.password !== this.verifyPassword) {
+    if (this.state.password !== this.state.verifyPassword) {
       alert("Passwords don't match");
     } else {
-      this.props.updatePassword(this.state)
+      updateUser(this.state.userId, {userId: this.userId, username: this.username, password: this.password, type: this.type})
     }
   }
 
+  //TODO implement username edit
   render() {
     return (
         <div className="container">
@@ -39,7 +52,8 @@ class EditProfile extends React.Component {
                 <input className="form-control wbdv-field wbdv-username"
                        id="username"
                        value={this.state.username}
-                       disabled={true}/>
+                       onChange={(e) => this.setState({username: e.target.value})}
+                       disabled={!this.state.isEditing}/>
               </div>
             </div>
             {/* Password */}
@@ -50,8 +64,10 @@ class EditProfile extends React.Component {
                 <input type="password"
                        className="form-control wbdv-field wbdv-password"
                        id="password"
+                       placeholder="123qwe#$%"
                        value={this.state.password}
-                       onChange={(e) => this.setState({password: e.target.value})}
+                       onChange={(e) => this.setState(
+                           {password: e.target.value})}
                        disabled={!this.state.isEditing}/></div>
               <div className="col-sm">
                 <button className="btn btn-outline-secondary"

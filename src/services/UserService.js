@@ -1,5 +1,4 @@
-const url = "https://cs4550-f20-project.herokuapp.com/api"
-const key = "faa54ae99c9a46efbb6498e0a9965093"
+const url = "http://localhost:8080/api"
 
 // function verifies user exists, returns boolean
 export const getIsUserAndPass = (user) => {
@@ -36,7 +35,8 @@ export const addUser = (user) => {
         body: JSON.stringify(user),
         headers: {
             'content-type': 'application/json'
-        }
+        },
+        credentials: "include"
     }).then(response => response.json());
 }
 
@@ -44,7 +44,7 @@ export const profile = (HttpSession) => {
     fetch(`${url}/profile`, {
         method: 'POST',
         credentials: "include"
-    }).then(response => response.json())
+    }).then(response => response.json());
 }
 
 export default {
