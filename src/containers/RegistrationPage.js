@@ -17,8 +17,10 @@ class RegistrationPage extends React.Component {
   }
   // this should handle all validation
   handleSubmit() {
-    if (this.password !== this.verifyPassword) {
+    if (this.state.password !== this.state.verifyPassword) {
       alert("Passwords don't match");
+    } else if(this.props.getIsUser(this.state.username)) {
+      alert("Username already taken")
     } else {
       addUser(this.state).then(newUser => this.props.history.push('/profile'))
     }
@@ -115,7 +117,7 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-
+    getIsUser: (username) => getIsUser(dispatch, username)
 })
 
 export default connect

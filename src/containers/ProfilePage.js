@@ -6,8 +6,17 @@ import {
     updateFollowingExpanded
 } from "../actions/profileActions"
 import {Link} from 'react-router-dom';
+import {profile} from "../services/UserService";
 
 class ProfilePage extends Component {
+
+    constructor(props) {
+        super(props)
+    }
+
+    componentDidMount() {
+        // profile().then(profile => console.log(profile))
+    }
 
 render() {
 return (
