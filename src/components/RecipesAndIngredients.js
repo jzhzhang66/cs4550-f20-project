@@ -23,8 +23,8 @@ const RecipesAndIngredients = (
     </div>
 
 const stateToPropertyMapper = (state) => ({
-  topics: state.topicReducer.topics,
-  lessonId: state.topicReducer.lessonId,
+  topics: state.recipesAndIngredientsReducer.topics,
+  lessonId: state.recipesAndIngredientsReducer.lessonId,
   dailyPlanId: state.mealReducer.dailyPlanId,
   mealPlan: state.mealPlanReducer.mealPlan
 })

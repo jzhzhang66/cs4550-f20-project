@@ -26,11 +26,10 @@ import MealPlanManager from "./containers/MealPlanManager";
 import dailyPlanReducer from "./reducers/dailyPlanReducer"
 import mealPlanReducer from "./reducers/mealPlanReducer"
 import mealReducer from "./reducers/mealReducer"
-import topicReducer from "./reducers/topicReducer"
-import widgetReducer from "./reducers/widgetReducer"
+import recipesAndIngredientsReducer from "./reducers/recipesAndIngredientsReducer"
 
 const rootReducer = combineReducers({
-  recipeReducer, profileReducer, homeReducer, userReducer, mealPlanReducer, mealReducer, dailyPlanReducer, topicReducer, widgetReducer
+  recipeReducer, profileReducer, homeReducer, userReducer, mealPlanReducer, mealReducer, dailyPlanReducer, recipesAndIngredientsReducer
 });
 
 const store = createStore(rootReducer)

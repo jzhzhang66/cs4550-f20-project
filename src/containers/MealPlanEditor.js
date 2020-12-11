@@ -15,8 +15,7 @@ import { findMeal } from "../actions/mealActions"
 import { findTopicsForLesson } from "../services/TopicService";
 import { findTopicForMeal } from "../actions/topicActions";
 import { findTopic } from "../actions/topicActions";
-import { findWidgetForTopic} from "../actions/widgetActions"
-import WidgetComponent from "../components/WidgetComponent";
+
 import "../App.css";
 
 
@@ -40,7 +39,6 @@ class MealPlanEditor extends React.Component {
         }
         if (topicId) {
             this.props.findTopicById(topicId)
-            this.props.findWidgetsForTopic(topicId)
         }
     }
 
@@ -94,7 +92,6 @@ const propertyToDispatchMapper = (dispatch) => ({
     findMealsForDailyPlan: (dailyPlanId) => findMealsForDailyPlan(dispatch, dailyPlanId),
     findMeal: (mealId) => findMeal(dispatch, mealId),
     findTopicsForLesson: (mealId) => findTopicsForLesson(dispatch, mealId),
-    findWidgetsForTopic: (topicId) => findWidgetForTopic(dispatch, topicId),
     findTopicById: (topicId) => findTopic(dispatch, topicId),
 })
 
