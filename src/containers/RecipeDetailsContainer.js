@@ -11,15 +11,21 @@ import {
 
 // put the router in here
 class RecipeDetailsContainer extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     componentDidMount() {
         const recipeId = this.props.match.params.recipeId
         this.props.findRecipeInfoById(recipeId)
-        debugger
         this.props.findRecipeInstructionsById(recipeId)
+        console.log("updated")
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
+            const recipeId = this.props.match.params.recipeId
+            this.props.findRecipeInfoById(recipeId)
+            debugger
+            this.props.findRecipeInstructionsById(recipeId)
+        }
     }
 
 
