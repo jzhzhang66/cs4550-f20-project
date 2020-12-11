@@ -1,11 +1,12 @@
 import {
-  EDIT_PASSWORD, UPDATE_PASSWORD
+  EDIT_PASSWORD, UPDATE_PASSWORD, GET_IS_USER
 } from "../actions/userActions";
 
 const initialState = {
   type: "creator",
   username: "bohnstinkybu",
   password: "poopyhead",
+  verifyPassword: '',
   isEditing: false
 }
 
@@ -13,7 +14,8 @@ const userReducer = (state = initialState, action) => {
   switch(action.type) {
     case EDIT_PASSWORD:
       return {
-        ...state, isEditing: true
+        ...state,
+        isEditing: true
       }
     case UPDATE_PASSWORD:
       return {
@@ -22,6 +24,10 @@ const userReducer = (state = initialState, action) => {
           password: action.password,
           isEditing: false
     }
+    case GET_IS_USER:
+      return {
+        ...state
+      }
     default:
       return state
   }
