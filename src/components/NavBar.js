@@ -13,7 +13,7 @@ const NavBar = ({}) =>
         <Link to="/login" className="nav-link nav-item text-styling">
             Login
 </Link>
-<Link to="/recipes" className="nav-link nav-item text-styling">
+<Link to="/search" className="nav-link nav-item text-styling">
             Search
 </Link>
     </nav>
