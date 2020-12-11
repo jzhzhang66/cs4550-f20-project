@@ -9,7 +9,17 @@ import {
 
 const initialState = {
     topics: [],
-    topicId:{}
+    topicId:{},
+    recipes: [
+        {id: "123", title: "mac and cheese"},
+        {id: "234", title: "chicken salad"},
+        {id: "345", title: "sweet potato soup"},
+    ],
+    ingredients: [
+        {id: "456", title: "strawberries"},
+        {id: "567", title: "chocolate"},
+        {id: "678", title: "yogurt"},
+    ]
 }
 
 
