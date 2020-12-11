@@ -32,7 +32,7 @@ class MealPlanEditor extends React.Component {
         }
         if (mealId) {
             this.props.findMeal(mealId)
-            this.props.findTopicsForLesson(mealId)
+            //this.props.findTopicsForLesson(mealId)
         }
         if (topicId) {
           //  this.props.findTopicById(topicId)
@@ -50,12 +50,12 @@ class MealPlanEditor extends React.Component {
         if (mealId !== previousMealId) {
            // this.props.findTopicsForLesson(mealId)
         }
-        const topicId = this.props.match.params.topicId
-        console.log(topicId);
-        const previousTopicId = prevProps.match.params.topicId
-        if (topicId !== previousTopicId) {
+        //const topicId = this.props.match.params.topicId
+       // console.log(topicId);
+       // const previousTopicId = prevProps.match.params.topicId
+       // if (topicId !== previousTopicId) {
           //  this.props.findWidgetsForTopic(topicId)
-        }
+        //}
     }
 
     render() {
@@ -75,7 +75,7 @@ class MealPlanEditor extends React.Component {
                 </div>
             </div>
         )
-    }
+}
 }
 
 const stateToPropertyMapper = (state) => ({
