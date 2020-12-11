@@ -5,20 +5,18 @@ import '../css/RecipeTable.css';
 import '../App.css';
 
 const IngredientTable = (
-    { recipes }) =>
+    { ingredients }) =>
 
     <div>
         <ul className="recipe-list">
         {
-            recipes.map(recipe =>
+            ingredients.map(ingredient =>
                 <li className="list-group-item list-item">
-                    <Link to={`/recipes/${recipe.id}`} className="recipe-title">
-                        {recipe.title}
+                    <Link to={`/recipes/${ingredient.id}`} className="recipe-title">
+                        {ingredient.name}
                     </Link>
-                    <img src={recipe.image} alt="" className="recipe-image"/>
                 </li>
             )
-
         }
         </ul>
     </div>
@@ -26,7 +24,7 @@ const IngredientTable = (
 
 
 const stateToPropertyMapper = (state) => ({
-    recipes: state.recipeReducer.recipes,
+    ingredients: state.ingredientReducer.ingredients,
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
