@@ -9,11 +9,21 @@ import {
 
 const initialState = {
     topics: [],
-    topicId:{}
+    topicId:{},
+    recipes: [
+        {id: "123", title: "mac and cheese"},
+        {id: "234", title: "chicken salad"},
+        {id: "345", title: "sweet potato soup"},
+    ],
+    ingredients: [
+        {id: "456", title: "strawberries"},
+        {id: "567", title: "chocolate"},
+        {id: "678", title: "yogurt"},
+    ]
 }
 
 
-const topicReducer = (state=initialState, action) => {
+const recipesAndIngredientsReducer = (state=initialState, action) => {
     switch (action.type) {
         case CREATE_TOPIC:
             return {
@@ -46,4 +56,4 @@ const topicReducer = (state=initialState, action) => {
     }
 }
 
-export default topicReducer
+export default recipesAndIngredientsReducer

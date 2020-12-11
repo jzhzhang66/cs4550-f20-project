@@ -8,7 +8,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
 
-import RecipeSelectorContainer from "./containers/RecipeSelector";
+import RecipeSelector from "./containers/RecipeSelector";
+import IngredientSelector from "./containers/IngredientSelector";
 import recipeReducer from "./reducers/recipeReducer";
 import RecipeDetailsContainer from "./containers/RecipeDetails";
 import OthersProfilePageContainer from './containers/OthersProfilePage';
@@ -26,11 +27,13 @@ import MealPlanManager from "./containers/MealPlanManager";
 import dailyPlanReducer from "./reducers/dailyPlanReducer"
 import mealPlanReducer from "./reducers/mealPlanReducer"
 import mealReducer from "./reducers/mealReducer"
-import topicReducer from "./reducers/topicReducer"
-import widgetReducer from "./reducers/widgetReducer"
+import ingredientReducer from "./reducers/ingredientReducer"
+import recipesAndIngredientsReducer from "./reducers/recipesAndIngredientsReducer"
+import Search from "./containers/Search"
 
 const rootReducer = combineReducers({
-  recipeReducer, profileReducer, homeReducer, userReducer, mealPlanReducer, mealReducer, dailyPlanReducer, topicReducer, widgetReducer
+  recipeReducer, profileReducer, homeReducer, userReducer, mealPlanReducer, mealReducer, 
+  dailyPlanReducer, recipesAndIngredientsReducer, ingredientReducer
 });
 
 const store = createStore(rootReducer)
@@ -42,7 +45,9 @@ ReactDOM.render(
       <Route exact path="/" component={HomePageContainer}/>
       <Route path="/profile" exact component={ProfilePageContainer} />
       <Route path="/profile/:userId" exact component={OthersProfilePageContainer} />
-      <Route path="/recipes" exact component={RecipeSelectorContainer} />
+      <Route path="/search" exact component={Search} />
+      <Route path="/search/recipes" exact component={RecipeSelector} />
+      <Route path="/search/ingredients" exact component={IngredientSelector} />
       <Route path="/recipes/:recipeId" exact component={RecipeDetailsContainer}/>
       <Route path="/login" exact component={LoginPageContainer}/>
       <Route path="/register" exact component={RegistrationPageContainer}/>

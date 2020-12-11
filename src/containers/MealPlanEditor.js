@@ -6,7 +6,7 @@ import MealPlanService from "../services/MealPlanService";
 import DailyPlanService from "../services/DailyPlanService";
 import Meals from "../components/Meals";
 import DailyPlans from "../components/DailyPlans";
-import TopicPillsComponent from "../components/TopicPillsComponent";
+import RecipesAndIngredients from "../components/RecipesAndIngredients";
 import { findDailyPlansForMealPlan} from "../actions/dailyPlanActions";
 import { findDailyPlan } from "../actions/dailyPlanActions";
 import { findMealPlanById } from "../actions/mealPlanActions";
@@ -15,8 +15,7 @@ import { findMeal } from "../actions/mealActions"
 import { findTopicsForLesson } from "../services/TopicService";
 import { findTopicForMeal } from "../actions/topicActions";
 import { findTopic } from "../actions/topicActions";
-import { findWidgetForTopic} from "../actions/widgetActions"
-import WidgetComponent from "../components/WidgetComponent";
+
 import "../App.css";
 
 
@@ -40,7 +39,6 @@ class MealPlanEditor extends React.Component {
         }
         if (topicId) {
             this.props.findTopicById(topicId)
-            this.props.findWidgetsForTopic(topicId)
         }
     }
 
@@ -75,8 +73,7 @@ class MealPlanEditor extends React.Component {
                     </div>
                     <div className="col-8">
                         <Meals />
-                        <TopicPillsComponent />
-                        <WidgetComponent />
+                        <RecipesAndIngredients />
                     </div>
                 </div>
             </div>
@@ -95,7 +92,6 @@ const propertyToDispatchMapper = (dispatch) => ({
     findMealsForDailyPlan: (dailyPlanId) => findMealsForDailyPlan(dispatch, dailyPlanId),
     findMeal: (mealId) => findMeal(dispatch, mealId),
     findTopicsForLesson: (mealId) => findTopicsForLesson(dispatch, mealId),
-    findWidgetsForTopic: (topicId) => findWidgetForTopic(dispatch, topicId),
     findTopicById: (topicId) => findTopic(dispatch, topicId),
 })
 
