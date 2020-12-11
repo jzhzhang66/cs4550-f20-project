@@ -48,7 +48,7 @@ class MealPlanCard extends React.Component {
                             className="form-control"/>
                     }
                     <p class="card-text">Meal Plan Description. This meal plan is a great meal plan and has cool things.</p>
-                    <p class="card-text"><small class="text-muted">Last Updated: {this.props.course.lastUpdated}<br/>
+                    <p class="card-text"><small class="text-muted">Last Updated: {this.props.mealPlan.lastUpdated}<br/>
                     Owner: {this.props.mealPlan.owner}</small></p>
                 </div>
                 <div class="card-footer">

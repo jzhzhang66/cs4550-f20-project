@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import '../css/RecipeTable.css';
 import '../App.css';
+import './IngredientTable.css';
 
 const IngredientTable = (
     { ingredients }) =>
@@ -12,9 +13,10 @@ const IngredientTable = (
         {
             ingredients.map(ingredient =>
                 <li className="list-group-item list-item">
-                    <Link to={`/recipes/${ingredient.id}`} className="recipe-title">
+                    <Link to={`/ingredients/${ingredient.id}`} className="recipe-title">
                         {ingredient.name}
                     </Link>
+                    <button className="btn btn-outline-secondary add-ingredient">Add</button>
                 </li>
             )
         }

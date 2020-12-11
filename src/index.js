@@ -11,7 +11,8 @@ import { combineReducers, createStore } from "redux";
 import RecipeSelector from "./containers/RecipeSelector";
 import IngredientSelector from "./containers/IngredientSelector";
 import recipeReducer from "./reducers/recipeReducer";
-import RecipeDetailsContainer from "./containers/RecipeDetails";
+import RecipeDetails from "./containers/RecipeDetails";
+import IngredientDetails from "./containers/IngredientDetails";
 import OthersProfilePageContainer from './containers/OthersProfilePage';
 import HomePageContainer from "./containers/HomePage";
 import ProfilePageContainer from "./containers/ProfilePage";
@@ -48,7 +49,8 @@ ReactDOM.render(
       <Route path="/search" exact component={Search} />
       <Route path="/search/recipes" exact component={RecipeSelector} />
       <Route path="/search/ingredients" exact component={IngredientSelector} />
-      <Route path="/recipes/:recipeId" exact component={RecipeDetailsContainer}/>
+      <Route path="/recipes/:recipeId" exact component={RecipeDetails}/>
+      <Route path="/ingredients/:ingredientId" exact component={IngredientDetails}/>
       <Route path="/login" exact component={LoginPageContainer}/>
       <Route path="/register" exact component={RegistrationPageContainer}/>
       <Route path="/editprofile" exact component={EditProfile} />
@@ -56,10 +58,11 @@ ReactDOM.render(
       <Route path={["/edit/:mealPlanId",
       "/edit/:mealPlanId/dailyPlans/:dailyPlanId",
       "/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId",
-      "/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId/topics/:topicId",
-      "/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId/topics/:topicId/widgets/:widgetId"]}
+      "/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId/recipesAndIngredients"]}
         exact
         component={MealPlanEditor} />
+      <Route path="/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId/recipesAndIngredients/search/ingredients" 
+      exact component={IngredientSelector}/>
     </BrowserRouter>
   </Provider>
   ,

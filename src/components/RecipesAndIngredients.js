@@ -25,9 +25,11 @@ const RecipesAndIngredients = (
         </li>)
       }
       </ul>
+      <Link to="./search/recipes">
       <button className="btn btn-outline-secondary">
         Search Recipes
         </button>
+        </Link>
       </div>
       <div className="col-4">
       <h3>Ingredients</h3>
@@ -40,9 +42,11 @@ const RecipesAndIngredients = (
         </li>)
       }
       </ul>
+      <Link to="/search/ingredients">
       <button className="btn btn-outline-secondary">
         Search Ingredients
         </button>
+      </Link>
       </div>
     </div>
 

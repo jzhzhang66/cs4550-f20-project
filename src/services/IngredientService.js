@@ -13,6 +13,14 @@ export const findIngredients = (search) => {
     .then(response => response.json())
 }
 
+export const findIngredientInfoById = (ingredientId) => {
+    debugger
+    return fetch(`${url}/${ingredientId}/information?apiKey=${key}&includeNutrition=true`, {
+        method: "GET"
+      })
+        .then(response => response.json())
+}
+
 export const findRecipesWithCuisine = (search, cuisine) =>
   fetch(`${url}/complexSearch/?apiKey=${key}&query=${search}&cuisine=${cuisine}`, {
     "method": "GET",
@@ -21,12 +29,6 @@ export const findRecipesWithCuisine = (search, cuisine) =>
     }
   }
   )
-    .then(response => response.json())
-
-export const findRecipeInfoById = (recipeId) =>
-  fetch(`${url}/${recipeId}/information?apiKey=${key}&includeNutrition=true`, {
-    method: "GET"
-  })
     .then(response => response.json())
 
 export const findRandomRecipes = (numRecipes) =>
@@ -53,7 +55,7 @@ export const findRecipeInstructionsById = (recipeId) =>{
 export default {
   findIngredients,
   findRecipesWithCuisine,
-  findRecipeInfoById,
+  findIngredientInfoById,
   findRandomRecipes,
   findRecipeInstructionsById
 }

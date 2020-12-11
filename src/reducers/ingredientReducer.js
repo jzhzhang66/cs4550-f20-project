@@ -8,19 +8,19 @@ import {
 
 const initialState = {
     ingredients: [],
-    ingredient: {},
+    ingredient: {
+        possibleUnits: []
+    },
     keyword: "",
 }
 
 const ingredientReducer = (state = initialState, action) => {
     switch (action.type) {
-        case FIND_INGREDIENTS:
-            console.log(action.ingredients)
+        case FIND_INGREDIENTS: 
             return {
                 ...state,
                 ingredients: action.ingredients.results
             }
-            console.log(state.ingredients)
         case UPDATE_KEYWORD:
             return {
                 ...state,
@@ -32,6 +32,7 @@ const ingredientReducer = (state = initialState, action) => {
                 ...state,
                 ingredient: action.ingredient
             }
+            console.log(state.ingredient)
         default:
             return state
     }
