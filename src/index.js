@@ -16,12 +16,15 @@ import IngredientDetails from "./containers/IngredientDetails";
 import OthersProfilePageContainer from './containers/OthersProfilePage';
 import HomePageContainer from "./containers/HomePage";
 import ProfilePageContainer from "./containers/ProfilePage";
+import OthersProfilePage from './containers/OthersProfilePage';
+import HomePage from "./containers/HomePage";
+import ProfilePage from "./containers/ProfilePage";
 import profileReducer from "./reducers/profileReducer";
 import homeReducer from "./reducers/homeReducer";
 import userReducer from "./reducers/userReducer";
 import NavBar from './components/NavBar';
-import LoginPageContainer from './containers/LoginPage';
-import RegistrationPageContainer from './containers/RegistrationPage';
+import LoginPage from './containers/LoginPage';
+import RegistrationPage from './containers/RegistrationPage';
 import EditProfile from "./components/EditProfile";
 import MealPlanEditor from "./containers/MealPlanEditor";
 import MealPlanManager from "./containers/MealPlanManager";
@@ -43,16 +46,16 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Route path="/" component={NavBar}/>
-      <Route exact path="/" component={HomePageContainer}/>
-      <Route path="/profile" exact component={ProfilePageContainer} />
-      <Route path="/profile/:userId" exact component={OthersProfilePageContainer} />
+      <Route exact path="/" component={HomePage}/>
+      <Route path="/profile" exact component={ProfilePage} />
+      <Route path="/profile/:userId" exact component={OthersProfilePage} />
       <Route path="/search" exact component={Search} />
       <Route path="/search/recipes" exact component={RecipeSelector} />
       <Route path="/search/ingredients" exact component={IngredientSelector} />
       <Route path="/recipes/:recipeId" exact component={RecipeDetails}/>
       <Route path="/ingredients/:ingredientId" exact component={IngredientDetails}/>
-      <Route path="/login" exact component={LoginPageContainer}/>
-      <Route path="/register" exact component={RegistrationPageContainer}/>
+      <Route path="/login" exact component={LoginPage}/>
+      <Route path="/register" exact component={RegistrationPage}/>
       <Route path="/editprofile" exact component={EditProfile} />
       <Route path="/mealplans" exact component={MealPlanManager} />
       <Route path={["/edit/:mealPlanId",
@@ -63,6 +66,8 @@ ReactDOM.render(
         component={MealPlanEditor} />
       <Route path="/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId/recipesAndIngredients/search/ingredients" 
       exact component={IngredientSelector}/>
+      <Route path="/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId/recipesAndIngredients/search/recipes" 
+      exact component={RecipeSelector}/>
     </BrowserRouter>
   </Provider>
   ,

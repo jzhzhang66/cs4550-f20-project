@@ -36,7 +36,7 @@ class IngredientDetails extends React.Component {
                             <td>
                                 <ul>
                                     {console.log(this.props.ingredient)}
-                                    {/* {this.props.ingredient.possibleUnits.map(unit => <li>{unit}</li>)} */}
+                                    {this.props.ingredient.possibleUnits.map(unit => <li>{unit}</li>)}
                                 </ul>
                             </td>
                             <td>{this.props.ingredient.consistency}</td>

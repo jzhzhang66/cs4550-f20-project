@@ -1,18 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
 import { BrowserRouter, Link, Route } from "react-router-dom";
-import {
-  deleteTopic,
-  createTopic,
-  updateTopic
-} from "../actions/topicActions"
 
 import "./RecipesAndIngredients.css";
 
 
 const RecipesAndIngredients = (
-  { mealPlan, dailyPlanId, lessonId, topics = [],
-    deleteTopic, createTopic, updateTopic, recipes, ingredients }) =>
+  { mealPlan, dailyPlanId, lessonId, recipes, ingredients }) =>
     <div className="row recipes-ingredients">
       <div className="col-5">
       <h3>Recipes</h3>
@@ -25,7 +19,7 @@ const RecipesAndIngredients = (
         </li>)
       }
       </ul>
-      <Link to="./search/recipes">
+      <Link to="recipesAndIngredients/search/recipes">
       <button className="btn btn-outline-secondary">
         Search Recipes
         </button>
@@ -42,7 +36,7 @@ const RecipesAndIngredients = (
         </li>)
       }
       </ul>
-      <Link to="/search/ingredients">
+      <Link to="recipesAndIngredients/search/ingredients">
       <button className="btn btn-outline-secondary">
         Search Ingredients
         </button>
@@ -60,9 +54,6 @@ const stateToPropertyMapper = (state) => ({
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-  deleteTopic: (topic) => deleteTopic(dispatch, topic),
-  createTopic: (lessonId, topic) => createTopic(dispatch, lessonId, topic),
-  updateTopic: (topic) => updateTopic(dispatch, topic)
 })
 
 export default connect
