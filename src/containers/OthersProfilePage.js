@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './ProfilePageContainer.css';
+import './ProfilePage.css';
 import {
     updateFollowersExpanded,
     updateFollowingExpanded
 } from "../actions/profileActions"
-import MyRecipesComponent from '../components/MyRecipesComponent';
-import FavoriteRecipesComponent from '../components/FavoriteRecipesComponent';
+import MyRecipes from '../components/MyRecipes';
+import FavoriteRecipes from '../components/FavoriteRecipes';
 
-const OthersProfilePageContainer = ({ updateFollowersExpanded, updateFollowingExpanded, followingExpanded, followersExpanded,
+const OthersProfilePage = ({ updateFollowersExpanded, updateFollowingExpanded, followingExpanded, followersExpanded,
     followers, following }) =>
     <div className="container">
         <h1 className="header name">Bohn Bu</h1>
@@ -44,7 +44,7 @@ const OthersProfilePageContainer = ({ updateFollowersExpanded, updateFollowingEx
             </div>
             <div className="col-7">
                 <h3 className="header-padding">Bohn's Recipes</h3>
-                <MyRecipesComponent />
+                <MyRecipes />
             </div>
         </div>
     </div>
@@ -63,4 +63,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
     (stateToPropertyMapper, propertyToDispatchMapper)
-    (OthersProfilePageContainer)    
+    (OthersProfilePage)

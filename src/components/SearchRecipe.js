@@ -3,14 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import "./SearchRecipeComponent.css"
+import "../css/SearchRecipe.css"
 
 import {
     findRecipes,
     updateKeyword
 } from "../actions/recipeActions"
 
-const SearchRecipeComponent = (
+const SearchRecipe = (
     { keyword, recipes = [],
         findRecipes, updateKeyword }) =>
 
@@ -43,5 +43,5 @@ const propertyToDispatchMapper = (dispatch) => ({
 export default connect
     (stateToPropertyMapper,
         propertyToDispatchMapper)
-    (SearchRecipeComponent)
+    (SearchRecipe)
 

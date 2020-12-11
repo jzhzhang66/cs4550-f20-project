@@ -1,16 +1,19 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import './RecipeDetails.css';
-import IngredientsComponent from "../components/IngredientsComponent";
-import InstructionsComponent from "../components/InstructionsComponent";
+import '../css/RecipeDetails.css';
+import IngredientsComponent from "../components/Ingredients";
+import InstructionsComponent from "../components/Instructions";
 import {
     findRecipeInfoById,
     findRecipeInstructionsById
 } from "../actions/recipeActions"
 
 // put the router in here
-class RecipeDetailsContainer extends React.Component {
+class RecipeDetails extends React.Component {
+    constructor(props) {
+        super(props)
+    }
 
     componentDidMount() {
         const recipeId = this.props.match.params.recipeId
@@ -63,4 +66,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
     (stateToPropertyMapper, propertyToDispatchMapper)
-    (RecipeDetailsContainer)
+    (RecipeDetails)

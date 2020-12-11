@@ -8,7 +8,7 @@ import {
     findRecipeInfoById
 } from "../actions/recipeActions"
 
-const IngredientsComponent = (
+const Ingredients = (
     {recipe = {}, recipeIngredients = []}) =>
 
     <div className="">
@@ -38,4 +38,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
     (stateToPropertyMapper, propertyToDispatchMapper)
-    (IngredientsComponent)
+    (Ingredients)

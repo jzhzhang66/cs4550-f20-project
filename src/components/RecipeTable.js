@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import './RecipeTableComponent.css';
+import '../css/RecipeTable.css';
 import '../App.css';
 
-const RecipeTableComponent = (
+const RecipeTable = (
     { recipes = []}) =>
 
     <div>
@@ -35,4 +35,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 export default connect
     (stateToPropertyMapper,
         propertyToDispatchMapper)
-    (RecipeTableComponent)
+    (RecipeTable)

@@ -6,7 +6,7 @@ import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 // put the router in here
-class RegistrationPageContainer extends React.Component {
+class RegistrationPage extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -77,4 +77,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
     (stateToPropertyMapper, propertyToDispatchMapper)
-    (RegistrationPageContainer)
+    (RegistrationPage)
