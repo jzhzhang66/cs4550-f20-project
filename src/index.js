@@ -8,7 +8,8 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
 
-import RecipeSelectorContainer from "./containers/RecipeSelector";
+import RecipeSelector from "./containers/RecipeSelector";
+import IngredientSelector from "./containers/IngredientSelector";
 import recipeReducer from "./reducers/recipeReducer";
 import RecipeDetailsContainer from "./containers/RecipeDetails";
 import OthersProfilePageContainer from './containers/OthersProfilePage';
@@ -43,7 +44,8 @@ ReactDOM.render(
       <Route path="/profile" exact component={ProfilePageContainer} />
       <Route path="/profile/:userId" exact component={OthersProfilePageContainer} />
       <Route path="/search" exact component={Search} />
-      <Route path="/search/recipes" exact component={RecipeSelectorContainer} />
+      <Route path="/search/recipes" exact component={RecipeSelector} />
+      <Route path="/search/ingredients" exact component={IngredientSelector} />
       <Route path="/recipes/:recipeId" exact component={RecipeDetailsContainer}/>
       <Route path="/login" exact component={LoginPageContainer}/>
       <Route path="/register" exact component={RegistrationPageContainer}/>
