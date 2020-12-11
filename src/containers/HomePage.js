@@ -1,10 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import SearchRecipeComponent from "../components/SearchRecipe";
-import RecipeTableComponent from "../components/RecipeTable";
 import {connect} from "react-redux";
 import {findRandomRecipes} from "../actions/homeActions";
-import NavBar from '../components/NavBar';
 import '../css/HomePage.css';
 
 class HomePage extends React.Component {

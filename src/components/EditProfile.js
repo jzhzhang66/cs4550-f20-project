@@ -20,12 +20,12 @@ class EditProfile extends React.Component {
   }
 
   componentDidMount() {
-    profile().then(profile => this.setState({
-      username: profile.username,
-      password: profile.password,
-      userId: profile.userId,
-      userType: profile.userType
-    }))
+    // profile().then(profile => this.setState({
+    //   username: profile.username,
+    //   password: profile.password,
+    //   userId: profile.userId,
+    //   userType: profile.userType
+    // }))
   }
 
   // validation: does verify password match?
