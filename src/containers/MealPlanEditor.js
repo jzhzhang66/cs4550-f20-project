@@ -6,7 +6,7 @@ import MealPlanService from "../services/MealPlanService";
 import DailyPlanService from "../services/DailyPlanService";
 import Meals from "../components/Meals";
 import DailyPlans from "../components/DailyPlans";
-import TopicPillsComponent from "../components/TopicPillsComponent";
+import RecipesAndIngredients from "../components/RecipesAndIngredients";
 import { findDailyPlansForMealPlan} from "../actions/dailyPlanActions";
 import { findDailyPlan } from "../actions/dailyPlanActions";
 import { findMealPlanById } from "../actions/mealPlanActions";
@@ -75,8 +75,7 @@ class MealPlanEditor extends React.Component {
                     </div>
                     <div className="col-8">
                         <Meals />
-                        <TopicPillsComponent />
-                        <WidgetComponent />
+                        <RecipesAndIngredients />
                     </div>
                 </div>
             </div>
