@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import '../css/RecipeTable.css';
 import '../App.css';
-import './IngredientTable.css';
+import '../css/IngredientTable.css';
 import {
     addIngredientForMeal
 } from '../actions/recipeAndIngredientActions';

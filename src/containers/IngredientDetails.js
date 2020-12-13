@@ -7,7 +7,7 @@ import InstructionsComponent from "../components/Instructions";
 import {
     findIngredientInfoById,
 } from "../actions/ingredientActions"
-import "./IngredientDetails.css";
+import "../css/IngredientDetails.css";
 
 // put the router in here
 class IngredientDetails extends React.Component {

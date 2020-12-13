@@ -6,7 +6,7 @@ deleteIngredient,
 deleteRecipe
 } from "../actions/recipeAndIngredientActions"
 
-import "./RecipesAndIngredients.css";
+import "../css/RecipesAndIngredients.css";
 
 
 const RecipesAndIngredients = (

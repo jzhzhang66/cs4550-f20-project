@@ -2,7 +2,7 @@ import React from "react";
 import mealPlanService from "../services/MealPlanService";
 import MealPlanTable from "./MealPlanTable";
 import MealPlanCard from "./MealPlanCard"
-import "./MealPlanGrid.css"
+import "../css/MealPlanGrid.css"
 import { BrowserRouter, Link, Route } from "react-router-dom";
 
 

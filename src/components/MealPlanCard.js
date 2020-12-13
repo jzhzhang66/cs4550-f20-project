@@ -2,7 +2,7 @@ import React from "react";
 import MealPlanService from "../services/MealPlanService";
 import MeanPlanTable from "./MealPlanTable";
 import { BrowserRouter, Link, Route } from "react-router-dom";
-import "./MealPlanCard.css"
+import "../css/MealPlanCard.css"
 
 
 class MealPlanCard extends React.Component {

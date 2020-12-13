@@ -1,5 +1,5 @@
 import React from "react";
-import "./MealPlanManager.css"
+import "../css/MealPlanManager.css"
 import MealPlanRow from "../components/MealPlanRow";
 import MealPlanTable from "../components/MealPlanTable";
 import MealPlanGrid from "../components/MealPlanGrid";

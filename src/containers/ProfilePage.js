@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import './ProfilePage.css';
+import '../css/ProfilePage.css';
 import {
   updateFollowersExpanded,
   updateFollowingExpanded
@@ -24,9 +24,9 @@ class ProfilePage extends Component {
   }
 
   componentDidMount() {
-    // profile().then(profile => this.setState({
-    //   profile: profile
-    // }))
+    profile().then(profile => this.setState({
+      profile: profile
+    }))
   }
 
   //TODO: redirect to login if not signed in

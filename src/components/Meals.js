@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./Meals.css";
+import "../css/Meals.css";
 import { BrowserRouter, Link, Route } from "react-router-dom";
 import {
     deleteMeal,
