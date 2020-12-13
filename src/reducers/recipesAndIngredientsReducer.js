@@ -34,7 +34,16 @@ const recipesAndIngredientsReducer = (state=initialState, action) => {
                 ...state, 
                 recipes: state.recipes.filter(recipe => recipe.id !== action.recipeId)
             }
-    
+        case ADD_RECIPE_FOR_MEAL: 
+            return {
+                ...state, 
+                recipes: [...state.recipes, action.recipe]
+            }
+        case ADD_INGREDIENT_FOR_MEAL: 
+            return {
+                ...state, 
+                ingredients: [...state.ingredients, action.ingredient]
+            }
         default:
             return state
     }
