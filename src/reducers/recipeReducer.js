@@ -11,7 +11,7 @@ const initialState = {
     recipes: [],
     recipe: {},
     keyword: "",
-    instructions: {}
+    instructions: {steps: []}
 }
 
 const recipeReducer = (state = initialState, action) => {
@@ -35,11 +35,11 @@ const recipeReducer = (state = initialState, action) => {
                 recipe: action.recipe
             }
         case FIND_RECIPE_INSTRUCTIONS_BY_ID:
-            debugger
             return {
                 ...state,
                 instructions: action.instructions
             }
+            debugger
         default:
             return state
     }

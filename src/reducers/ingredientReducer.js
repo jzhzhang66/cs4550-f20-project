@@ -17,6 +17,8 @@ const initialState = {
 const ingredientReducer = (state = initialState, action) => {
     switch (action.type) {
         case FIND_INGREDIENTS: 
+            debugger
+            console.log(action.ingredients.results)
             return {
                 ...state,
                 ingredients: action.ingredients.results

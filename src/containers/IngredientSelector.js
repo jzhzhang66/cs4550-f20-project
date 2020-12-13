@@ -10,18 +10,18 @@ class IngredientSelector extends React.Component {
   constructor(props) {
     super(props)
   }
+
   render() {
     return (
         <div className="container">
           <SearchIngredient/>
-          <IngredientTable/>
+          <IngredientTable mealId={this.props.match.params.mealId}/>
         </div>
     )
   }
 }
 
 const stateToPropertyMapper = (state) => ({
-
 })
 
 const propertyToDispatchMapper = (dispatch) => ({

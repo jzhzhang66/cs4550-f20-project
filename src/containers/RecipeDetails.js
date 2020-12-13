@@ -47,7 +47,7 @@ class RecipeDetails extends React.Component {
                         <IngredientsComponent />
                     </div>
                     <div className="col-9">
-                        <InstructionsComponent />
+                        <InstructionsComponent recipeInstructions={{steps: []}}/>
                     </div>
                 </div>
             </div>

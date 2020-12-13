@@ -24,14 +24,15 @@ const initialState = {
 const recipesAndIngredientsReducer = (state=initialState, action) => {
     switch (action.type) {
         case DELETE_INGREDIENT: 
+        debugger
             return {
                 ...state,
-                ingredients: state.ingredients.filter(ingredient => ingredient.id !== action.ingredient.id)
+                ingredients: state.ingredients.filter(ingredient => ingredient.id !== action.ingredientId)
             }
         case DELETE_RECIPE: 
             return {
                 ...state, 
-                recipes: state.recipes.filter(recipe => recipe.id !== action.recipe.id)
+                recipes: state.recipes.filter(recipe => recipe.id !== action.recipeId)
             }
     
         default:
