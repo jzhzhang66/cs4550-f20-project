@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import './ProfilePage.css';
+import '../css/ProfilePage.css';
 import {
   updateFollowersExpanded,
   updateFollowingExpanded

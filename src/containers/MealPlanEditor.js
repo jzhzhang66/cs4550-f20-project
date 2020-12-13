@@ -1,5 +1,5 @@
 import { buildQueries } from "@testing-library/react";
-import "./MealPlanEditor.css";
+import "../css/MealPlanEditor.css";
 import React from "react";
 import { connect } from "react-redux";
 import MealPlanService from "../services/MealPlanService";

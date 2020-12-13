@@ -6,7 +6,7 @@ import {
   createDailyPlan,
   updateDailyPlan
 } from "../actions/dailyPlanActions"
-import "./DailyPlans.css";
+import "../css/DailyPlans.css";
 
 const DailyPlans = (
   { mealPlan, dailyPlans = [],
