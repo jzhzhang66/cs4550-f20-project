@@ -8,7 +8,7 @@ import {
 addIngredientForMeal
 } from '../actions/recipeAndIngredientActions';
 
-const IngredientTable = (addIngredientForMeal, ingredients) =>
+const IngredientTable = (addIngredientForMeal, ingredients=[]) =>
 
             <div>
             <ul className="recipe-list">
