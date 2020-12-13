@@ -5,7 +5,7 @@ import '../css/RecipeTable.css';
 import '../App.css';
 
 const RecipeTable = (
-    { recipes }) =>
+    { recipes = []}) =>
 
     <div>
         <ul className="recipe-list">

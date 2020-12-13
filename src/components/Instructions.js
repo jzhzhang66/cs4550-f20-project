@@ -14,10 +14,11 @@ const Instructions = (
     return <div className="">
         {/* <h2>Instructions</h2> */}
 
-        {
+        {/* {
             recipeInstructions.steps.map(step =>
                 <li className="list-group-item">
                     {step.number + ": " + step.step}
+                    <br/>
                     Ingredients: {step.ingredients.map(ingredient =>
                         <li>
                             {ingredient.name}
@@ -29,7 +30,7 @@ const Instructions = (
                     )}
                 </li>
             )
-        }
+        } */}
     </div>
     }
 
