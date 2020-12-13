@@ -1,5 +1,7 @@
 const url = "https://api.spoonacular.com/food/ingredients"
-const key = "faa54ae99c9a46efbb6498e0a9965093"
+const key1 = "faa54ae99c9a46efbb6498e0a9965093"
+const key2 = "b8915584174a4f338d7d9f2080152bd9"
+const key = key2
 
 export const findIngredients = (search) => {
 debugger
