@@ -2,7 +2,7 @@ const url = "https://api.spoonacular.com/recipes"
 const key = "faa54ae99c9a46efbb6498e0a9965093"
 
 export const findRecipes = (search) => {
-  fetch(`${url}/complexSearch/?apiKey=${key}&query=${search}`, {
+  return fetch(`${url}/complexSearch/?apiKey=${key}&query=${search}`, {
     "method": "GET",
     "headers": {
       "Content-Type": "application/json"

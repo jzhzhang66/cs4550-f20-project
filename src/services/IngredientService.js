@@ -2,7 +2,7 @@ const url = "https://api.spoonacular.com/food/ingredients"
 const key = "faa54ae99c9a46efbb6498e0a9965093"
 
 export const findIngredients = (search) => {
-
+debugger
   return fetch(`${url}/search/?apiKey=${key}&query=${search}`, {
     "method": "GET",
     "headers": {

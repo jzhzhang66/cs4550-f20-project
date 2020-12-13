@@ -1,5 +1,6 @@
-const url2 = 'https://wbdv-generic-server.herokuapp.com/api/jannunzi/courses'
+// const url2 = 'https://wbdv-generic-server.herokuapp.com/api/jannunzi/courses'
 const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/courses2'
+// const url = 'http://localhost:8080/api/mealplans'
 
 export const findAllMealPlans = () =>
     fetch(url).then(response => response.json())

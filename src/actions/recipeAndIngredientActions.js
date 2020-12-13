@@ -2,7 +2,7 @@ export const DELETE_RECIPE = "DELETE_RECIPE"
 export const DELETE_INGREDIENT = "DELETE_INGREDIENT"
 export const ADD_RECIPE_FOR_MEAL = "ADD_RECIPE_FOR_MEAL"
 export const ADD_INGREDIENT_FOR_MEAL = "ADD_INGREDIENT_FOR_MEAL"
-export const FIND_RECIPEs_FOR_MEAL = "FIND_RECIPEs_FOR_MEAL"
+export const FIND_RECIPES_FOR_MEAL = "FIND_RECIPES_FOR_MEAL"
 export const FIND_INGREDIENTS_FOR_MEAL = "FIND_INGREDIENTS_FOR_MEAL"
 
 export const deleteRecipe = (dispatch, recipeId) => {
@@ -37,7 +37,7 @@ export const addIngredientForMeal = (dispatch, mealId, ingredient) => {
 
 export const findRecipesForMeal = (dispatch, mealId) => {
     return dispatch({
-        type: FIND_RECIPEs_FOR_MEAL,
+        type: FIND_RECIPES_FOR_MEAL,
         mealId
     })
 }
