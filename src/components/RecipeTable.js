@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import '../css/RecipeTable.css';
 import '../App.css';
+import {
+    addRecipeForMeal
+} from '../actions/recipeActions';
 
 const RecipeTable = (
     { recipes = []}) =>
@@ -16,7 +19,15 @@ const RecipeTable = (
                         {recipe.title}
                     </Link>
                     <img src={recipe.image} alt="" className="recipe-image"/>
+                    {/* <button className="btn btn-outline-secondary add-ingredient"
+                            onClick={() => addRecipeForMeal(mealId, recipe)}>Add</button>}
+                    <input
+                        className="form-control"
+                        placeholder="serving size"
+                        onChange={(event) =>
+                            console.log(event)} /> */}
                 </li>
+                
             )
 
         }
@@ -24,12 +35,12 @@ const RecipeTable = (
     </div>
 
 
-
 const stateToPropertyMapper = (state) => ({ 
     recipes: state.recipeReducer.recipes,
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
+
 })
 
 export default connect
