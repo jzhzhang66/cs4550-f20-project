@@ -25,7 +25,7 @@ const RecipeTable = (
 
 
 
-const stateToPropertyMapper = (state) => ({
+const stateToPropertyMapper = (state) => ({ 
     recipes: state.recipeReducer.recipes,
 })
 
