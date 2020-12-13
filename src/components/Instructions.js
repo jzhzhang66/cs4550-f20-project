@@ -9,18 +9,16 @@ import {
 
 // put the router in here
 const Instructions = (
-    { recipe = {}, recipeInstructions = {} }) =>
+    { recipe = {}, recipeInstructions = {steps: []} }) => {
+        console.log(recipeInstructions)
+    return <div className="">
+        {/* <h2>Instructions</h2> */}
 
-    <div className="">
-        <h2>Instructions</h2>
-        {
-            console.log(recipeInstructions)
-        }
-
-        {
+        {/* {
             recipeInstructions.steps.map(step =>
                 <li className="list-group-item">
                     {step.number + ": " + step.step}
+                    <br/>
                     Ingredients: {step.ingredients.map(ingredient =>
                         <li>
                             {ingredient.name}
@@ -32,8 +30,9 @@ const Instructions = (
                     )}
                 </li>
             )
-        }
+        } */}
     </div>
+    }
 
 const stateToPropertyMapper = (state) => ({
     recipe: state.recipeReducer.recipe,

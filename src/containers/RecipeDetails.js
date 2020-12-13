@@ -18,8 +18,17 @@ class RecipeDetails extends React.Component {
     componentDidMount() {
         const recipeId = this.props.match.params.recipeId
         this.props.findRecipeInfoById(recipeId)
-        debugger
         this.props.findRecipeInstructionsById(recipeId)
+        console.log("updated")
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.match.params.recipeId !== this.props.match.params.recipeId) {
+            const recipeId = this.props.match.params.recipeId
+            this.props.findRecipeInfoById(recipeId)
+            debugger
+            this.props.findRecipeInstructionsById(recipeId)
+        }
     }
 
 
@@ -38,7 +47,7 @@ class RecipeDetails extends React.Component {
                         <IngredientsComponent />
                     </div>
                     <div className="col-9">
-                        <InstructionsComponent />
+                        <InstructionsComponent recipeInstructions={{steps: []}}/>
                     </div>
                 </div>
             </div>

@@ -1,8 +1,10 @@
 const url = "https://api.spoonacular.com/food/ingredients"
-const key = "faa54ae99c9a46efbb6498e0a9965093"
+const key1 = "faa54ae99c9a46efbb6498e0a9965093"
+const key2 = "b8915584174a4f338d7d9f2080152bd9"
+const key = key2
 
 export const findIngredients = (search) => {
-
+debugger
   return fetch(`${url}/search/?apiKey=${key}&query=${search}`, {
     "method": "GET",
     "headers": {
@@ -13,6 +15,14 @@ export const findIngredients = (search) => {
     .then(response => response.json())
 }
 
+export const findIngredientInfoById = (ingredientId) => {
+    debugger
+    return fetch(`${url}/${ingredientId}/information?apiKey=${key}&includeNutrition=true`, {
+        method: "GET"
+      })
+        .then(response => response.json())
+}
+
 export const findRecipesWithCuisine = (search, cuisine) =>
   fetch(`${url}/complexSearch/?apiKey=${key}&query=${search}&cuisine=${cuisine}`, {
     "method": "GET",
@@ -21,12 +31,6 @@ export const findRecipesWithCuisine = (search, cuisine) =>
     }
   }
   )
-    .then(response => response.json())
-
-export const findRecipeInfoById = (recipeId) =>
-  fetch(`${url}/${recipeId}/information?apiKey=${key}&includeNutrition=true`, {
-    method: "GET"
-  })
     .then(response => response.json())
 
 export const findRandomRecipes = (numRecipes) =>
@@ -53,7 +57,7 @@ export const findRecipeInstructionsById = (recipeId) =>{
 export default {
   findIngredients,
   findRecipesWithCuisine,
-  findRecipeInfoById,
+  findIngredientInfoById,
   findRandomRecipes,
   findRecipeInstructionsById
 }

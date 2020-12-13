@@ -16,7 +16,7 @@ class ProfilePage extends Component {
       profile: {
         userId: '',
         username: '',
-        type: 'follower'
+        type: 'creator'
       },
       followers: [],
       following: []

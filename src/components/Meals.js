@@ -38,7 +38,7 @@ const Meals = ({ meals = [], dailyPlanId, mealPlan, deleteMeal, createMeal, upda
                         <button type="button" className="btn btn-outline-success inline" onClick={() => updateMeal({ ...meal, editing: true })}>
                             <i className="fa fa-edit" />
                         </button>
-                        <Link className="link" to={`/edit/${mealPlan._id}/dailyPlans/${dailyPlanId}/meals/${meal._id}`}>{meal.title}</Link>
+                        <Link className="link" to={`/edit/${mealPlan._id}/dailyPlans/${dailyPlanId}/meals/${meal._id}/recipesAndIngredients`}>{meal.title}</Link>
                     </label>}
             </li>)
     }
