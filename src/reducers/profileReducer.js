@@ -39,7 +39,7 @@ const profileReducer = (state = initialState, action) => {
         case ADD_FOLLOWING:
             return {
                 ...state,
-                followers: action.newFollowing
+                followers: [action.newFollowing]
             }
         default: 
             return state
