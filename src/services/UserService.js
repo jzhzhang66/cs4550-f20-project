@@ -54,7 +54,7 @@ export const signIn = (user) => {
     }).then(response => response.json());
 }
 
-export const profile = (HttpSession) => {
+export const profile = () => {
     fetch(`${url}/profile`, {
         method: 'POST',
         credentials: "include"

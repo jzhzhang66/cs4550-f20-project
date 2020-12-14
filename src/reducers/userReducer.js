@@ -17,7 +17,9 @@ const initialState = {
     password: "",
     userType: "follower"
   },
-  user: {},
+  user: {
+    id: ""
+  },
   verifyPassword: "",
   isEditing: false,
   isUsernameTaken: false,
