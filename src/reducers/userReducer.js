@@ -3,10 +3,10 @@ import {
 } from "../actions/userActions";
 
 const initialState = {
-  type: "creator",
-  username: "bohnstinkybu",
-  password: "poopyhead",
-  verifyPassword: '',
+  username: "",
+  password: "",
+  verifyPassword: "",
+  userType: "creator",
   isEditing: false
 }
 

@@ -25,6 +25,7 @@ import userReducer from "./reducers/userReducer";
 import NavBar from './components/NavBar';
 import LoginPage from './containers/LoginPage';
 import RegistrationPage from './containers/RegistrationPage';
+import Register from './containers/Register';
 import EditProfile from "./components/EditProfile";
 import MealPlanEditor from "./containers/MealPlanEditor";
 import MealPlanManager from "./containers/MealPlanManager";
@@ -55,7 +56,7 @@ ReactDOM.render(
       <Route path="/recipes/:recipeId" exact component={RecipeDetails}/>
       <Route path="/ingredients/:ingredientId" exact component={IngredientDetails}/>
       <Route path="/login" exact component={LoginPage}/>
-      <Route path="/register" exact component={RegistrationPage}/>
+      <Route path="/register" exact component={Register}/>
       <Route path="/editprofile" exact component={EditProfile} />
       <Route path="/mealplans" exact component={MealPlanManager} />
       <Route path={["/edit/:mealPlanId",
