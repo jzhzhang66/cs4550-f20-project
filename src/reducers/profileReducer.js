@@ -1,6 +1,7 @@
 import {
     UPDATE_FOLLOWERS_EXPANDED,
-    UPDATE_FOLLOWING_EXPANDED
+    UPDATE_FOLLOWING_EXPANDED,
+    ADD_FOLLOWING
 } from "../actions/profileActions";
 
 const initialState = {
@@ -34,6 +35,11 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 followingExpanded: action.followingExpanded
+            }
+        case ADD_FOLLOWING:
+            return {
+                ...state,
+                followers: [action.newFollowing]
             }
         default: 
             return state

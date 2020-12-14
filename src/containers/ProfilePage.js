@@ -16,7 +16,7 @@ class ProfilePage extends Component {
       profile: {
         userId: '',
         username: '',
-        type: 'creator'
+        userType: 'follower'
       },
       followers: [],
       following: []
@@ -37,7 +37,7 @@ class ProfilePage extends Component {
           <h1 className="header">My Profile</h1>
           <div className="row">
               <div className="col-4">
-                  {this.state.profile.type === "creator" &&
+                  {this.state.profile.userType === "creator" &&
                       <div>
                           <h1 className="length">{this.props.followers.length}</h1>
                           <h3><b className="btn-padding">Followers</b>
@@ -56,7 +56,7 @@ class ProfilePage extends Component {
                               </ul>}
                       </div>
                   }
-                  {this.state.profile.type === "follower" &&
+                  {this.state.profile.userType === "follower" &&
                       <div>
                           <h1 className="length padding-top">{this.props.following.length}</h1>
                           <h3><b className="btn-padding">Following</b>
@@ -72,7 +72,7 @@ class ProfilePage extends Component {
                       </div>
                   }
               </div>
-              {this.state.profile.type === "creator" &&
+              {this.state.profile.userType === "creator" &&
                   <div>
                       <div className="col-4">
                           <Link to="/mealplans">
@@ -84,9 +84,11 @@ class ProfilePage extends Component {
                       </div>
                   </div>
               }
-              {this.state.profile.type === "follower" &&
+              {this.state.profile.userType === "follower" &&
                   <div className="col-4">
+                    <Link to="/profile/favorites">
                       <button className="btn btn-secondary favorite-meal-plan">Favorite Meal Plans</button>
+                    </Link>
                   </div>
               }
               <div className="col-3">
@@ -106,7 +108,7 @@ const stateToPropertyMapper = (state) => ({
   followersExpanded: state.profileReducer.followersExpanded,
   following: state.profileReducer.following,
   followers: state.profileReducer.followers,
-  type: state.userReducer.type
+  userType: state.userReducer.userType
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
