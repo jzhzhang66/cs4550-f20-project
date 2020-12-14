@@ -44,7 +44,7 @@ export const addUser = (user) => {
 
 export const signIn = (user) => {
     debugger
-    return fetch(`${url}/users/sign`, {
+    return fetch(`${url}/users/signin`, {
         method: 'POST',
         body: JSON.stringify(user),
         headers: {
