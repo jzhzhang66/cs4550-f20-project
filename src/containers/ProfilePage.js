@@ -18,7 +18,7 @@ class ProfilePage extends Component {
             profile: {
                 userId: '',
                 username: '',
-                type: 'creator'
+                userType: 'follower'
             },
             followers: [],
             following: []
@@ -26,19 +26,16 @@ class ProfilePage extends Component {
     }
 
     componentDidMount() {
-        this.props.profile().then(() =>
-            {
-                debugger
-                if(this.props.user === null) {
-                    this.props.history.push('/login')
-                } else if(this.props.user.userType === "creator") {
-                    this.props.getFollowers(this.props.user.id)  
-                } else {
-                    this.props.getCreators(this.props.user.id)
-                }
-            }
-        )
-        this.props.getFollowers(this.props.user.id)
+        debugger
+        this.props.profile()
+        debugger
+        if (this.props.user.id === "") {
+            this.props.history.push('/login')
+        } else if (this.props.user.userType === "creator") {
+            this.props.getFollowers(this.props.user.id)
+        } else {
+            this.props.getCreators(this.props.user.id)
+        }
     }
 
     //TODO: redirect to login if not signed in
@@ -63,7 +60,7 @@ class ProfilePage extends Component {
                                 {this.props.followersExpanded &&
                                     <ul>
                                         {
-                                            this.props.followers.map(follower => <li>{follower.name}</li>)
+                                            this.props.followers.map(follower => <li>{follower.username}</li>)
                                         }
                                     </ul>}
                             </div>
@@ -78,7 +75,7 @@ class ProfilePage extends Component {
                                 {this.props.followingExpanded &&
                                     <ul>
                                         {
-                                            this.props.following.map(following => <li>{following.name}</li>)
+                                            this.props.following.map(following => <li>{following.username}</li>)
                                         }
                                     </ul>}
                             </div>

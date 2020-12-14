@@ -8,14 +8,12 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
 
+import FavoriteMealPlans from "./containers/FavoriteMealPlans"
 import RecipeSelector from "./containers/RecipeSelector";
 import IngredientSelector from "./containers/IngredientSelector";
 import recipeReducer from "./reducers/recipeReducer";
 import RecipeDetails from "./containers/RecipeDetails";
 import IngredientDetails from "./containers/IngredientDetails";
-import OthersProfilePageContainer from './containers/OthersProfilePage';
-import HomePageContainer from "./containers/HomePage";
-import ProfilePageContainer from "./containers/ProfilePage";
 import OthersProfilePage from './containers/OthersProfilePage';
 import HomePage from "./containers/HomePage";
 import ProfilePage from "./containers/ProfilePage";
@@ -24,7 +22,6 @@ import homeReducer from "./reducers/homeReducer";
 import userReducer from "./reducers/userReducer";
 import NavBar from './components/NavBar';
 import LoginPage from './containers/LoginPage';
-import RegistrationPage from './containers/RegistrationPage';
 import Register from './containers/Register';
 import EditProfile from "./components/EditProfile";
 import MealPlanEditor from "./containers/MealPlanEditor";
@@ -49,6 +46,7 @@ ReactDOM.render(
       <Route path="/" component={NavBar}/>
       <Route exact path="/" component={HomePage}/>
       <Route path="/profile" exact component={ProfilePage} />
+      <Route path="/profile/favorites" exact component={FavoriteMealPlans}/>
       <Route path="/profile/:userId" exact component={OthersProfilePage} />
       <Route path="/search" exact component={Search} />
       <Route path="/search/recipes" exact component={RecipeSelector} />
