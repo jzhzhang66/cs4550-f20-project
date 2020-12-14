@@ -89,6 +89,10 @@ class Register extends React.Component {
                     <label className="col-sm-2 col-form-label"></label>
                     <div className="col-sm-10">
                         {/* Sign Up */}
+                        {/* Need to disable button if 
+                        username or password are empty,
+                        password and verify password don't match,
+                        username already exists*/}
                         <button type="button"
                             className="btn btn-outline-secondary btn-block"
                             onClick={() => this.props.createUser2({...this.props.newUser}, this.props.history)}>

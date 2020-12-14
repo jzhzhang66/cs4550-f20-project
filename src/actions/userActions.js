@@ -7,20 +7,58 @@ export const UPDATE_NEWUSER = "UPDATE_NEWUSER"
 export const UPDATE_VERIFYPASSWORD = "UPDATE_VERIFYPASSWORD"
 export const UPDATE_USERNAME = "UPDATE_USERNAME"
 export const CREATE_USER = "CREATE_USER"
+export const WRONG_LOGIN = "WRONG_LOGIN"
+export const SIGN_IN = "SIGN_IN"
 
-
+//not mine
 export const editPassword = (dispatch) => {
   dispatch({
     type: EDIT_PASSWORD
   })
 }
 
+//not mine
 export const getIsUser = (dispatch, username) => {
   userService.getIsUser(username).then(status => dispatch({
     type: GET_IS_USER,
     username
   }))
 }
+
+
+//fix this
+export const updatePassword = (dispatch, newUser) => {
+  debugger
+  return userService.getIsUser(newUser.username).then(status =>
+    dispatch({
+      type: UPDATE_NEWUSER,
+      newUser,
+      isUsernameTaken: status
+    }))
+}
+
+export const signIn = (dispatch, user, history) => {
+  debugger
+  return userService.signIn(user)
+    .then(status => {
+      debugger
+      if(status.username === null) {
+        dispatch({
+          type: WRONG_LOGIN
+        })
+      } else {
+        dispatch({
+          type: SIGN_IN,
+          user: status
+        })
+        history.push('/profile')
+      }
+    })
+}
+
+
+
+//------- Functions for Registration -----
 
 export const updateUsername = (dispatch, newUser) => {
   debugger
@@ -39,17 +77,6 @@ export const updateUsername = (dispatch, newUser) => {
         isUsernameTaken: status
       }))
   }
-}
-
-//fix this
-export const updatePassword = (dispatch, newUser) => {
-  debugger
-  return userService.getIsUser(newUser.username).then(status =>
-    dispatch({
-      type: UPDATE_NEWUSER,
-      newUser,
-      isUsernameTaken: status
-    }))
 }
 
 export const updateNewUser = (dispatch, newUser) => {

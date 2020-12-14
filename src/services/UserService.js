@@ -42,6 +42,18 @@ export const addUser = (user) => {
     }).then(response => response.json());
 }
 
+export const signIn = (user) => {
+    debugger
+    return fetch(`${url}/users/signin`, {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+            'content-type': 'application/json'
+        },
+        credentials: "include"
+    }).then(response => response.json());
+}
+
 export const profile = (HttpSession) => {
     fetch(`${url}/profile`, {
         method: 'POST',
@@ -55,5 +67,6 @@ export default {
     updateUser,
     deleteUser,
     addUser,
-    profile
+    profile,
+    signIn
 }
