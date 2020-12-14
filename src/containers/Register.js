@@ -1,11 +1,20 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
-import { addUser, getIsUser } from "../services/UserService";
+import {
+    updateNewUser, 
+    updateVerifyPassword, 
+    createUser2, 
+    updateUsername, 
+    createUser
+} from "../actions/userActions";
+import '../css/Register.css'
 
 // put the router in here
 class Register extends React.Component {
-
+    constructor(props) {
+        super(props)
+    }
 
     render() {
         return (
@@ -19,8 +28,15 @@ class Register extends React.Component {
                     <div class="col-sm-10">
                         <input className="form-control wbdv-field wbdv-username"
                             id="usernameFld"
+                            value={this.props.newUser.username}
+                            onChange={(event) => this.props.updateUsername({ ...this.props.newUser, username: event.target.value })}
                             placeholder="Alice" />
                     </div>
+                    <label className="col-sm-2">
+                    </label>
+                    {
+                        this.props.isUsernameTaken && <p class="col-sm-4 errortext text-danger">Username Taken</p>
+                    }
                 </div>
                 {/* Password */}
                 <div className="form-group row">
@@ -30,6 +46,8 @@ class Register extends React.Component {
                         <input type="password"
                             className="form-control"
                             id="passwordFld"
+                            value={this.props.newUser.password}
+                            onChange={(event) => this.props.updateNewUser({ ...this.props.newUser, password: event.target.value })}
                             placeholder="123qwe#$%" />
                     </div>
                 </div>
@@ -42,16 +60,28 @@ class Register extends React.Component {
                         <input type="password"
                             className="form-control"
                             id="verifyPasswordFld"
-                            placeholder="123qwe#$%" />
+                            placeholder="123qwe#$%"
+                            value={this.props.verifyPassword}
+                            onChange={(event) => this.props.updateVerifyPassword(event.target.value)} />
                     </div>
+                    <label className="col-sm-2">
+                    </label>
+                    {
+                    this.props.verifyPassword !== this.props.newUser.password
+                    && <p class="col-sm-4 errortext text-danger">Passwords do not match</p>
+                }
                 </div>
                 <div className="form-group row">
                     <label for="typeDropdown"
                         className="col-sm-2 col-form-label">Type</label>
                     <div className="col-sm-10">
-                        <select id="typeDropdown" class="form-select" aria-label="Default select example">
-                            <option value="Creator">Creator</option>
-                            <option selected value="Follower">Follower</option>
+                        <select
+                            id="typeDropdown"
+                            class="form-select"
+                            aria-label="Default select example"
+                            onChange={(event) => this.props.updateNewUser({ ...this.props.newUser, userType: event.target.value })}>
+                            <option value="creator">Creator</option>
+                            <option selected value="follower">Follower</option>
                         </select>
                     </div>
                 </div>
@@ -59,8 +89,13 @@ class Register extends React.Component {
                     <label className="col-sm-2 col-form-label"></label>
                     <div className="col-sm-10">
                         {/* Sign Up */}
+                        {/* Need to disable button if 
+                        username or password are empty,
+                        password and verify password don't match,
+                        username already exists*/}
                         <button type="button"
-                            className="btn btn-outline-secondary btn-block wbdv-button wbdv-register">
+                            className="btn btn-outline-secondary btn-block"
+                            onClick={() => this.props.createUser2({...this.props.newUser}, this.props.history)}>
                             Sign Up
                         </button>
                         {/* Login */}
@@ -77,11 +112,17 @@ class Register extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-
+    newUser: state.userReducer.newUser,
+    verifyPassword: state.userReducer.verifyPassword,
+    isUsernameTaken: state.userReducer.isUsernameTaken
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-
+    updateNewUser: (newUser) => updateNewUser(dispatch, newUser),
+    updateUsername: (newUser) => updateUsername(dispatch, newUser),
+    updateVerifyPassword: (verifyPassword) => updateVerifyPassword(dispatch, verifyPassword),
+    createUser: (user) => createUser(dispatch, user),
+    createUser2: (newUser, history) => createUser2(dispatch, newUser, history),
 })
 
 export default connect

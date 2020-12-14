@@ -8,7 +8,8 @@ export const getIsUserAndPass = (user) => {
 
 // function determines if user already exists in database, returns boolean (true if it exists)
 export const getIsUser = (username) => {
-    fetch(`${url}/is/user/${username}`).then(response => response.json())
+    debugger
+    return fetch(`${url}/is/user/${username}`).then(response => response.json())
 }
 
 export const updateUser = (userId, newUser) => {
@@ -30,7 +31,20 @@ export const deleteUser = (userId) => {
 }
 
 export const addUser = (user) => {
-    fetch(`${url}/users`, {
+    debugger
+    return fetch(`${url}/users`, {
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+            'content-type': 'application/json'
+        },
+        credentials: "include"
+    }).then(response => response.json());
+}
+
+export const signIn = (user) => {
+    debugger
+    return fetch(`${url}/users/signin`, {
         method: 'POST',
         body: JSON.stringify(user),
         headers: {
@@ -53,5 +67,6 @@ export default {
     updateUser,
     deleteUser,
     addUser,
-    profile
+    profile,
+    signIn
 }
