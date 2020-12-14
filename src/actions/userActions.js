@@ -36,6 +36,17 @@ export const updatePassword = (dispatch, newUser) => {
       isUsernameTaken: status
     }))
 }
+//-------Functions for relogging in
+export const profile = (dispatch) => {
+  debugger
+  return userService.profile().then(status =>
+    dispatch({
+      type: SIGN_IN,
+      user: status,
+    }))
+}
+
+//------- Functions for Login ----------
 
 export const signIn = (dispatch, user, history) => {
   debugger
