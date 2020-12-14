@@ -20,6 +20,7 @@ class MealPlanManager extends React.Component {
                 mealPlans: mealPlans
             }))
         console.log(this.state.mealPlans)
+        debugger
     }
 
     createMealPlan = () => {
