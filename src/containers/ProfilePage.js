@@ -24,9 +24,9 @@ class ProfilePage extends Component {
   }
 
   componentDidMount() {
-    profile().then(profile => this.setState({
-      profile: profile
-    }))
+    // profile().then(profile => this.setState({
+    //   profile: profile
+    // }))
   }
 
   //TODO: redirect to login if not signed in
