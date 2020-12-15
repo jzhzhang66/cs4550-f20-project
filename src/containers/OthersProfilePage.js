@@ -46,7 +46,7 @@ class OthersProfilePage extends Component {
     return (
         <div className="container">
           <h1 className="header name">{this.props.user.username}'s
-            Page</h1>
+            Profile</h1>
           {this.state.currentUser.userType === 'follower' && <h1
               className="text-center">
             <button onClick={() => this.handleFollowSubmit()}
@@ -57,7 +57,7 @@ class OthersProfilePage extends Component {
           {this.props.user.userType === 'follower' && <h2>Favorited meal plans</h2>}
           {this.props.user.userType === 'creator' && <h2>Created meal plans</h2>}
           <div className="card-deck">
-            {this.state.mealPlans.map(mealPlan =>
+            {this.props.mealPlans.map(mealPlan =>
                 <ViewMealPlanCard
                     mealPlan={mealPlan}
                     viewedUser={this.props.user}/>
