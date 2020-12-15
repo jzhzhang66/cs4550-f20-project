@@ -9,7 +9,7 @@ export const FIND_MEAL = "FIND_MEAL"
 
 
 export const deleteMeal = (dispatch, meal) =>
-    MealService.deleteMeal(meal._id)
+    MealService.deleteMeal(meal.id)
         .then(status =>
             dispatch({
                 type: DELETE_MEAL,

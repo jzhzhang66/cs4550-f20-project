@@ -39,7 +39,7 @@ const mealReducer = (state=initialState, action) => {
         case DELETE_MEAL:
             return {
                 ...state,
-                meals: state.meals.filter(meal => meal._id !== action.meal._id)
+                meals: state.meals.filter(meal => meal.id !== action.meal.id)
             }
         default:
             return state
