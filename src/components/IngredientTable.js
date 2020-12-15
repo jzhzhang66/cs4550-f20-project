@@ -44,10 +44,6 @@ const IngredientTable = ({ addIngredientForMeal, ingredients = [], mealId = unde
         </ul>
     </div>
 
-
-
-
-
 const stateToPropertyMapper = (state) => {
     console.log(state)
     return ({

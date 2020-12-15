@@ -48,6 +48,9 @@ export const updateMealPlan = (mealPlanId, mealPlan) =>
     })
         .then(response => response.json())
 
+export const getMealPlanByCreator = (creatorId) =>
+    fetch(`${url}/creator/${creatorId}/mealplans`).then(response => response.json())
+
 
 
 export default {

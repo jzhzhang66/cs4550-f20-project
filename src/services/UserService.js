@@ -65,6 +65,14 @@ export const profile = () => {
     }).then(response => response.json());
 }
 
+export const getAllUsers = () => {
+    return fetch(`${url}/users`).then(response => response.json())
+}
+
+export const getUserById = (userId) => {
+    return fetch(`${url}/user/${userId}`).then(response => response.json())
+}
+
 export default {
     getIsUserAndPass,
     getIsUser,
@@ -72,5 +80,7 @@ export default {
     deleteUser,
     addUser,
     profile,
-    signIn
+    signIn,
+    getAllUsers,
+    getUserById
 }

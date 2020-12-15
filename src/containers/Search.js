@@ -29,6 +29,16 @@ class Search extends Component {
                         </Link>
                     </div>
                 </div>
+              <div className="row">
+                <div className="col-4"></div>
+                <div className="col-6">
+                  <Link to="/userlist">
+                    <button className="btn btn-outline-secondary ingredients-button">
+                      <h2>User List</h2>
+                    </button>
+                  </Link>
+                </div>
+              </div>
             </div>
         )
     }

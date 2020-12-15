@@ -17,7 +17,7 @@ const DailyPlans = (
   <ul className="list-group">
       {
           dailyPlans.map(dailyPlan =>
-              <li className="list-group-item" key={dailyPlan._id}>
+              <li className="list-group-item" key={dailyPlan.id}>
                   <button type="button" className="btn btn-outline-danger inline" onClick={() => deleteDailyPlan(dailyPlan)}>
                       <i className="fa fa-trash"></i>
                   </button>
@@ -31,7 +31,7 @@ const DailyPlans = (
                           <input
                           className="form-control"
                               onChange={(event) =>
-                                  updateDailyPlan({ ...dailyPlan, title: event.target.value })}
+                                  updateDailyPlan({ ...dailyPlan, name: event.target.value })}
                               value={dailyPlan.name} />
 
                       </span>}

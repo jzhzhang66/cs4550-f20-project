@@ -3,7 +3,7 @@ import {
     CREATE_DAILY_PLAN,
     UPDATE_DAILY_PLAN,
     FIND_DAILY_PLAN,
-    FIND_DAILY_PLAN_FOR_MEAL_PLAN
+    FIND_DAILY_PLAN_FOR_MEAL_PLAN,
 
   } from "../actions/dailyPlanActions"
 
