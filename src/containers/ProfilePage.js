@@ -26,7 +26,8 @@ class ProfilePage extends Component {
         userType: ''
       },
       followers: [],
-      following: []
+      following: [],
+      mealPlans: []
     }
   }
 
@@ -37,10 +38,10 @@ class ProfilePage extends Component {
         this.props.history.push('/login')
       } else if (this.props.user.userType === "creator") {
         this.props.getFollowers(this.props.user.id)
-        this.props.findMealPlansByCreator(this.props.user.id)
+        this.props.findMealPlansByCreator(this.props.user.id).then(mealPlans => this.setState({mealPlans: mealPlans.mealPlans}))
       } else {
         this.props.getCreators(this.props.user.id)
-        this.props.getFavoritesByFollowerId(this.props.user.id)
+        this.props.getFavoritesByFollowerId(this.props.user.id).then(mealPlans => this.setState({mealPlans: mealPlans.mealPlans}))
       }
     })
   }
@@ -113,10 +114,10 @@ class ProfilePage extends Component {
               {this.props.user.userType === 'follower' && <h2>Favorited meal plans</h2>}
               {this.props.user.userType === 'creator' && <h2>Created meal plans</h2>}
               <div className="card-deck">
-                {this.props.mealPlans.map(mealPlan =>
+                {this.state.mealPlans.map(mealPlan =>
                     <ViewMealPlanCard
                         mealPlan={mealPlan}
-                        viewedUser={this.props.user}/>
+                        creator={this.props.user}/>
                 )}
               </div>
             </div>

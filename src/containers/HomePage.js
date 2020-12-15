@@ -1,160 +1,79 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {findRandomRecipes} from "../actions/homeActions";
+import {
+  getRecentFavorites,
+  getRecentFollowings
+} from "../actions/homeActions";
 import '../css/HomePage.css';
 import {profile} from "../actions/userActions";
+import {findAllMealPlans} from "../actions/mealPlanActions";
+import ViewMealPlanCard from "../components/ViewMealPlanCard";
+import ViewUserCard from "../components/ViewUserCard";
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      user: []
+      mealPlans: []
     }
   }
 
   componentDidMount() {
-    this.props.profile().then(profile => this.setState({user: profile.user}))
+    this.props.profile().then(() => {
+      if (this.props.user.userType === "creator") {
+        this.props.getRecentFollowings(this.props.user.id).then(
+            mealPlans => this.setState({mealPlans: mealPlans.mealPlans}))
+      } else if (this.props.user.userType === 'follower') {
+        this.props.getRecentFavorites(this.props.user.id).then(
+            mealPlans => this.setState({mealPlans: mealPlans.mealPlans}))
+      }
+    })
+    this.props.findAllMealPlans()
   }
 
+  // to do: pass in the correct user to map, limit array shown, possibly implement arrow keys to continue browsing
   render() {
-    return(
+    return (
         <div className="container">
-          <h3 className="header-styling">Most Popular Meal Plan</h3>
+          <h3 className="header-styling">Meal Plans</h3>
           <div className="card-deck">
             <div className="sm-col-6">
-              <div className="card">
-                <img src="https://picsum.photos/300/200" className="card-img-top img-styling"></img>
-                <div className="card-body">
-                  <h5 className="card-title">Meal Plan</h5>
-                  <p className="card-text">
-                    Meal plan description</p>
-                  <a href="#" className="btn btn-outline-secondary">more...</a>
-                </div>
-              </div>
+              {this.state.mealPlans.map(mealPlan =>
+                  <ViewMealPlanCard
+                      mealPlan={mealPlan}
+                      creator={this.props.user}/>)}
             </div>
           </div>
 
-          <div>
-            <h3 className="header-styling">Your Recently Favorited Meal Plans (follower)</h3>
-            <div id="carouselExampleControls" className="carousel slide"
-                 data-ride="carousel">
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img className="d-block w-100" src="https://picsum.photos/300/200" alt="First slide"></img>
-                </div>
-                <div className="carousel-item">
-                  <img className="d-block w-100" src="https://picsum.photos/300/200" alt="Second slide"></img>
-                </div>
-                <div className="carousel-item">
-                  <img className="d-block w-100" src="https://picsum.photos/300/200" alt="Third slide"></img>
-                </div>
-              </div>
-              <a className="carousel-control-prev"
-                 role="button"
-                 data-slide="prev">
-                <span className="carousel-control-prev-icon"
-                      aria-hidden="true"></span>
-                <span className="sr-only">Previous</span>
-              </a>
-              <a className="carousel-control-next"
-                 href="#carouselExampleControls" role="button"
-                 data-slide="next">
-                <span className="carousel-control-next-icon"
-                      aria-hidden="true"></span>
-                <span className="sr-only">Next</span>
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="header-styling">Your Recently Created Meal Plans (creator)</h3>
-            <div id="carouselExampleControls" className="carousel slide"
-                 data-ride="carousel">
-              <div className="carousel-inner">
-                <div className="carousel-item active">
-                  <img className="d-block w-100" src="https://picsum.photos/300/200" alt="First slide"></img>
-                </div>
-                <div className="carousel-item">
-                  <img className="d-block w-100" src="https://picsum.photos/300/200" alt="Second slide"></img>
-                </div>
-                <div className="carousel-item">
-                  <img className="d-block w-100" src="https://picsum.photos/300/200" alt="Third slide"></img>
-                </div>
-              </div>
-              <a className="carousel-control-prev"
-                 role="button"
-                 data-slide="prev">
-                <span className="carousel-control-prev-icon"
-                      aria-hidden="true"></span>
-                <span className="sr-only">Previous</span>
-              </a>
-              <a className="carousel-control-next"
-                 href="#carouselExampleControls" role="button"
-                 data-slide="next">
-                <span className="carousel-control-next-icon"
-                      aria-hidden="true"></span>
-                <span className="sr-only">Next</span>
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="header-styling">More Meal Plans</h3>
-            <div className="card-deck">
-              <div className="col-xs-12 col-sm-3">
-                <div className="card">
-                  <img src="https://picsum.photos/300/200" className="card-img-top img-styling"></img>
-                  <div className="card-body">
-                    <h5 className="card-title">Recipe</h5>
-                    <p className="card-text">
-                      Recipe description</p>
-                    <a href="#" className="btn btn-outline-secondary">more...</a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xs-12 col-sm-3">
-                <div className="card">
-                  <img src="https://picsum.photos/300/200" className="card-img-top img-styling"></img>
-                  <div className="card-body">
-                    <h5 className="card-title">Recipe</h5>
-                    <p className="card-text">
-                      Recipe description</p>
-                    <a href="#" className="btn btn-outline-secondary">more...</a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xs-12 col-sm-3">
-                <div className="card">
-                  <img src="https://picsum.photos/300/200" className="card-img-top img-styling"></img>
-                  <div className="card-body">
-                    <h5 className="card-title">Recipe</h5>
-                    <p className="card-text">
-                      Recipe description</p>
-                    <a href="#" className="btn btn-outline-secondary">more...</a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xs-12 col-sm-3">
-                <div className="card">
-                  <img src="https://picsum.photos/300/200" className="card-img-top img-styling"></img>
-                  <div className="card-body">
-                    <h5 className="card-title">Recipe</h5>
-                    <p className="card-text">
-                      Recipe description</p>
-                    <a href="#" className="btn btn-outline-secondary">more...</a>
-                  </div>
+          {
+            this.props.user.userType === 'follower' && <div>
+              <h3 className="header-styling">Your recently favorited plans</h3>
+              <div className="card-deck">
+                <div className="sm-col-6">
+                  {this.props.recentFavorites.map(mealPlan =>
+                      <ViewMealPlanCard
+                          mealPlan={mealPlan}
+                          creator={this.props.user}/>)}
                 </div>
               </div>
             </div>
-          </div>
+          }
 
-          {/*{console.log(this.randomRecipes)}*/}
-          {/*<ul>*/}
-          {/*  {this.randomRecipes.map(recipe => <li>{recipe.title}</li>)}*/}
-          {/*</ul>*/}
-          {/*<SearchRecipeComponent/>*/}
-          {/*<RecipeTableComponent/>*/}
+          {
+            this.props.user.userType === 'creator' && <div>
+              <h3 className="header-styling">Users that recently followed you</h3>
+              <div className="card-deck">
+                <div className="sm-col-6">
+                  {this.props.recentFollowings.map(user =>
+                      <ViewUserCard
+                          user={user}/>)}
+                </div>
+              </div>
+            </div>
+          }
+
+
         </div>
     )
   }
@@ -162,11 +81,17 @@ class HomePage extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-  mealPlans: state.mealPlanReducer
+  mealPlans: state.mealPlanReducer,
+  user: state.userReducer.user,
+  recentFollowings: state.homeReducer.recentFollowings,
+  recentFavorites: state.homeReducer.recentFavorites
 });
 
 const propertyToDispatchMapper = (dispatch) => ({
-  profile: () => profile(dispatch)
+  profile: () => profile(dispatch),
+  getRecentFavorites: (userId) => getRecentFavorites(dispatch, userId),
+  getRecentFollowings: (userId) => getRecentFollowings(dispatch, userId),
+  findAllMealPlans: () => findAllMealPlans(dispatch)
 });
 
 export default connect

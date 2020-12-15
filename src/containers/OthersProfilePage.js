@@ -57,10 +57,10 @@ class OthersProfilePage extends Component {
           {this.props.user.userType === 'follower' && <h2>Favorited meal plans</h2>}
           {this.props.user.userType === 'creator' && <h2>Created meal plans</h2>}
           <div className="card-deck">
-            {this.props.mealPlans.map(mealPlan =>
+            {this.state.mealPlans.map(mealPlan =>
                 <ViewMealPlanCard
                     mealPlan={mealPlan}
-                    viewedUser={this.props.user}/>
+                    creator={this.props.user}/>
             )}
           </div>
         </div>

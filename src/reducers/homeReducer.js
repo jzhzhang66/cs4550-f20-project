@@ -1,20 +1,24 @@
 import {
-  FIND_RANDOM_RECIPE
+  GET_RECENT_FAVORITES,
+  GET_RECENT_FOLLOWINGS
 } from "../actions/homeActions";
 
 const initialState = {
-  popularMealPlan: [], // the most liked recipe from our database
-  userFollowings: [], // the user's liked recipes
-  recentRecipes: [], // most recent recipes from our database
-  randomRecipes: [] // rando
+  recentFavorites: [],
+  recentFollowings: []
 }
 
 const homeReducer = (state = initialState, action) => {
   switch(action.type) {
-    case FIND_RANDOM_RECIPE:
+    case GET_RECENT_FOLLOWINGS:
       return {
         ...state,
-        randomRecipes: action.randomRecipes.recipes,
+        recentFollowings: action.recentFollowings
+      }
+    case GET_RECENT_FAVORITES:
+      return{
+        ...state,
+        recentFavorites: action.recentFavorites
       }
     default:
       return state
