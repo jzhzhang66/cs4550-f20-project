@@ -37,7 +37,7 @@ export const deleteIngredient = (ingredientId) =>
 
 export const addIngredientForMeal = (mealId, ingredient) => {
     debugger
-    fetch(`${mealUrl}/${mealId}/ingredients`, {
+    return fetch(`${mealUrl}/${mealId}/ingredients`, {
         method: "POST",
         body: JSON.stringify(ingredient),
         headers: {

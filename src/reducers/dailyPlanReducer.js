@@ -34,7 +34,7 @@ const dailyPlanReducer = (state=initialState, action) => {
             return {
                 ...state,
                 dailyPlans: state.dailyPlans.map(dailyPlan =>
-                dailyPlan._id === action.dailyPlan._id ? action.dailyPlan : dailyPlan)
+                dailyPlan.id === action.dailyPlan.id ? action.dailyPlan : dailyPlan)
             }
         case DELETE_DAILY_PLAN:
             return {

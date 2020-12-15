@@ -26,19 +26,19 @@ export const findMealPlanById = (dispatch, mealPlanId) =>
 
 export const findMealPlansByCreator = (dispatch, creatorId) => {
     return MealPlanService.findMealPlansByCreator(creatorId)
-    .then(mealPlans => dispatch({
-        type: FIND_MEAL_PLANS_BY_CREATOR,
-        mealPlans
-    }))
+        .then(mealPlans => dispatch({
+            type: FIND_MEAL_PLANS_BY_CREATOR,
+            mealPlans
+        }))
 }
 
 export const getFavoriteMealPlansByFollowerId = (dispatch, uid) => {
-  debugger
-  return MealPlanService.getFavoriteMealPlansByFollowerId(uid)
-  .then(mealPlans => dispatch({
-    type: FIND_MEAL_PLANS_BY_CREATOR,
-    uid
-  }))
+    debugger
+    return MealPlanService.getFavoriteMealPlansByFollowerId(uid)
+        .then(mealPlans => dispatch({
+            type: FIND_MEAL_PLANS_BY_CREATOR,
+            uid
+        }))
 }
 
 export const deleteMealPlan = (dispatch, mealPlan) =>
@@ -48,12 +48,14 @@ export const deleteMealPlan = (dispatch, mealPlan) =>
             mealPlan
         }))
 
-export const updateMealPlan = (dispatch, mealPlanId, mealPlan) =>
-    MealPlanService.updateMealPlan(mealPlanId, mealPlan)
-        .then(status => dispatch({
-            type: DELETE_MEAL_PLAN,
-            mealPlan
-        }))
+export const updateMealPlan = (dispatch, mealPlan) =>
+    MealPlanService.updateMeal(mealPlan.id, mealPlan)
+        .then(status =>
+            dispatch({
+                type: UPDATE_MEAL_PLAN,
+                mealPlan
+            }))
+
 
 export const createMealPlan = (dispatch, creatorId, newMealPlan) =>
     MealPlanService.createMealPlan(creatorId, newMealPlan)
@@ -79,7 +81,7 @@ export const enterTitle = (dispatch, newTitle) => {
 export const updateTitle = (dispatch, mealPlan, number) => {
     return dispatch({
         type: UPDATE_TITLE,
-        mealPlan, 
+        mealPlan,
         number
     })
 }

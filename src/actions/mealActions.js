@@ -28,7 +28,7 @@ export const createMeal = (dispatch, dailyPlanId, meal) =>
             
         }
 export const updateMeal = (dispatch, meal) =>
-    MealService.updateMeal(meal._id, meal)
+    MealService.updateMeal(meal.id, meal)
         .then(status =>
             dispatch({
                 type: UPDATE_MEAL,

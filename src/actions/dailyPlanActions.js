@@ -32,7 +32,7 @@ export const createDailyPlan = (dispatch, mealPlan, dailyPlan) =>
             }))
 
 export const updateDailyPlan = (dispatch, dailyPlan) =>
-    DailyPlanService.updateDailyPlan(dailyPlan)
+    DailyPlanService.updateDailyPlan(dailyPlan.id, dailyPlan)
         .then(status =>
             dispatch({
                 type: UPDATE_DAILY_PLAN,

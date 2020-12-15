@@ -34,7 +34,7 @@ const mealReducer = (state=initialState, action) => {
         case UPDATE_MEAL:
             return {
                 ...state,
-                meals: state.meals.map(meal => meal._id === action.meal._id ? action.meal : meal)
+                meals: state.meals.map(meal => meal.id === action.meal.id ? action.meal : meal)
             }
         case DELETE_MEAL:
             return {
