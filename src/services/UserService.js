@@ -55,7 +55,8 @@ export const signIn = (user) => {
 }
 
 export const profile = () => {
-    fetch(`${url}/profile`, {
+    debugger
+    return fetch(`${url}/profile`, {
         method: 'POST',
         credentials: "include"
     }).then(response => response.json());

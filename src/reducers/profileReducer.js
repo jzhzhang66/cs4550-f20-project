@@ -49,9 +49,10 @@ const profileReducer = (state = initialState, action) => {
                 followers: action.users
             }
         case GET_CREATORS:
+            debugger
             return {
                 ...state,
-                followings: action.users
+                following: action.users
             }
         default:
             return state
