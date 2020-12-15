@@ -16,15 +16,15 @@ export const findDailyPlan = (dispatch, dailyPlanId) =>
             }))
 
 export const deleteDailyPlan = (dispatch, dailyPlan) =>
-    DailyPlanService.deleteDailyPlan(dailyPlan._id)
+    DailyPlanService.deleteDailyPlan(dailyPlan.id)
         .then(status =>
             dispatch({
                 type: DELETE_DAILY_PLAN,
                 dailyPlan
             }))
 
-export const createDailyPlan = (dispatch, mealPlan, dailyPlan) =>
-    DailyPlanService.createDailyPlan(mealPlan._id, dailyPlan)
+export const createDailyPlan = (dispatch, mealPlan, dailyPlan) => 
+    DailyPlanService.createDailyPlan(mealPlan.id, dailyPlan)
         .then(actualDailyPlan =>
             dispatch({
                 type: CREATE_DAILY_PLAN,
@@ -32,7 +32,7 @@ export const createDailyPlan = (dispatch, mealPlan, dailyPlan) =>
             }))
 
 export const updateDailyPlan = (dispatch, dailyPlan) =>
-    DailyPlanService.updateDailyPlan(dailyPlan._id, dailyPlan)
+    DailyPlanService.updateDailyPlan(dailyPlan.id, dailyPlan)
         .then(status =>
             dispatch({
                 type: UPDATE_DAILY_PLAN,

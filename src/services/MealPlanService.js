@@ -12,8 +12,11 @@ export const findMealPlanById = (mealPlanId) =>
     })
         .then(response => response.json())
 
-export const findMealPlansByCreator = (creatorId) => 
-    fetch(`${url}/creator/${creatorId}/mealplans`)
+export const findMealPlansByCreator = (creatorId) => {
+    debugger
+    return fetch(`${url}/creator/${creatorId}/mealplans`)
+        .then(response => response.json())
+}
 
 export const deleteMealPlan = (mealPlan) =>
     fetch(`${url}/mealplans/${mealPlan.id}`, { 
@@ -21,8 +24,9 @@ export const deleteMealPlan = (mealPlan) =>
     })
         .then(response => response.json())
 
-export const createMealPlan = (creatorId, newMealPlan) =>
-    fetch(`${url}/creator/${creatorId}/mealplan`, {
+export const createMealPlan = (creatorId, newMealPlan) => {
+    debugger
+    return fetch(`${url}/creator/${creatorId}/mealplan`, {
         method: "POST",
         body: JSON.stringify(newMealPlan),
         headers: {
@@ -30,6 +34,8 @@ export const createMealPlan = (creatorId, newMealPlan) =>
         }
     })
         .then(response => response.json())
+}
+
 
 
 export const updateMealPlan = (mealPlanId, mealPlan) =>
@@ -41,6 +47,7 @@ export const updateMealPlan = (mealPlanId, mealPlan) =>
         }
     })
         .then(response => response.json())
+
 
 
 export default {

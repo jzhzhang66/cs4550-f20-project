@@ -1,18 +1,23 @@
 import {
-    FIND_MEAL_PLAN_BY_ID, 
+    FIND_MEAL_PLAN_BY_ID,
     FIND_MEAL_PLANS_BY_CREATOR,
     FIND_ALL_MEAL_PLANS,
     DELETE_MEAL_PLAN,
     CREATE_MEAL_PLAN,
-    UPDATE_MEAL_PLAN
-  } from "../actions/mealPlanActions"
+    UPDATE_MEAL_PLAN,
+    CHANGE_DISPLAY,
+    ENTER_TITLE,
+    UPDATE_TITLE
+} from "../actions/mealPlanActions"
 
 const initialState = {
     mealPlans: [],
-    mealPlan: {}
+    mealPlan: {},
+    title: "",
+    isTable: true
 }
 
-const courseReducer = (state = initialState, action) => {
+const mealPlanReducer = (state = initialState, action) => {
     switch (action.type) {
         case FIND_ALL_MEAL_PLANS:
             return {
@@ -22,7 +27,8 @@ const courseReducer = (state = initialState, action) => {
         case CREATE_MEAL_PLAN:
             return {
                 ...state,
-                mealPlans: [...state.mealPlans, action.mealPlan]
+                mealPlans: [...state.mealPlans, action.newMealPlan],
+                title: ""
             }
         case FIND_MEAL_PLANS_BY_CREATOR:
             return {
@@ -45,9 +51,30 @@ const courseReducer = (state = initialState, action) => {
                 ...state,
                 mealPlans: state.mealPlans.filter(mealPlan => mealPlan._id !== action.mealPlanId)
             }
+        case CHANGE_DISPLAY:
+            return {
+                ...state,
+                isTable: !state.isTable
+            }
+        case ENTER_TITLE:
+            return {
+                ...state,
+                title: action.newTitle
+            }
+        case UPDATE_TITLE:
+            const newMealPlans = {
+                ...state.mealPlans
+            }
+            newMealPlans[action.number] = action.mealPlan
+            return {
+                ...state,
+                mealPlans: newMealPlans
+
+            }
         default:
             return state
     }
 }
 
-export default courseReducer
+
+export default mealPlanReducer

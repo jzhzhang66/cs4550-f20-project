@@ -1,26 +1,32 @@
-const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/courses2'
-const dailyPlanUrl = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/modules'
+// const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/courses2'
+// const dailyPlanUrl = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/modules'
+const url = "http://localhost:8080/api";
+const dailyPlanUrl = 'http://localhost:8080/api/dailyplans'
 
 export const findDailyPlan = (dailyPlanId) =>
-    fetch(`${dailyPlanUrl}/${dailyPlanId}`).then(response => response.json())
+    fetch(`${dailyPlanUrl}/${dailyPlanId}`)
+        .then(response => response.json())
 
 
-export const findDailyPlansForMealPlan = (mealPlanId) =>
-    fetch(`${url}/${mealPlanId}/dailyPlans`, {
+export const findDailyPlansForMealPlan = (mealPlanId) => {
+    debugger
+    return fetch(`${url}/mealplans/${mealPlanId}/dailyplans`, {
         method: "GET"
     })
         .then(response => response.json())
+}
 
-export const deleteDailyPlan = (dailyPlanId) =>
-    fetch(`${dailyPlanUrl}/${dailyPlanId}`, {
+export const deleteDailyPlan = (dailyPlanId) => {
+    debugger
+    return fetch(`${dailyPlanUrl}/${dailyPlanId}`, {
         method: "DELETE"
     })
         .then(response => response.json())
+}
 
-
-
-export const createDailyPlan = (mealPlanId, dailyPlan) =>
-    fetch(`${url}/${mealPlanId}/dailyPlans`, {
+export const createDailyPlan = (mealPlanId, dailyPlan) => {
+    debugger
+    return fetch(`${url}/mealplans/${mealPlanId}/dailyplans`, {
         method: "POST",
         body: JSON.stringify(dailyPlan),
         headers: {
@@ -28,6 +34,7 @@ export const createDailyPlan = (mealPlanId, dailyPlan) =>
         }
     })
         .then(response => response.json())
+}
 
 
 export const updateDailyPlan = (dailyPlanId, dailyPlan) =>
