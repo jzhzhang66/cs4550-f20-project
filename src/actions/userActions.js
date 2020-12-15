@@ -39,11 +39,12 @@ export const updatePassword = (dispatch, newUser) => {
 //-------Functions for relogging in
 export const profile = (dispatch) => {
   debugger
-  return userService.profile().then(status =>
-    dispatch({
+  return userService.profile().then(status => {
+    debugger
+    return dispatch({
       type: SIGN_IN,
       user: status,
-    }))
+    })})
 }
 
 //------- Functions for Login ----------

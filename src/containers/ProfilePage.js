@@ -8,7 +8,7 @@ import {
     getCreators
 } from "../actions/profileActions"
 import { Link } from 'react-router-dom';
-import { profile } from "../services/UserService";
+import { profile } from "../actions/userActions";
 
 class ProfilePage extends Component {
 
@@ -18,7 +18,7 @@ class ProfilePage extends Component {
             profile: {
                 userId: '',
                 username: '',
-                userType: 'follower'
+                userType: ''
             },
             followers: [],
             following: []
@@ -27,7 +27,7 @@ class ProfilePage extends Component {
 
     componentDidMount() {
         debugger
-        this.props.profile()
+        this.props.profile().then(() => {
         debugger
         if (this.props.user.id === "") {
             this.props.history.push('/login')
@@ -36,6 +36,7 @@ class ProfilePage extends Component {
         } else {
             this.props.getCreators(this.props.user.id)
         }
+    })
     }
 
     //TODO: redirect to login if not signed in

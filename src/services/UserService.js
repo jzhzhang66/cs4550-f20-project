@@ -55,10 +55,19 @@ export const signIn = (user) => {
 }
 
 export const profile = () => {
-    fetch(`${url}/profile`, {
+    debugger
+    return fetch(`${url}/profile`, {
         method: 'POST',
         credentials: "include"
     }).then(response => response.json());
+}
+
+export const getAllUsers = () => {
+    return fetch(`${url}/users`).then(response => response.json())
+}
+
+export const getUserById = (userId) => {
+    return fetch(`${url}/user/${userId}`).then(response => response.json())
 }
 
 export default {
@@ -68,5 +77,7 @@ export default {
     deleteUser,
     addUser,
     profile,
-    signIn
+    signIn,
+    getAllUsers,
+    getUserById
 }

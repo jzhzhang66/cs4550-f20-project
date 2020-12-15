@@ -1,6 +1,5 @@
 import followingService from "../services/FollowingService"
 
-
 export const UPDATE_FOLLOWERS_EXPANDED = "UPDATE_FOLLOWERS_EXPANDED";
 export const UPDATE_FOLLOWING_EXPANDED = "UPDATE_FOLLOWING_EXPANDED";
 export const ADD_FOLLOWING = "ADD_FOLLOWING";
