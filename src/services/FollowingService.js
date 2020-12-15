@@ -1,7 +1,8 @@
-const url = "http://localhost:8080/api"
+const localurl = "http://localhost:8080/api"
 
+const heroku = "https://planme-al.herokuapp.com/api"
 
-
+const url = heroku
 
 
 export const getUserFollowingsByFollower = (uid) =>
