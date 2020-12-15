@@ -2,7 +2,7 @@ const localurl = "http://localhost:8080/api"
 
 const heroku = "https://planme-al.herokuapp.com/api"
 
-const url = heroku
+const url = localurl
 
 
 export const getUserFollowingsByFollower = (uid) =>
@@ -21,28 +21,36 @@ export const getUserFollowingsByCreator = (uid) => {
 }
 
 export const getFollowingsByFollower = (uid) => {
-    fetch(`${url}/follower/${uid}/followings`)
+    return fetch(`${url}/follower/${uid}/followings`)
         .then(response => response.json())
 }
 
 export const getFollowingById = (fid) => {
-    fetch(`${url}/followings/${fid}`)
+    return fetch(`${url}/followings/${fid}`)
         .then(response => response.json())
 }
 
 export const getAllRecentFollowing = (uid) => {
-    fetch(`${url}/users/${uid}/recentfollowers`)
+    return fetch(`${url}/users/${uid}/recentfollowers`)
         .then(response => response.json())
 }
 
 export const deleteFollowing = (fid) => {
-    fetch(`${url}/followings/${fid}`, {
+    debugger
+    return fetch(`${url}/followings/${fid}`, {
+        method: 'DELETE'
+    }).then(response => response.json())
+}
+
+export const deleteFollowingByFollowerAndCreator = (fid, cid) => {
+    debugger
+    return fetch(`${url}/followings/${fid}/followers/${cid}/creators`, {
         method: 'DELETE'
     }).then(response => response.json())
 }
 
 export const addFollowing = (newFollowing) => {
-    fetch(`${url}/followings`, {
+    return fetch(`${url}/followings`, {
         method: 'POST',
         body: JSON.stringify(newFollowing),
         headers: {
@@ -58,5 +66,6 @@ export default {
     addFollowing,
     getFollowingsByFollower,
     getUserFollowingsByFollower,
-    getUserFollowingsByCreator
+    getUserFollowingsByCreator,
+    deleteFollowingByFollowerAndCreator
 }

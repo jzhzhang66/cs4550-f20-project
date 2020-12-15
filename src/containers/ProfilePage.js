@@ -5,7 +5,8 @@ import {
     updateFollowersExpanded,
     updateFollowingExpanded,
     getFollowers,
-    getCreators
+    getCreators,
+    deleteFollowing
 } from "../actions/profileActions"
 import { Link } from 'react-router-dom';
 import { profile } from "../actions/userActions";
@@ -28,15 +29,15 @@ class ProfilePage extends Component {
     componentDidMount() {
         debugger
         this.props.profile().then(() => {
-        debugger
-        if (this.props.user.id === "") {
-            this.props.history.push('/login')
-        } else if (this.props.user.userType === "creator") {
-            this.props.getFollowers(this.props.user.id)
-        } else {
-            this.props.getCreators(this.props.user.id)
-        }
-    })
+            debugger
+            if (this.props.user.id === undefined || this.props.user.id === "") {
+                this.props.history.push('/login')
+            } else if (this.props.user.userType === "creator") {
+                this.props.getFollowers(this.props.user.id)
+            } else {
+                this.props.getCreators(this.props.user.id)
+            }
+        })
     }
 
     //TODO: redirect to login if not signed in
@@ -61,7 +62,12 @@ class ProfilePage extends Component {
                                 {this.props.followersExpanded &&
                                     <ul>
                                         {
-                                            this.props.followers.map(follower => <li>{follower.username}</li>)
+                                            this.props.followers.map(follower =>
+                                                <li>
+                                                    <Link to={`/profile/${follower.id}`}>
+                                                        {follower.username}
+                                                    </Link>
+                                                </li>)
                                         }
                                     </ul>}
                             </div>
@@ -73,12 +79,31 @@ class ProfilePage extends Component {
                                     {!this.props.followingExpanded && <button onClick={() => this.props.updateFollowingExpanded(true)} className="btn btn-outline-secondary">expand</button>}
                                     {this.props.followingExpanded && <button onClick={() => this.props.updateFollowingExpanded(false)} className="btn btn-outline-secondary">contract</button>}
                                 </h3>
-                                {this.props.followingExpanded &&
+                                {
+                                    this.props.followingExpanded &&
                                     <ul>
                                         {
-                                            this.props.following.map(following => <li>{following.username}</li>)
+                                            this.props.following.map(following =>
+                                                <li>
+                                                    <button type="button" 
+                                                    className="btn btn-outline-danger inline"
+                                                    onClick={() => this.props.deleteFollowing(this.props.user.id, following.id)}>
+                                                        <i className="fa fa-trash"></i>
+                                                    </button>
+                                                    <span class="ml-1">
+                                                        <Link to={`/profile/${following.id}`}>
+                                                            {following.username}
+                                                        </Link>
+                                                    </span>
+                                                </li>)
                                         }
-                                    </ul>}
+                                    </ul>
+                                }
+                                <Link className="link" to={`/userlist`}>
+                                    <button class="btn btn-outline-success">
+                                        Add Followers
+                                    </button>
+                                </Link>
                             </div>
                         }
                     </div>
@@ -126,7 +151,8 @@ const propertyToDispatchMapper = (dispatch) => ({
         expanded),
     profile: () => profile(dispatch),
     getFollowers: (userId) => getFollowers(dispatch, userId),
-    getCreators: (userId) => getCreators(dispatch, userId)
+    getCreators: (userId) => getCreators(dispatch, userId),
+    deleteFollowing: (fid, cid) => deleteFollowing(dispatch, fid, cid)
 })
 
 export default connect

@@ -3,7 +3,8 @@ import {
     UPDATE_FOLLOWING_EXPANDED,
     ADD_FOLLOWING,
     GET_FOLLOWERS,
-    GET_CREATORS
+    GET_CREATORS,
+    DELETE_FOLLOWING
 } from "../actions/profileActions";
 
 const initialState = {
@@ -29,9 +30,10 @@ const profileReducer = (state = initialState, action) => {
                 followingExpanded: action.followingExpanded
             }
         case ADD_FOLLOWING:
+            debugger
             return {
                 ...state,
-                followers: action.newFollowing
+                following: [...state.following, action.newFollowing]
             }
         case GET_FOLLOWERS:
             debugger
@@ -44,6 +46,12 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 following: action.users
+            }
+        case DELETE_FOLLOWING:
+            debugger
+            return {
+                ...state,
+                following: state.following.filter(f => f.id !== action.following.id)
             }
         default:
             return state

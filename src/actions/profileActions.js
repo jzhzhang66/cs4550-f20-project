@@ -5,6 +5,7 @@ export const UPDATE_FOLLOWING_EXPANDED = "UPDATE_FOLLOWING_EXPANDED";
 export const ADD_FOLLOWING = "ADD_FOLLOWING";
 export const GET_CREATORS = "GET_CREATORS";
 export const GET_FOLLOWERS = "GET_FOLLOWERS";
+export const DELETE_FOLLOWING = "DELETE_FOLLOWING"
 
 export const updateFollowersExpanded = (dispatch, followersExpanded) => {
     dispatch({
@@ -27,7 +28,8 @@ export const getFollowers = (dispatch, userId) => {
         return dispatch({
             type: GET_FOLLOWERS,
             users: status
-        })})
+        })
+    })
 }
 
 export const getCreators = (dispatch, userId) => {
@@ -39,9 +41,20 @@ export const getCreators = (dispatch, userId) => {
         }))
 }
 
-export const addFollowing = (dispatch, newFollowing) => {
+export const addFollowing = (dispatch, newFollowing, creator) => {
+    debugger
+    return followingService.addFollowing(newFollowing).then(status => 
     dispatch({
         type: ADD_FOLLOWING,
-        newFollowing
-    })
+        newFollowing: creator
+    }))
+}
+
+export const deleteFollowing = (dispatch, fid, cid) => {
+    debugger
+    return followingService.deleteFollowingByFollowerAndCreator(fid, cid).then(status =>
+        dispatch({
+            type: DELETE_FOLLOWING,
+            following: status
+        }))
 }

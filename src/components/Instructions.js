@@ -9,12 +9,12 @@ import {
 
 // put the router in here
 const Instructions = (
-    { recipe = {}, recipeInstructions = {steps: []} }) => {
+    { recipe = {}, recipeInstructions = {steps: [{ingredient: "", equipment: ""}]} }) => {
         console.log(recipeInstructions)
     return <div className="">
-        {/* <h2>Instructions</h2> */}
+        <h2>Instructions</h2>
 
-        {/* {
+        {
             recipeInstructions.steps.map(step =>
                 <li className="list-group-item">
                     {step.number + ": " + step.step}
@@ -30,7 +30,7 @@ const Instructions = (
                     )}
                 </li>
             )
-        } */}
+        }
     </div>
     }
 
