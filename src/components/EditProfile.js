@@ -1,120 +1,83 @@
 import React from "react";
-import {connect} from "react-redux";
+import { connect } from "react-redux";
 import {
-  editPassword,
-  updatePassword
+    editUser,
+    updateUser,
+    updateVerifyPassword
 } from "../actions/userActions";
-import {profile, updateUser} from "../services/UserService";
+import { profile } from "../actions/userActions";
 
 class EditProfile extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      userId: '',
-      username: '',
-      password: '',
-      userType: '',
-      verifyPassword: '',
-      isEditing: true
+    constructor(props) {
+        super(props)
     }
-  }
 
-  componentDidMount() {
-    // profile().then(profile => this.setState({
-    //   username: profile.username,
-    //   password: profile.password,
-    //   userId: profile.userId,
-    //   userType: profile.userType
-    // }))
-  }
+    componentDidMount() {
+        debugger
+        this.props.profile().then(() => {
+            debugger
+            if (this.props.user.id === "") {
+                this.props.history.push('/login')
+            }
 
-  // validation: does verify password match?
-  handleSubmit() {
-    if (this.state.password !== this.state.verifyPassword) {
-      alert("Passwords don't match");
-    } else {
-      updateUser(this.state.userId, {userId: this.userId, username: this.username, password: this.password, type: this.type})
+        })
     }
-  }
 
-  //TODO implement username edit
-  render() {
-    return (
-        <div className="container">
-          <h1 className="header-styling">Edit Profile</h1>
-          <form>
-            {/* Username */}
-            <div className="form-group row">
-              <label htmlFor="username" className="col-sm-2 col-form-label">
-                Username
-              </label>
-              <div className="col-sm-10">
-                <input className="form-control wbdv-field wbdv-username"
-                       id="username"
-                       value={this.state.username}
-                       onChange={(e) => this.setState({username: e.target.value})}
-                       disabled={!this.state.isEditing}/>
-              </div>
-            </div>
-            {/* Password */}
-            <div className="form-group row">
-              <label htmlFor="password" className="col-sm-2 col-form-label">
-                Password </label>
-              <div className="col-sm-8">
-                <input type="password"
-                       className="form-control wbdv-field wbdv-password"
-                       id="password"
-                       placeholder="123qwe#$%"
-                       value={this.state.password}
-                       onChange={(e) => this.setState(
-                           {password: e.target.value})}
-                       disabled={!this.state.isEditing}/></div>
-              <div className="col-sm">
-                <button className="btn btn-outline-secondary"
-                        onClick={() => this.setState({isEditing: true})}>Edit
-                </button>
-              </div>
-            </div>
 
-            {this.state.isEditing && <div className="form-group row">
-              <label className="col-sm-2 col-form-label">Verify
-                Password</label>
-              <div className="col-sm-8">
-                <input type="password"
-                       className="form-control wbdv-field wbdv-password"
-                       id="password"
-                       placeholder="123qwe#$%"
-                       value={this.state.verifyPassword}
-                       onChange={(e) => this.setState(
-                           {verifyPassword: e.target.value})}/>
-              </div>
-              <div className="col-sm">
-                <button className="btn btn-outline-secondary"
-                        onClick={() => this.handleSubmit()}>
-                  Submit
-                </button>
-              </div>
-            </div>}
-          </form>
-        </div>
-    )
-  }
+    //TODO implement username edit
+    render() {
+        return (
+            <div className="container">
+                <h1 className="header-styling">Edit Profile</h1>
+                    {/* Username */}
+                    <div className="form-group row">
+                        <label htmlFor="username" className="col-sm-2 col-form-label">
+                            Username
+                        </label>
+                        <div className="col-sm-10">
+                            <input className="form-control"
+                                id="username"
+                                value={this.props.tempUser.username}
+                                onChange={(event) => this.props.editUser({ ...this.props.tempUser, username: event.target.value })} />
+                        </div>
+                    </div>
+                    {/* Password */}
+                    <div className="form-group row">
+                        <label htmlFor="password" className="col-sm-2 col-form-label">
+                            Password </label>
+                        <div className="col-sm-8">
+                            <input type="password"
+                                className="form-control wbdv-field wbdv-password"
+                                id="password"
+                                placeholder="123qwe#$%"
+                                value={this.props.tempUser.password}
+                                onChange={(event) => this.props.editUser({ ...this.props.tempUser, password: event.target.value })} />
+                        </div>
+                        <div className="col-sm">
+                            <button className="btn btn-outline-secondary"
+                                onClick={() => this.props.updateUser(this.props.tempUser)}>
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+            </div>
+        )
+    }
 }
 
-// } = (username, password, isEditing, editPassword,
-//     updatePassword) => {
 
 const stateToPropertyMapper = (state) => ({
-  username: state.userReducer.username,
-  password: state.userReducer.password,
-  isEditing: state.userReducer.isEditing
+    tempUser: state.userReducer.tempUser,
+    user: state.userReducer.user
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
-  updatePassword: (newUser) => updatePassword(dispatch, newUser),
-  editPassword: () => editPassword(dispatch)
+    updateUser: (newUser) => updateUser(dispatch, newUser),
+    editUser: (newUser) => editUser(dispatch, newUser),
+    profile: () => profile(dispatch)
+
 })
 
 export default connect
-(stateToPropertyMapper, propertyToDispatchMapper)
-(EditProfile)
+    (stateToPropertyMapper, propertyToDispatchMapper)
+    (EditProfile)

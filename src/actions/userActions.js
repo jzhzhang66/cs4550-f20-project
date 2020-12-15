@@ -1,7 +1,7 @@
 import userService from "../services/UserService"
 
-export const EDIT_PASSWORD = "EDIT_PASSWORD";
-export const UPDATE_PASSWORD = "UPDATE_PASSWORD";
+export const EDIT_USER = "EDIT_USER";
+export const UPDATE_USER = "UPDATE_USER";
 export const GET_IS_USER = "GET_IS_USER";
 export const UPDATE_NEWUSER = "UPDATE_NEWUSER"
 export const UPDATE_VERIFYPASSWORD = "UPDATE_VERIFYPASSWORD"
@@ -10,12 +10,6 @@ export const CREATE_USER = "CREATE_USER"
 export const WRONG_LOGIN = "WRONG_LOGIN"
 export const SIGN_IN = "SIGN_IN"
 
-//not mine
-export const editPassword = (dispatch) => {
-  dispatch({
-    type: EDIT_PASSWORD
-  })
-}
 
 //not mine
 export const getIsUser = (dispatch, username) => {
@@ -26,16 +20,26 @@ export const getIsUser = (dispatch, username) => {
 }
 
 
-//fix this
-export const updatePassword = (dispatch, newUser) => {
+//------- Functions for Edit Profile -------
+
+export const editUser = (dispatch, tempUser) => {
   debugger
-  return userService.getIsUser(newUser.username).then(status =>
-    dispatch({
-      type: UPDATE_NEWUSER,
-      newUser,
-      isUsernameTaken: status
-    }))
+  return dispatch({
+    type: EDIT_USER,
+    tempUser: tempUser
+  })
 }
+
+export const updateUser = (dispatch, newUser) => {
+  debugger
+  return userService.updateUser(newUser.id, newUser).then(status => {
+    debugger
+    return dispatch({
+      type: UPDATE_USER,
+      tempUser: status
+    })})
+}
+
 //-------Functions for relogging in
 export const profile = (dispatch) => {
   debugger
