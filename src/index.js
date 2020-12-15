@@ -51,8 +51,11 @@ ReactDOM.render(
       <Route path="/search" exact component={Search} />
       <Route path="/search/recipes" exact component={RecipeSelector} />
       <Route path="/search/ingredients" exact component={IngredientSelector} />
-      <Route path="/recipes/:recipeId" exact component={RecipeDetails}/>
-      <Route path="/ingredients/:ingredientId" exact component={IngredientDetails}/>
+      <Route path={["/recipes/:recipeId", 
+      "/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId/recipesAndIngredients/search/recipes/:recipeId"]} 
+      exact component={RecipeDetails}/>
+      <Route path={["/ingredients/:ingredientId", 
+      "/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId/recipesAndIngredients/search/ingredients/:ingredientId"]}  exact component={IngredientDetails}/>
       <Route path="/login" exact component={LoginPage}/>
       <Route path="/register" exact component={Register}/>
       <Route path="/editprofile" exact component={EditProfile} />

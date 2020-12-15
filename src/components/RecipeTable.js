@@ -8,28 +8,17 @@ import {
 } from '../actions/recipeAndIngredientActions';
 
 const RecipeTable = (
-    { recipes = [], mealId = undefined }) =>
+    { recipes = []}) =>
 
     <div>
         <ul className="recipe-list">
             {
                 recipes.map(recipe =>
                     <li className="list-group-item list-item">
-                        <Link to={`/recipes/${recipe.id}`} className="recipe-title">
+                        <Link to={`./recipes/${recipe.id}`} className="recipe-title">
                             {recipe.title}
                         </Link>
                         <img src={recipe.image} alt="" className="recipe-image" />
-                        {mealId &&
-                            <div>
-                                <input
-                                    className="form-control"
-                                    placeholder="serving size"
-                                    onChange={(event) =>
-                                        console.log(event)} />
-                                <button className="btn btn-outline-secondary add-ingredient"
-                                    onClick={() => addRecipeForMeal(mealId, recipe)}>Add</button>
-                            </div>
-                        }
                     </li>
                 )
 
@@ -39,7 +28,7 @@ const RecipeTable = (
 
 
 const stateToPropertyMapper = (state) => ({
-    recipes: state.recipeReducer.recipes,
+    recipes: state.recipeReducer.recipes
 })
 
 const propertyToDispatchMapper = (dispatch) => ({

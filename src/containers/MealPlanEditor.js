@@ -12,6 +12,7 @@ import { findDailyPlan } from "../actions/dailyPlanActions";
 import { findMealPlanById } from "../actions/mealPlanActions";
 import { findMealsForDailyPlan } from "../actions/mealActions";
 import { findMeal } from "../actions/mealActions"
+import { findRecipesForMeal, findIngredientsForMeal } from "../actions/recipeAndIngredientActions"
 
 import "../App.css";
 
@@ -31,8 +32,8 @@ class MealPlanEditor extends React.Component {
             this.props.findMealsForDailyPlan(dailyPlanId)
         }
         if (mealId) {
-            this.props.findMeal(mealId)
-            //this.props.findTopicsForLesson(mealId)
+            this.props.findRecipesForMeal(mealId)
+            this.props.findIngredientsForMeal(mealId)
         }
         if (topicId) {
           //  this.props.findTopicById(topicId)
@@ -48,7 +49,8 @@ class MealPlanEditor extends React.Component {
         const mealId = this.props.match.params.mealId
         const previousMealId = prevProps.match.params.mealId
         if (mealId !== previousMealId) {
-           // this.props.findTopicsForLesson(mealId)
+           this.props.findRecipesForMeal(mealId)
+           this.props.findIngredientsForMeal(mealId)
         }
         //const topicId = this.props.match.params.topicId
        // console.log(topicId);
@@ -88,8 +90,8 @@ const propertyToDispatchMapper = (dispatch) => ({
     findDailyPlan: (dailyPlanId) => findDailyPlan(dispatch, dailyPlanId),
     findMealsForDailyPlan: (dailyPlanId) => findMealsForDailyPlan(dispatch, dailyPlanId),
     findMeal: (mealId) => findMeal(dispatch, mealId),
-   // findTopicsForLesson: (mealId) => findTopicsForLesson(dispatch, mealId),
-    //findTopicById: (topicId) => findTopic(dispatch, topicId),
+    findRecipesForMeal: (mealId) => findRecipesForMeal(dispatch, mealId),
+    findIngredientsForMeal: (mealId) => findIngredientsForMeal(dispatch, mealId)
 })
 
 export default connect
