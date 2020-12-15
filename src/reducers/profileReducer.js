@@ -1,26 +1,28 @@
 import {
     UPDATE_FOLLOWERS_EXPANDED,
-    UPDATE_FOLLOWING_EXPANDED
+    UPDATE_FOLLOWING_EXPANDED,
+    ADD_FOLLOWING,
+    GET_FOLLOWERS,
+    GET_CREATORS
 } from "../actions/profileActions";
 
 const initialState = {
     followersExpanded: false,
     followingExpanded: false,
     followers: [
-        { id: 123, name: 'Ashley Kim' },
-        { id: 234, name: 'Laurel Guo' },
-        { id: 345, name: 'Shine Kim' },
-        { id: 456, name: 'Meggie Chong' },
-        { id: 567, name: 'Yerin Myung' }
+        { id: 123, username: 'Ashley Kim' },
+        { id: 234, username: 'Laurel Guo' },
+        { id: 345, username: 'Shine Kim' },
+        { id: 456, username: 'Meggie Chong' }
     ],
     following: [
-        { id: 321, name: 'Bohn Bu' },
-        { id: 432, name: 'Baustin Kim' },
-        { id: 543, name: 'Helyin Yang' },
-        { id: 654, name: 'Lizzzyyyy Zhang' },
-        { id: 765, name: 'Christian Chou' }
+        { id: 321, username: 'Bohn Bu' },
+        { id: 432, username: 'Baustin Kim' },
+        { id: 543, username: 'Helyin Yang' },
+        { id: 654, username: 'Lizzzyyyy Zhang' },
+        { id: 765, username: 'Christian Chou' }
     ]
-    
+
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -35,9 +37,26 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 followingExpanded: action.followingExpanded
             }
-        default: 
+        case ADD_FOLLOWING:
+            return {
+                ...state,
+                followers: action.newFollowing
+            }
+        case GET_FOLLOWERS:
+            debugger
+            return {
+                ...state,
+                followers: action.users
+            }
+        case GET_CREATORS:
+            debugger
+            return {
+                ...state,
+                following: action.users
+            }
+        default:
             return state
     }
-} 
+}
 
 export default profileReducer

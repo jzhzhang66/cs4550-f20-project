@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from "react-redux";
 import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
 import {
-    updateNewUser, 
-    updateVerifyPassword, 
-    createUser2, 
-    updateUsername, 
+    updateNewUser,
+    updateVerifyPassword,
+    createUser2,
+    updateUsername,
     createUser
 } from "../actions/userActions";
 import '../css/Register.css'
@@ -67,9 +67,9 @@ class Register extends React.Component {
                     <label className="col-sm-2">
                     </label>
                     {
-                    this.props.verifyPassword !== this.props.newUser.password
-                    && <p class="col-sm-4 errortext text-danger">Passwords do not match</p>
-                }
+                        this.props.verifyPassword !== this.props.newUser.password
+                        && <p class="col-sm-4 errortext text-danger">Passwords do not match</p>
+                    }
                 </div>
                 <div className="form-group row">
                     <label for="typeDropdown"
@@ -93,11 +93,35 @@ class Register extends React.Component {
                         username or password are empty,
                         password and verify password don't match,
                         username already exists*/}
-                        <button type="button"
+                        {
+                            !(this.props.isUsernameTaken ||
+                                this.props.newUser.username === "" ||
+                                this.props.newUser.password === "" ||
+                                this.props.newUser.password !== this.props.verifyPassword) &&
+                            <button type="button"
+                                className="btn btn-outline-secondary btn-block"
+                                onClick={() => this.props.createUser2({ ...this.props.newUser }, this.props.history)}>
+                                Sign Up
+                            </button>
+
+                        }
+                        {
+                            (this.props.isUsernameTaken ||
+                                this.props.newUser.username === "" ||
+                                this.props.newUser.password === "" ||
+                                this.props.newUser.password !== this.props.verifyPassword) &&
+                                <button
+                                type="button"
+                                className="btn btn-outline-secondary btn-block"
+                                disable>
+                                    Fix Errors to Sign Up
+                                </button>
+                        }
+                        {/* <button type="button"
                             className="btn btn-outline-secondary btn-block"
-                            onClick={() => this.props.createUser2({...this.props.newUser}, this.props.history)}>
+                            onClick={() => this.props.createUser2({ ...this.props.newUser }, this.props.history)}>
                             Sign Up
-                        </button>
+                        </button> */}
                         {/* Login */}
                         <div className="row">
                             <div className="col-sm-10">

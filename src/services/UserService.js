@@ -54,7 +54,7 @@ export const signIn = (user) => {
     }).then(response => response.json());
 }
 
-export const profile = () => { 
+export const profile = () => {
     debugger
     return fetch(`${url}/profile`, {
         method: 'POST',

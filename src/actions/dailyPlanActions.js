@@ -6,7 +6,6 @@ export const UPDATE_DAILY_PLAN = "UPDATE_DAILY_PLAN"
 export const FIND_DAILY_PLAN_FOR_MEAL_PLAN = "FIND_DAILY_PLAN_FOR_MEAL_PLAN"
 export const FIND_DAILY_PLAN = "FIND_DAILY_PLAN"
 
-
 export const findDailyPlan = (dispatch, dailyPlanId) =>
     DailyPlanService.findDailyPlan(dailyPlanId)
         .then(dailyPlan =>
@@ -15,7 +14,7 @@ export const findDailyPlan = (dispatch, dailyPlanId) =>
                 dailyPlanId
             }))
 
-export const deleteDailyPlan = (dispatch, dailyPlan) =>
+export const deleteDailyPlan = (dispatch, dailyPlan) => 
     DailyPlanService.deleteDailyPlan(dailyPlan.id)
         .then(status =>
             dispatch({

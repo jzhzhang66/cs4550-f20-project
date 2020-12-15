@@ -21,7 +21,7 @@ export const deleteDailyPlan = (dailyPlanId) => {
     return fetch(`${dailyPlanUrl}/${dailyPlanId}`, {
         method: "DELETE"
     })
-        .then(response => response.json())
+        .then(response => console.log(response))
 }
 
 export const createDailyPlan = (mealPlanId, dailyPlan) => {
