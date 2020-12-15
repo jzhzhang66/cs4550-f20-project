@@ -14,7 +14,7 @@ class RecipeSelector extends React.Component {
     return (
         <div className="container">
           <SearchRecipe/>
-          <RecipeTable/>
+          <RecipeTable mealId={this.props.match.params.mealId}/>
         </div>
     )
   }

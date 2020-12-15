@@ -32,7 +32,7 @@ const DailyPlans = (
                           className="form-control"
                               onChange={(event) =>
                                   updateDailyPlan({ ...dailyPlan, title: event.target.value })}
-                              value={dailyPlan.title} />
+                              value={dailyPlan.name} />
 
                       </span>}
                   {
@@ -41,7 +41,7 @@ const DailyPlans = (
                           <button type="button" className="btn btn-outline-success inline" onClick={() => updateDailyPlan({ ...dailyPlan, editing: true })}>
                           <i className="fa fa-edit" />
                           </button>
-                          <Link className="link" to={`/edit/${mealPlan._id}/dailyPlans/${dailyPlan._id}`}>{dailyPlan.title}</Link>
+                          <Link className="link" to={`/edit/${mealPlan.id}/dailyPlans/${dailyPlan.id}`}>{dailyPlan.name}</Link>
                       </label>}
 
               </li>
@@ -49,7 +49,7 @@ const DailyPlans = (
           )
       }
   </ul>
-  <button type="button" className="btn btn-outline-secondary inline create" onClick={() => createDailyPlan(mealPlan, { title: "New Daily Plan" })}>
+  <button type="button" className="btn btn-outline-secondary inline create" onClick={() => createDailyPlan(mealPlan, { name: "New Daily Plan" })}>
       Create Daily Plan
   </button>
 </div>
