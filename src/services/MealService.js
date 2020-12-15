@@ -1,9 +1,10 @@
-const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/modules'
-const mealUrl = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/lessons'
+// const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/modules'
+// const mealUrl = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/lessons'
+const url = 'http://localhost:8080/api/dailyplans'
+const mealUrl = 'http://localhost:8080/api/meals'
 
 export const findMeal = (mealId) =>
     fetch(`${mealUrl}/${mealId}`).then(response => response.json())
-
 
 export const findMealsForDailyPlan = (dailyPlanId) =>
     fetch(`${url}/${dailyPlanId}/meals`, {
@@ -15,7 +16,7 @@ export const deleteMeal = (mealId) =>
     fetch(`${mealUrl}/${mealId}`, {
         method: "DELETE"
     })
-        .then(response => response.json())
+        .then(response => console.log(response))
 
 export const createMeal = (dailyPlanId, meal) =>
 

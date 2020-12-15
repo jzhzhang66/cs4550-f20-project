@@ -1,13 +1,13 @@
 import {
-  EDIT_PASSWORD,
-  UPDATE_PASSWORD,
+  EDIT_USER,
+  UPDATE_USER,
   GET_IS_USER,
   UPDATE_NEWUSER,
   UPDATE_VERIFYPASSWORD,
   UPDATE_USERNAME,
   CREATE_USER,
   WRONG_LOGIN,
-  SIGN_IN
+  SIGN_IN,
 
 } from "../actions/userActions";
 
@@ -20,27 +20,25 @@ const initialState = {
   user: {
     id: ""
   },
+  tempUser: {
+
+  },
   verifyPassword: "",
-  isEditing: false,
   isUsernameTaken: false,
   isWrong: false
 }
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    //not me
-    case EDIT_PASSWORD:
+    case EDIT_USER:
       return {
         ...state,
-        isEditing: true
+        tempUser: action.tempUser
       }
-    //not me
-    case UPDATE_PASSWORD:
+    case UPDATE_USER:
       return {
         ...state,
-        username: action.username,
-        password: action.password,
-        isEditing: false
+        user: action.tempUser,
       }
     //not me
     case GET_IS_USER:
@@ -67,7 +65,8 @@ const userReducer = (state = initialState, action) => {
     case CREATE_USER:
       return {
         ...state,
-        user: action.newUser
+        user: action.newUser,
+        tempUser: action.newUser
       }
     case WRONG_LOGIN:
       debugger
@@ -80,7 +79,8 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isWrong: false,
-        user: action.user
+        user: action.user,
+        tempUser: action.user
       }
     default:
       return state

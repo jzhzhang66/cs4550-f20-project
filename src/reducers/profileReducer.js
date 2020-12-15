@@ -10,17 +10,8 @@ const initialState = {
     followersExpanded: false,
     followingExpanded: false,
     followers: [
-        { id: 123, username: 'Ashley Kim' },
-        { id: 234, username: 'Laurel Guo' },
-        { id: 345, username: 'Shine Kim' },
-        { id: 456, username: 'Meggie Chong' }
     ],
     following: [
-        { id: 321, username: 'Bohn Bu' },
-        { id: 432, username: 'Baustin Kim' },
-        { id: 543, username: 'Helyin Yang' },
-        { id: 654, username: 'Lizzzyyyy Zhang' },
-        { id: 765, username: 'Christian Chou' }
     ]
 
 }

@@ -29,8 +29,8 @@ const Meals = ({ meals = [], dailyPlanId, mealPlan, deleteMeal, createMeal, upda
                         <input
                         className="form-control"
                             onChange={(event) =>
-                                updateMeal({ ...meal, title: event.target.value })}
-                            value={meal.title} />
+                                updateMeal({ ...meal, name: event.target.value })}
+                            value={meal.name} />
                     </span>}
                 {
                     !meal.editing &&
@@ -38,20 +38,25 @@ const Meals = ({ meals = [], dailyPlanId, mealPlan, deleteMeal, createMeal, upda
                         <button type="button" className="btn btn-outline-success inline" onClick={() => updateMeal({ ...meal, editing: true })}>
                             <i className="fa fa-edit" />
                         </button>
-                        <Link className="link" to={`/edit/${mealPlan._id}/dailyPlans/${dailyPlanId}/meals/${meal._id}/recipesAndIngredients`}>{meal.title}</Link>
+                        <Link className="link" to={`/edit/${mealPlan.id}/dailyPlans/${dailyPlanId}/meals/${meal.id}/recipesAndIngredients`}>{meal.name}</Link>
                     </label>}
             </li>)
     }
 </ul>
 <button type="button" className="btn btn-outline-secondary inline" onClick={() =>
-    createMeal(dailyPlanId, { title: "New Meal" })}>Create Meal</button>
+    createMeal(dailyPlanId, { name: "New Meal" })}>Create Meal</button>
 </div>
 
-const stateToPropertyMapper = (state) => ({
-    meals: state.mealReducer.meals,
-    dailyPlanId: state.mealReducer.dailyPlanId,
-    mealPlan: state.mealPlanReducer.mealPlan
-})
+const stateToPropertyMapper = (state) => {
+    debugger
+    return ({
+        meals: state.mealReducer.meals,
+        dailyPlanId: state.mealReducer.dailyPlanId,
+        mealPlan: state.mealPlanReducer.mealPlan
+    })
+}
+
+
 
 const propertyToDispatchMapper = (dispatch) => ({
     deleteMeal: (meal) => deleteMeal(dispatch, meal),

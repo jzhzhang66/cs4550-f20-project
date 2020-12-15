@@ -41,3 +41,10 @@ export const findRecipesForMeal = (dispatch, mealId) => {
         mealId
     })
 }
+
+export const findIngredientsForMeal = (dispatch, mealId) => {
+        return dispatch({
+            type: FIND_INGREDIENTS_FOR_MEAL,
+            mealId
+        })
+    }

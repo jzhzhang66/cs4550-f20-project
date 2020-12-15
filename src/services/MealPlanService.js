@@ -1,23 +1,32 @@
 // const url2 = 'https://wbdv-generic-server.herokuapp.com/api/jannunzi/courses'
-const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/courses2'
-// const url = 'http://localhost:8080/api/mealplans'
+// const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/courses2'
+const url = 'http://localhost:8080/api'
 
 export const findAllMealPlans = () =>
-    fetch(url).then(response => response.json())
-
+    fetch(`${url}/mealplans`)
+        .then(response => response.json())
 
 export const findMealPlanById = (mealPlanId) =>
-    fetch(`${url}/${mealPlanId}`, {
+    fetch(`${url}/mealplans/${mealPlanId}`, {
         method: "GET"
     })
         .then(response => response.json())
 
-export const deleteMealPlan = (mealPlanId) =>
-    fetch(`${url}/${mealPlanId}`, { method: "DELETE" })
+export const findMealPlansByCreator = (creatorId) => {
+    debugger
+    return fetch(`${url}/creator/${creatorId}/mealplans`)
+        .then(response => response.json())
+}
+
+export const deleteMealPlan = (mealPlan) =>
+    fetch(`${url}/mealplans/${mealPlan.id}`, { 
+        method: "DELETE" 
+    })
         .then(response => response.json())
 
-export const createMealPlan = (newMealPlan) =>
-    fetch(url, {
+export const createMealPlan = (creatorId, newMealPlan) => {
+    debugger
+    return fetch(`${url}/creator/${creatorId}/mealplan`, {
         method: "POST",
         body: JSON.stringify(newMealPlan),
         headers: {
@@ -25,10 +34,12 @@ export const createMealPlan = (newMealPlan) =>
         }
     })
         .then(response => response.json())
+}
+
 
 
 export const updateMealPlan = (mealPlanId, mealPlan) =>
-    fetch(`${url}/${mealPlanId}`, {
+    fetch(`${url}/mealplans/${mealPlanId}`, {
         method: "PUT",
         body: JSON.stringify(mealPlan),
         headers: {
@@ -41,10 +52,12 @@ export const getMealPlanByCreator = (creatorId) =>
     fetch(`${url}/creator/${creatorId}/mealplans`).then(response => response.json())
 
 
+
 export default {
     findAllMealPlans,
     deleteMealPlan,
     createMealPlan,
     updateMealPlan,
-    findMealPlanById
+    findMealPlanById,
+    findMealPlansByCreator
 }

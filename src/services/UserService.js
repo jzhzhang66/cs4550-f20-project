@@ -2,7 +2,7 @@ const url = "http://localhost:8080/api"
 
 // function verifies user exists, returns boolean
 export const getIsUserAndPass = (user) => {
-    fetch(`${url}/is/users/password`)
+    return fetch(`${url}/is/users/password`)
         .then(response => response.json())
 }
 
@@ -13,18 +13,21 @@ export const getIsUser = (username) => {
 }
 
 export const updateUser = (userId, newUser) => {
-    fetch(`${url}/${userId}`, {
+    debugger
+    return fetch(`${url}/users/${userId}`, {
         method: 'PUT',
         body: JSON.stringify(newUser),
         headers: {
             'content-type': 'application/json'
         }
     })
-        .then(response => response.json())
+        .then(response => {
+            debugger 
+            return response.json()})
 }
 
 export const deleteUser = (userId) => {
-    fetch(`${url}/${userId}`, {
+    return fetch(`${url}/${userId}`, {
         method: 'DELETE'
     })
         .then(response => response.json())

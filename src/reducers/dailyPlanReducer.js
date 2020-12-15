@@ -3,7 +3,7 @@ import {
     CREATE_DAILY_PLAN,
     UPDATE_DAILY_PLAN,
     FIND_DAILY_PLAN,
-    FIND_DAILY_PLAN_FOR_MEAL_PLAN
+    FIND_DAILY_PLAN_FOR_MEAL_PLAN,
 
   } from "../actions/dailyPlanActions"
 
@@ -39,7 +39,7 @@ const dailyPlanReducer = (state=initialState, action) => {
         case DELETE_DAILY_PLAN:
             return {
                 ...state,
-                dailyPlans: state.dailyPlans.filter(dailyPlan => dailyPlan._id !== action.dailyPlan._id)
+                dailyPlans: state.dailyPlans.filter(dailyPlan => dailyPlan.id !== action.dailyPlan.id)
             }
         default:
             return state
