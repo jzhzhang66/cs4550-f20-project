@@ -6,8 +6,8 @@ const local = 'http://localhost:8080/api'
 
 const heroku = "https://planme-al.herokuapp.com/api"
 
-const url = `${local}/dailyplans`;
-const mealUrl = `${local}/meals`
+const url = `${heroku}/dailyplans`;
+const mealUrl = `${heroku}/meals`
 
 export const findMeal = (mealId) =>
     fetch(`${mealUrl}/${mealId}`).then(response => response.json())

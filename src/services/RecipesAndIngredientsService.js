@@ -1,6 +1,11 @@
-const recipeUrl = 'http://localhost:8080/api/recipes'
-const mealUrl = 'http://localhost:8080/api/meals'
-const ingredientUrl = 'http://localhost:8080/api/ingredients'
+const localurl = 'http://localhost:8080/api'
+const heroku = "https://planme-al.herokuapp.com/api"
+
+const url = heroku
+
+const recipeUrl = `${url}/recipes`
+const mealUrl = `${url}/meals`
+const ingredientUrl = `${url}/ingredients`
 
 export const findRecipesForMeal = (mealId) => {
     return fetch(`${mealUrl}/${mealId}/recipes`, {

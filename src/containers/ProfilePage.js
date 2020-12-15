@@ -10,6 +10,11 @@ import {
 } from "../actions/profileActions"
 import { Link } from 'react-router-dom';
 import { profile } from "../actions/userActions";
+import {
+    findMealPlansByCreator,
+    getFavoriteMealPlansByFollowerId
+} from "../actions/mealPlanActions";
+import ViewMealPlanCard from "../components/ViewMealPlanCard";
 
 class ProfilePage extends Component {
 
@@ -22,7 +27,8 @@ class ProfilePage extends Component {
                 userType: ''
             },
             followers: [],
-            following: []
+            following: [],
+            mealPlans: []
         }
     }
 
@@ -33,8 +39,10 @@ class ProfilePage extends Component {
                 this.props.history.push('/login')
             } else if (this.props.user.userType === "creator") {
                 this.props.getFollowers(this.props.user.id)
+                this.props.findMealPlansByCreator(this.props.user.id).then(mealPlans => this.setState({ mealPlans: mealPlans.mealPlans }))
             } else {
                 this.props.getCreators(this.props.user.id)
+                this.props.getFavoritesByFollowerId(this.props.user.id).then(mealPlans => this.setState({ mealPlans: mealPlans.mealPlans }))
             }
         })
     }
@@ -84,9 +92,9 @@ class ProfilePage extends Component {
                                         {
                                             this.props.following.map(following =>
                                                 <li>
-                                                    <button type="button" 
-                                                    className="btn btn-outline-danger inline"
-                                                    onClick={() => this.props.deleteFollowing(this.props.user.id, following.id)}>
+                                                    <button type="button"
+                                                        className="btn btn-outline-danger inline"
+                                                        onClick={() => this.props.deleteFollowing(this.props.user.id, following.id)}>
                                                         <i className="fa fa-trash"></i>
                                                     </button>
                                                     <span class="ml-1">
@@ -140,7 +148,8 @@ const stateToPropertyMapper = (state) => ({
     followersExpanded: state.profileReducer.followersExpanded,
     following: state.profileReducer.following,
     followers: state.profileReducer.followers,
-    user: state.userReducer.user
+    user: state.userReducer.user,
+    mealPlans: state.mealPlanReducer.mealPlans
 })
 
 const propertyToDispatchMapper = (dispatch) => ({
@@ -151,7 +160,10 @@ const propertyToDispatchMapper = (dispatch) => ({
     profile: () => profile(dispatch),
     getFollowers: (userId) => getFollowers(dispatch, userId),
     getCreators: (userId) => getCreators(dispatch, userId),
-    deleteFollowing: (fid, cid) => deleteFollowing(dispatch, fid, cid)
+    deleteFollowing: (fid, cid) => deleteFollowing(dispatch, fid, cid),
+    findMealPlansByCreator: (creatorId) => findMealPlansByCreator(dispatch,
+        creatorId),
+    getFavoritesByFollowerId: (uid) => getFavoriteMealPlansByFollowerId(dispatch, uid)
 })
 
 export default connect

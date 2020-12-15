@@ -4,7 +4,6 @@ import {Link} from "react-router-dom";
 
 class ViewMealPlanCard extends React.Component {
   state = {
-    editing: false,
     mealPlan: this.props.mealPlan
   }
 
@@ -22,7 +21,7 @@ class ViewMealPlanCard extends React.Component {
               <small className="text-muted">
                 Created: {this.props.mealPlan.time}
                 <br/>
-                Owner: {this.props.viewedUser.username}
+                Owner: {this.props.creator.username}
               </small></p>
           </div>
         </div>
