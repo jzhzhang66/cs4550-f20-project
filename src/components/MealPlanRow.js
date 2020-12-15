@@ -11,12 +11,13 @@ import {
 import { connect } from 'react-redux';
 
 class MealPlanRow extends React.Component {
-    state = {
-        editing: false,
-        mealPlan: this.props.mealPlan
-    }
+
     constructor(props) {
         super(props)
+        this.state = {
+            editing: false,
+            mealPlan: this.props.mealPlan
+        }
     }
 
     render() {
@@ -26,7 +27,7 @@ class MealPlanRow extends React.Component {
                     {
                         !this.state.editing &&
                         <Link to={`/edit/${this.state.mealPlan.id}`}>
-                            <i class="fa fa-file-text" aria-hidden="true"></i> {this.state.mealPlan.name}
+                            {this.state.mealPlan.name}
                         </Link>
                     }
                     {
@@ -38,40 +39,41 @@ class MealPlanRow extends React.Component {
                 </td>
                 <td className="priority-3">{this.props.mealPlan.diet}</td>
                 <td className="priority-2">{this.props.mealPlan.time}</td>
-                <td className="priority-2"></td>
+                <td className="priority-1">
                 {
                     this.state.editing &&
-                    <td className="priority-1">
-                        <button onClick={() => this.props.updateMealPlan(this.mealPlan)}>
-                            <i className="fa fa-check" aria-hidden="true"></i>
+                        <button className="btn" onClick={() => this.props.updateMealPlan(this.mealPlan)}>
+                            <i className="fa fa-check" aria-hidden="true"/>
                         </button>
-                    </td>
                 }
                 {
                     !this.state.editing &&
-                    <td className="priority-1">
-                        <i className="fa fa-pencil" onClick={() => this.setState({ editing: true })} aria-hidden="true"></i>
-                    </td>
+                    <button className="btn">
+                        <i className="fa fa-pen" onClick={() => this.setState({ editing: true })} aria-hidden="true"/>
+                    </button>
                 }
                 {
                     !this.state.editing &&
-                    <td className="priority-1">
-                        <i class="fa fa-trash" onClick={() => this.props.deleteMealPlan(this.props.mealPlan)} aria-hidden="true"></i>
-                    </td>
+                    <button className="btn">
+                        <i class="fa fa-trash" onClick={() => this.props.deleteMealPlan(this.props.mealPlan)} aria-hidden="true"/>
+                    </button>
                 }
+                </td>
             </tr>
         )
     }
 }
 
-const stateToPropertyMapper = (state) => {
-    console.log(state)
-    debugger
-    return ({
-        creatorId: state.userReducer.user.id,
-        mealPlans: state.mealPlanReducer.mealPlans
-    })
-}
+const stateToPropertyMapper = (state) => ({
+    creatorId: state.userReducer.user.id,
+    mealPlans: state.mealPlanReducer.mealPlans
+    // console.log(state)
+    // debugger
+    // return ({
+    //     creatorId: state.userReducer.user.id,
+    //     mealPlans: state.mealPlanReducer.mealPlans
+    // })
+})
 
 const propertyToDispatchMapper = (dispatch) => ({
     deleteMealPlan: (mealPlan) => deleteMealPlan(dispatch, mealPlan),
