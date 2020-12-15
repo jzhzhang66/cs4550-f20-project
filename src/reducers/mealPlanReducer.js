@@ -7,7 +7,8 @@ import {
     UPDATE_MEAL_PLAN,
     CHANGE_DISPLAY,
     ENTER_TITLE,
-    UPDATE_TITLE
+    UPDATE_TITLE,
+    GET_FAVORITE_MEAL_PLANS_BY_FOLLOWER
 } from "../actions/mealPlanActions"
 
 const initialState = {
@@ -19,6 +20,11 @@ const initialState = {
 
 const mealPlanReducer = (state = initialState, action) => {
     switch (action.type) {
+        case GET_FAVORITE_MEAL_PLANS_BY_FOLLOWER:
+            return {
+                ...state,
+                mealPlans: action.mealPlans
+            }
         case FIND_ALL_MEAL_PLANS:
             return {
                 ...state,
@@ -26,8 +32,9 @@ const mealPlanReducer = (state = initialState, action) => {
             }
         case CREATE_MEAL_PLAN:
             return {
-                ...state,
-                mealPlans: [...state.mealPlans, action.newMealPlan],
+                mealPlans: [
+                    ...state.mealPlans,
+                    action.newMealPlan],
                 title: ""
             }
         case FIND_MEAL_PLANS_BY_CREATOR:

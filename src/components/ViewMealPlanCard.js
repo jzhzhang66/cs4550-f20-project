@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/MealPlanCard.css"
+import {Link} from "react-router-dom";
 
 class ViewMealPlanCard extends React.Component {
   state = {
@@ -15,8 +16,14 @@ class ViewMealPlanCard extends React.Component {
     return (
         <div className="card">
           <div className="card-body card-styling">
-            <p className="card-text">Meal Plan Description. This meal plan is a
-              great meal plan and has cool things.</p>
+            <Link to={`/edit/${this.props.mealPlan.id}`}><h4 className="card-title">{this.props.mealPlan.name}</h4></Link>
+            <p className="card-text">{this.props.mealPlan.diet} diet</p>
+            <p className="card-text">
+              <small className="text-muted">
+                Created: {this.props.mealPlan.time}
+                <br/>
+                Owner: {this.props.viewedUser.username}
+              </small></p>
           </div>
         </div>
     )

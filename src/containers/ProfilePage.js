@@ -27,7 +27,6 @@ class ProfilePage extends Component {
     }
 
     componentDidMount() {
-        debugger
         this.props.profile().then(() => {
             debugger
             if (this.props.user.id === undefined || this.props.user.id === "") {

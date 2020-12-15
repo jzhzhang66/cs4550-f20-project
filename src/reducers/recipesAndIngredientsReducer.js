@@ -9,42 +9,46 @@ import {
 } from "../actions/recipeAndIngredientActions"
 
 const initialState = {
-
-    recipes: [
-        {id: "123", mealId: "5fd2a5458508590017dc1dba", title: "mac and cheese"},
-        {id: "234", mealId: "5fd2a5458508590017dc1dba", title: "chicken salad"},
-        {id: "345", mealId: "5fd2eef98508590017dc1dbf", title: "sweet potato soup"},
-    ],
-    ingredients: [
-        {id: "456", mealId: "5fd2eef98508590017dc1dbf", title: "strawberries"},
-        {id: "567", mealId: "5fd2eef98508590017dc1dbf", title: "chocolate"},
-        {id: "678", mealId: "5fd2a5458508590017dc1dba", title: "yogurt"},
-    ]
+    recipes: [],
+    ingredients: []
 }
 
 
-const recipesAndIngredientsReducer = (state=initialState, action) => {
+const recipesAndIngredientsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case DELETE_INGREDIENT: 
-        debugger
+        case DELETE_INGREDIENT:
+            debugger
             return {
                 ...state,
                 ingredients: state.ingredients.filter(ingredient => ingredient.id !== action.ingredientId)
             }
-        case DELETE_RECIPE: 
+        case DELETE_RECIPE:
             return {
-                ...state, 
+                ...state,
                 recipes: state.recipes.filter(recipe => recipe.id !== action.recipeId)
             }
-        case ADD_RECIPE_FOR_MEAL: 
+        case ADD_RECIPE_FOR_MEAL:
+            debugger
             return {
-                ...state, 
+                ...state,
                 recipes: [...state.recipes, action.recipe]
             }
-        case ADD_INGREDIENT_FOR_MEAL: 
+        case ADD_INGREDIENT_FOR_MEAL:
+            debugger
             return {
-                ...state, 
+                ...state,
                 ingredients: [...state.ingredients, action.ingredient]
+            }
+        case FIND_RECIPES_FOR_MEAL:
+            debugger
+            return {
+                ...state,
+                recipes: action.recipes
+            }
+        case FIND_INGREDIENTS_FOR_MEAL:
+            return {
+                ...state,
+                ingredients: action.ingredients
             }
         default:
             return state

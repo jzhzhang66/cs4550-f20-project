@@ -19,25 +19,9 @@ const IngredientTable = ({ addIngredientForMeal, ingredients = [], mealId = unde
             {
                 ingredients.map(ingredient =>
                     <li className="list-group-item list-item">
-                        <Link to={`/ingredients/${ingredient.id}`} className="recipe-title">
+                        <Link to={`./ingredients/${ingredient.id}`} className="recipe-title">
                             {ingredient.name}
                         </Link>
-                        {mealId &&
-                            <button className="btn btn-outline-secondary add-ingredient"
-                                onClick={() => addIngredientForMeal(mealId, ingredient)}>Add</button>}
-                        <input
-                            className="form-control"
-                            placeholder="serving size"
-                            onChange={(event) =>
-                                console.log(event)} />
-                        <select>
-                            {  
-                            //    findIngredientInfoById(ingredient.id)
-                            }
-                            {
-                                currIngredient.possibleUnits.map(unit => <option value={unit}>{unit}</option>)
-                            }
-                        </select>
                     </li>
                 )
             }

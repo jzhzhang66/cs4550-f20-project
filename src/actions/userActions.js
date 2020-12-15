@@ -9,14 +9,16 @@ export const UPDATE_USERNAME = "UPDATE_USERNAME"
 export const CREATE_USER = "CREATE_USER"
 export const WRONG_LOGIN = "WRONG_LOGIN"
 export const SIGN_IN = "SIGN_IN"
+export const GET_USER_BY_ID = "GET_USER_BY_ID"
 
 
 //not mine
-export const getIsUser = (dispatch, username) => {
-  userService.getIsUser(username).then(status => dispatch({
-    type: GET_IS_USER,
-    username
-  }))
+export const getUserById = (dispatch, userId) => {
+  return userService.getUserById(userId).then(user => dispatch({
+    type: GET_USER_BY_ID,
+    user
+  })
+  )
 }
 
 
@@ -71,8 +73,6 @@ export const signIn = (dispatch, user, history) => {
       }
     })
 }
-
-
 
 //------- Functions for Registration -----
 

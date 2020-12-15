@@ -8,7 +8,7 @@ import {
   CREATE_USER,
   WRONG_LOGIN,
   SIGN_IN,
-
+  GET_USER_BY_ID
 } from "../actions/userActions";
 
 const initialState = {
@@ -18,18 +18,25 @@ const initialState = {
     userType: "follower"
   },
   user: {
-    id: ""
+    id: "",
+    username:''
   },
   tempUser: {
 
   },
   verifyPassword: "",
   isUsernameTaken: false,
-  isWrong: false
+  isWrong: false,
+  users: []
 }
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
+    case GET_USER_BY_ID:
+      return {
+        ...state,
+        user: action.user
+      }
     case EDIT_USER:
       return {
         ...state,

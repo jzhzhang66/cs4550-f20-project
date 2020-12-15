@@ -8,10 +8,13 @@ import {profile} from "../actions/userActions";
 class HomePage extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      user: []
+    }
   }
 
   componentDidMount() {
-    this.props.profile().then(profile => console.log(profile))
+    this.props.profile().then(profile => this.setState({user: profile.user}))
   }
 
   render() {
@@ -159,11 +162,10 @@ class HomePage extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-  // randomRecipes: state.homeReducer.randomRecipes
+  mealPlans: state.mealPlanReducer
 });
 
 const propertyToDispatchMapper = (dispatch) => ({
-  findRandomRecipes: (numRecipes) => findRandomRecipes(dispatch, numRecipes),
   profile: () => profile(dispatch)
 });
 
