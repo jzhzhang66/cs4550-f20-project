@@ -1,6 +1,10 @@
 // const url2 = 'https://wbdv-generic-server.herokuapp.com/api/jannunzi/courses'
 // const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/courses2'
-const url = 'http://localhost:8080/api'
+const localurl = 'http://localhost:8080/api'
+
+const heroku = "https://planme-al.herokuapp.com/api"
+
+const url = heroku;
 
 export const findAllMealPlans = () =>
     fetch(`${url}/mealplans`)
@@ -47,6 +51,9 @@ export const updateMealPlan = (mealPlanId, mealPlan) =>
         }
     })
         .then(response => response.json())
+
+export const getMealPlanByCreator = (creatorId) =>
+    fetch(`${url}/creator/${creatorId}/mealplans`).then(response => response.json())
 
 
 

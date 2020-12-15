@@ -1,7 +1,12 @@
 // const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/modules'
 // const mealUrl = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/lessons'
-const url = 'http://localhost:8080/api/dailyplans'
-const mealUrl = 'http://localhost:8080/api/meals'
+const localurl = 'http://localhost:8080/api/dailyplans'
+const localmealUrl = 'http://localhost:8080/api/meals'
+
+const heroku = "https://planme-al.herokuapp.com/api"
+
+const url = `${heroku}/dailyplans`;
+const mealUrl = `${heroku}/meals`
 
 export const findMeal = (mealId) =>
     fetch(`${mealUrl}/${mealId}`).then(response => response.json())

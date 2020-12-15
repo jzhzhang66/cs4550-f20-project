@@ -1,4 +1,10 @@
-const url = "http://localhost:8080/api"
+const localurl = "http://localhost:8080/api"
+
+const heroku = "https://planme-al.herokuapp.com/api"
+
+const url = heroku;
+
+//testing
 
 // function verifies user exists, returns boolean
 export const getIsUserAndPass = (user) => {
@@ -65,6 +71,14 @@ export const profile = () => {
     }).then(response => response.json());
 }
 
+export const getAllUsers = () => {
+    return fetch(`${url}/users`).then(response => response.json())
+}
+
+export const getUserById = (userId) => {
+    return fetch(`${url}/user/${userId}`).then(response => response.json())
+}
+
 export default {
     getIsUserAndPass,
     getIsUser,
@@ -72,5 +86,7 @@ export default {
     deleteUser,
     addUser,
     profile,
-    signIn
+    signIn,
+    getAllUsers,
+    getUserById
 }

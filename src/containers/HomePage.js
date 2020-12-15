@@ -3,14 +3,15 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {findRandomRecipes} from "../actions/homeActions";
 import '../css/HomePage.css';
+import {profile} from "../actions/userActions";
 
 class HomePage extends React.Component {
-  popularUser = []; // the most followed user from our database's meal plan - need a function to retrieve the user's meal plan
-  userFollowings = []; // the user's followings
-  randomMealPlans = []; // random meal plans
+  constructor(props) {
+    super(props)
+  }
 
   componentDidMount() {
-    // this.props.findRandomRecipes(4)
+    this.props.profile().then(profile => console.log(profile))
   }
 
   render() {
@@ -162,7 +163,8 @@ const stateToPropertyMapper = (state) => ({
 });
 
 const propertyToDispatchMapper = (dispatch) => ({
-  findRandomRecipes: (numRecipes) => findRandomRecipes(dispatch, numRecipes)
+  findRandomRecipes: (numRecipes) => findRandomRecipes(dispatch, numRecipes),
+  profile: () => profile(dispatch)
 });
 
 export default connect

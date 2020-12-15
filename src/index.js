@@ -32,6 +32,7 @@ import mealReducer from "./reducers/mealReducer"
 import ingredientReducer from "./reducers/ingredientReducer"
 import recipesAndIngredientsReducer from "./reducers/recipesAndIngredientsReducer"
 import Search from "./containers/Search"
+import UserList from "./components/UserList";
 
 const rootReducer = combineReducers({
   recipeReducer, profileReducer, homeReducer, userReducer, mealPlanReducer, mealReducer, 
@@ -70,6 +71,7 @@ ReactDOM.render(
       exact component={IngredientSelector}/>
       <Route path="/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId/recipesAndIngredients/search/recipes" 
       exact component={RecipeSelector}/>
+      <Route path="/userlist" exact component={UserList}/>
     </BrowserRouter>
   </Provider>
   ,
