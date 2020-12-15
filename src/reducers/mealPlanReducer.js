@@ -51,12 +51,12 @@ const mealPlanReducer = (state = initialState, action) => {
             return {
                 ...state,
                 mealPlans: state.mealPlans.map(mealPlan =>
-                    mealPlan.id === action.mealPlanId ? action.mealPlan : mealPlan)
+                    mealPlan.id === action.mealPlan.id ? action.mealPlan : mealPlan)
             }
         case DELETE_MEAL_PLAN:
             return {
                 ...state,
-                mealPlans: state.mealPlans.filter(mealPlan => mealPlan.id !== action.mealPlanId)
+                mealPlans: state.mealPlans.filter(mealPlan => mealPlan.id !== action.mealPlan.id)
             }
         case CHANGE_DISPLAY:
             return {

@@ -10,11 +10,14 @@ export const findAllMealPlans = () =>
     fetch(`${url}/mealplans`)
     .then(response => response.json())
 
-export const findMealPlanById = (mealPlanId) =>
-    fetch(`${url}/mealplans/${mealPlanId}`, {
-      method: "GET"
-    })
-    .then(response => response.json())
+export const findMealPlanById = (mealPlanId) => {
+  debugger
+  return fetch(`${url}/mealplans/${mealPlanId}`, {
+    method: "GET"
+  })
+  .then(response => response.json())
+}
+
 
 export const findMealPlansByCreator = (creatorId) => {
   debugger
@@ -22,11 +25,14 @@ export const findMealPlansByCreator = (creatorId) => {
   .then(response => response.json())
 }
 
-export const deleteMealPlan = (mealPlan) =>
-    fetch(`${url}/mealplans/${mealPlan.id}`, {
-      method: "DELETE"
-    })
-    .then(response => response.json())
+export const deleteMealPlan = (mealPlanId) =>  {
+  debugger
+  return fetch(`${url}/mealplans/${mealPlanId}`, {
+    method: "DELETE"
+  })
+  .then(response => console.log(response))
+}
+
 
 export const createMealPlan = (creatorId, newMealPlan) => {
   debugger
@@ -46,7 +52,7 @@ export const getFavoriteMealPlansByFollowerId = (uid) => {
 }
 
 export const updateMealPlan = (mealPlanId, mealPlan) =>
-    fetch(`${url}/mealplans/${mealPlanId}`, {
+    fetch(`${url}/mealplans/${mealPlan.id}`, {
       method: "PUT",
       body: JSON.stringify(mealPlan),
       headers: {

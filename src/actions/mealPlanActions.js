@@ -49,7 +49,7 @@ export const deleteMealPlan = (dispatch, mealPlan) =>
         }))
 
 export const updateMealPlan = (dispatch, mealPlan) =>
-    MealPlanService.updateMeal(mealPlan.id, mealPlan)
+    MealPlanService.updateMealPlan(mealPlan.id, mealPlan)
         .then(status =>
             dispatch({
                 type: UPDATE_MEAL_PLAN,
