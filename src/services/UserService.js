@@ -4,6 +4,8 @@ const heroku = "https://planme-al.herokuapp.com/api"
 
 const url = heroku;
 
+//testing
+
 // function verifies user exists, returns boolean
 export const getIsUserAndPass = (user) => {
     return fetch(`${url}/is/users/password`)
