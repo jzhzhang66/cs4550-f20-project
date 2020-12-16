@@ -43,7 +43,10 @@ class MealPlanEditor extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         const dailyPlanId = this.props.match.params.dailyPlanId
         const previousDailyPlanId = prevProps.match.params.dailyPlanId
+        debugger
         if (dailyPlanId !== previousDailyPlanId) {
+            // this.props.findDailyPlan(dailyPlanId)
+            debugger
             this.props.findMealsForDailyPlan(dailyPlanId)
         }
         const mealId = this.props.match.params.mealId

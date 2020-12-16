@@ -19,7 +19,7 @@ export const deleteMeal = (dispatch, meal) =>
 export const createMeal = (dispatch, dailyPlanId, meal) =>
     {
         debugger
-        MealService.createMeal(dailyPlanId, meal)
+        return MealService.createMeal(dailyPlanId, meal)
         .then(actualMeal =>
             dispatch({
                 type: CREATE_MEAL,
@@ -37,7 +37,8 @@ export const updateMeal = (dispatch, meal) =>
 
 export const findMealsForDailyPlan = (dispatch, dailyPlanId) =>
 {
-    MealService.findMealsForDailyPlan(dailyPlanId)
+    debugger
+    return MealService.findMealsForDailyPlan(dailyPlanId)
         .then(meals => dispatch({
             type: FIND_MEALS_FOR_DAILY_PLAN,
             meals,

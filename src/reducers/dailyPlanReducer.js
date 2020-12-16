@@ -26,9 +26,10 @@ const dailyPlanReducer = (state=initialState, action) => {
                 dailyPlans: action.dailyPlans
             }
         case FIND_DAILY_PLAN:
+            debugger
             return {
                 ...state,
-                dailyPlanId: action.dailyPlan
+                dailyPlanId: action.dailyPlanId
             }
         case UPDATE_DAILY_PLAN:
             return {

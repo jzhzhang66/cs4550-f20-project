@@ -37,12 +37,12 @@ const DailyPlans = (
                       </span>}
                   {
                       !dailyPlan.editing &&
-                      <label>
+                      <div>
                           <button type="button" className="btn btn-outline-success inline" onClick={() => updateDailyPlan({ ...dailyPlan, editing: true })}>
                           <i className="fa fa-edit" />
                           </button>
                           <Link className="link" to={`/edit/${mealPlan.id}/dailyPlans/${dailyPlan.id}`}>{dailyPlan.name}</Link>
-                      </label>}
+                      </div>}
 
               </li>
 

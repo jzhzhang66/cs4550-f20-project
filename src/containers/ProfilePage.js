@@ -33,18 +33,25 @@ class ProfilePage extends Component {
     }
 
     componentDidMount() {
-        this.props.profile().then(() => {
-            debugger
-            if (this.props.user.id === undefined || this.props.user.id === "") {
-                this.props.history.push('/login')
-            } else if (this.props.user.userType === "creator") {
+        debugger
+        if (this.props.user.id === undefined || this.props.user.id === "") {
+            this.props.profile().then(() => {
+                debugger
+                if (this.props.user.id === undefined || this.props.user.id === "") {
+                    this.props.history.push('/login')
+                } else if (this.props.user.userType === "creator") {
+                    this.props.getFollowers(this.props.user.id)
+                } else {
+                    this.props.getCreators(this.props.user.id)
+                }
+            })
+        } else {
+            if (this.props.user.userType === "creator") {
                 this.props.getFollowers(this.props.user.id)
-                this.props.findMealPlansByCreator(this.props.user.id).then(mealPlans => this.setState({ mealPlans: mealPlans.mealPlans }))
             } else {
                 this.props.getCreators(this.props.user.id)
-                this.props.getFavoritesByFollowerId(this.props.user.id).then(mealPlans => this.setState({ mealPlans: mealPlans.mealPlans }))
             }
-        })
+        }
     }
 
     //TODO: redirect to login if not signed in

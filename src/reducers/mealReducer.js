@@ -9,7 +9,8 @@ import {
 
 const initialState = {
     meals: [],
-    mealId: {}
+    mealId: {},
+    dailyPlanId: {}
 }
 
 
@@ -21,6 +22,7 @@ const mealReducer = (state=initialState, action) => {
                 meals: [...state.meals, action.meal]
             }
         case FIND_MEALS_FOR_DAILY_PLAN:
+            debugger
             return {
                 ...state,
                 meals: action.meals,
