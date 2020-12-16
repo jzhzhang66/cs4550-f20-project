@@ -19,6 +19,7 @@ import OthersProfilePage from './containers/OthersProfilePage';
 import HomePage from "./containers/HomePage";
 import ProfilePage from "./containers/ProfilePage";
 import profileReducer from "./reducers/profileReducer";
+import favoriteReducer from "./reducers/favoriteReducer";
 import homeReducer from "./reducers/homeReducer";
 import userReducer from "./reducers/userReducer";
 import NavBar from './components/NavBar';
@@ -38,7 +39,7 @@ import UserList from "./components/UserList";
 
 const rootReducer = combineReducers({
   recipeReducer, profileReducer, homeReducer, userReducer, mealPlanReducer, mealReducer, 
-  dailyPlanReducer, recipesAndIngredientsReducer, ingredientReducer
+  dailyPlanReducer, recipesAndIngredientsReducer, ingredientReducer, favoriteReducer
 });
 
 const store = createStore(rootReducer)
@@ -49,7 +50,7 @@ ReactDOM.render(
       <Route path="/" component={NavBar}/>
       <Route exact path="/" component={HomePage}/>
       <Route path="/profile" exact component={ProfilePage} />
-      <Route path="/profile/favorites" exact component={FavoriteMealPlans}/>
+      <Route path="/profile/mealplans/favorites" exact component={FavoriteMealPlans}/>
       <Route path="/profile/:userId" exact component={OthersProfilePage} />
       <Route path="/search" exact component={Search} />
       <Route path="/search/recipes" exact component={RecipeSelector} />

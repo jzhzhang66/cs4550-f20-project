@@ -1,30 +1,32 @@
 const localurl = "http://localhost:8080/api"
 const heroku = "https://planme-al.herokuapp.com/api"
 
-const url = heroku;
+const url = localurl;
 
 export const getFavoritesByFollowerId = (uid) => {
-  fetch(`${url}/followers/${uid}/favorites`)
-  .then(response => response.json())
+  debugger
+  return fetch(`${url}/followers/${uid}/favorites`)
+    .then(response => response.json())
 }
 
-export const getFavoriteById = (fid) => {
+
+export const getFavoriteById = (fid) =>
   fetch(`${url}/favorites/${fid}`)
-  .then(response => response.json())
-}
+    .then(response => response.json())
 
-export const getAllRecentFavorites = (uid) => {
+
+export const getAllRecentFavorites = (uid) =>
   fetch(`${url}/followers/${uid}/recentfavorites`)
-  .then(response => response.json())
-}
+    .then(response => response.json())
 
-export const deleteFavorite = (fid) => {
+
+export const deleteFavorite = (fid) =>
   fetch(`${url}/favorites/${fid}`, {
     method: 'DELETE'
   }).then(response => response.json())
-}
 
-export const addFavorite = (favorite) => {
+
+export const addFavorite = (favorite) =>
   fetch(`${url}/favorites`, {
     method: 'POST',
     body: JSON.stringify(favorite),
@@ -32,7 +34,7 @@ export const addFavorite = (favorite) => {
       'content-type': 'application/json'
     }
   }).then(response => response.json())
-}
+
 
 export default {
   getFavoriteById,
