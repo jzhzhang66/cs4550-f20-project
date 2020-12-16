@@ -1,10 +1,6 @@
-// const url2 = 'https://wbdv-generic-server.herokuapp.com/api/jannunzi/courses'
-// const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/courses2'
-const localurl = 'http://localhost:8080/api'
+import {URL} from "./DailyPlanService"
 
-const heroku = "https://planme-al.herokuapp.com/api"
-
-const url = heroku;
+const url = URL;
 
 export const findAllMealPlans = () =>
   fetch(`${url}/mealplans`)

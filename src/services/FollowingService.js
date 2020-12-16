@@ -1,8 +1,6 @@
-const localurl = "http://localhost:8080/api"
+import {URL} from "./DailyPlanService"
 
-const heroku = "https://planme-al.herokuapp.com/api"
-
-const url = heroku
+const url = URL
 
 
 export const getUserFollowingsByFollower = (uid) =>
