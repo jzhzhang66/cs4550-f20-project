@@ -32,13 +32,13 @@ class NavBar extends React.Component {
     this.props.profile()
   }
 
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.user.id === undefined || this.props.user.id === "") {
-      if(this.props.user.id !== this.prevProps.user.id){
-        this.props.profile()
-      }
-    }
-  }
+  // componentDidUpdate(prevProps, prevState, snapshot) {
+  //   if (this.props.user.id === undefined || this.props.user.id === "") {
+  //     if(this.props.user.id !== this.prevProps.user.id){
+  //       this.props.profile()
+  //     }
+  //   }
+  // }
 
   render() {
     return (
