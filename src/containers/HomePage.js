@@ -15,7 +15,8 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      mealPlans: []
+      mealPlans: [],
+      shortenedMealPlans: []
     }
   }
 
@@ -29,7 +30,8 @@ class HomePage extends React.Component {
             mealPlans => this.setState({mealPlans: mealPlans.mealPlans}))
       }
     })
-    this.props.findAllMealPlans()
+    this.props.findAllMealPlans().then(mealPlans => this.setState(
+        {shortenedMealPlans: mealPlans.mealPlans.slice(3)}))
   }
 
   // to do: pass in the correct user to map, limit array shown, possibly implement arrow keys to continue browsing
@@ -38,37 +40,46 @@ class HomePage extends React.Component {
         <div className="container">
           <h3 className="header-styling">Meal Plans</h3>
           <div className="card-deck">
-            <div className="sm-col-6">
-              {this.props.mealPlans.map(mealPlan =>
+            {this.props.mealPlans.map(mealPlan =>
+                <div className="col-md-3">
                   <ViewMealPlanCard
                       mealPlan={mealPlan}
-                      creator={this.props.user}/>)}
-            </div>
+                      creator={this.props.user}/>
+                </div>
+            )}
+            {/*{this.state.shortenedMealPlans.map(mealPlan =>*/}
+            {/*    <ViewMealPlanCard*/}
+            {/*        mealPlan={mealPlan}*/}
+            {/*        creator={this.props.user}/>)}*/}
+
           </div>
 
           {
             this.props.user.userType === 'follower' && <div>
               <h3 className="header-styling">Your recently favorited plans</h3>
               <div className="card-deck">
-                <div className="sm-col-6">
-                  {this.props.recentFavorites.map(mealPlan =>
+                {this.props.recentFavorites.map(mealPlan =>
+                    <div className="col-md-3">
                       <ViewMealPlanCard
                           mealPlan={mealPlan}
-                          creator={this.props.user}/>)}
-                </div>
+                          creator={this.props.user}/>
+                    </div>
+                )}
               </div>
             </div>
           }
 
           {
             this.props.user.userType === 'creator' && <div>
-              <h3 className="header-styling">Users that recently followed you</h3>
+              <h3 className="header-styling">Users that recently followed
+                you</h3>
               <div className="card-deck">
-                <div className="sm-col-6">
-                  {this.props.recentFollowings.map(user =>
+                {this.props.recentFollowings.map(user =>
+                    <div className="col-md-3">
                       <ViewUserCard
-                          user={user}/>)}
-                </div>
+                          user={user}/>
+                    </div>
+                )}
               </div>
             </div>
           }
