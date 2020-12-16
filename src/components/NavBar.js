@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../css/NavBar.css';
-import {findRandomRecipes} from "../actions/homeActions";
-import {profile} from "../actions/userActions";
-import {connect} from "react-redux";
+import { findRandomRecipes } from "../actions/homeActions";
+import { profile } from "../actions/userActions";
+import { connect } from "react-redux";
 
 // const NavBar = ({}) =>
 //     <nav className="navbar sticky-top bg-light nav-styling">
@@ -26,38 +26,42 @@ import {connect} from "react-redux";
 class NavBar extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      loggedInUser: []
-    }
   }
 
   componentDidMount() {
-    this.props.profile().then(profile => this.setState({loggedInUser: profile.user}))
+    this.props.profile()
+  }
+
+  componentDidUpdate() {
+    if (this.props.user.id === undefined || this.props.user.id === "") {
+      this.props.profile()
+    }
   }
 
   render() {
     return (
-        <nav className="navbar sticky-top bg-light nav-styling">
-          <Link to="/" className="nav-link nav-item navbar-nav text-styling">
-            Home
+      <nav className="navbar sticky-top bg-light nav-styling">
+        <Link to="/" className="nav-link nav-item navbar-nav text-styling">
+          Home
           </Link>
-          <Link to="/profile"
-                className="nav-link nav-item navbar-nav text-styling">
-            Profile
+        <Link to="/profile"
+          className="nav-link nav-item navbar-nav text-styling">
+          Profile
           </Link>
-          <Link to="/login" className="nav-link nav-item text-styling">
-            Login
+        <Link to="/login" className="nav-link nav-item text-styling">
+          Login
           </Link>
-          <Link to="/search" className="nav-link nav-item text-styling">
-            Search
+        <Link to="/search" className="nav-link nav-item text-styling">
+          Search
           </Link>
-          <div className="nav-item text-styling">{this.state.loggedInUser.username}</div>
-        </nav>
+        <div className="nav-item text-styling">{this.props.user.username}</div>
+      </nav>
     )
   }
 }
 
 const stateToPropertyMapper = (state) => ({
+  user: state.userReducer.user,
 });
 
 const propertyToDispatchMapper = (dispatch) => ({
@@ -65,6 +69,6 @@ const propertyToDispatchMapper = (dispatch) => ({
 });
 
 export default connect
-(stateToPropertyMapper, propertyToDispatchMapper)
-(NavBar)
+  (stateToPropertyMapper, propertyToDispatchMapper)
+  (NavBar)
 
