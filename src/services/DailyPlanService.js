@@ -1,11 +1,11 @@
 // const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/courses2'
 // const dailyPlanUrl = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/modules'
-const localurl = "http://localhost:8080/api";
+const url = "http://localhost:8080/api";
 const localdailyPlanUrl = 'http://localhost:8080/api/dailyplans';
 
 const heroku = "https://planme-al.herokuapp.com/api";
 
-const url = heroku;
+// const url = heroku;
 const dailyPlanUrl = `${url}/dailyplans`
 
 // const url = localurl

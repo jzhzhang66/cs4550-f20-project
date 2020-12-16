@@ -13,7 +13,7 @@ import ViewUserCard from "../components/ViewUserCard";
 
 class HomePage extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       mealPlans: []
     }
@@ -39,10 +39,10 @@ class HomePage extends React.Component {
           <h3 className="header-styling">Meal Plans</h3>
           <div className="card-deck">
             <div className="sm-col-6">
-              {/* {this.state.mealPlans.map(mealPlan =>
+              {this.props.mealPlans.map(mealPlan =>
                   <ViewMealPlanCard
                       mealPlan={mealPlan}
-                      creator={this.props.user}/>)} */}
+                      creator={this.props.user}/>)}
             </div>
           </div>
 
@@ -51,10 +51,10 @@ class HomePage extends React.Component {
               <h3 className="header-styling">Your recently favorited plans</h3>
               <div className="card-deck">
                 <div className="sm-col-6">
-                  {/* {this.props.recentFavorites.map(mealPlan =>
+                  {this.props.recentFavorites.map(mealPlan =>
                       <ViewMealPlanCard
                           mealPlan={mealPlan}
-                          creator={this.props.user}/>)} */}
+                          creator={this.props.user}/>)}
                 </div>
               </div>
             </div>
@@ -65,9 +65,9 @@ class HomePage extends React.Component {
               <h3 className="header-styling">Users that recently followed you</h3>
               <div className="card-deck">
                 <div className="sm-col-6">
-                  {/* {this.props.recentFollowings.map(user =>
+                  {this.props.recentFollowings.map(user =>
                       <ViewUserCard
-                          user={user}/>)} */}
+                          user={user}/>)}
                 </div>
               </div>
             </div>
@@ -81,7 +81,7 @@ class HomePage extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-  mealPlans: state.mealPlanReducer,
+  mealPlans: state.mealPlanReducer.mealPlans,
   user: state.userReducer.user,
   recentFollowings: state.homeReducer.recentFollowings,
   recentFavorites: state.homeReducer.recentFavorites
