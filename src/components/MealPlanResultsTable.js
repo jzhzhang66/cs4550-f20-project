@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import '../css/RecipeTable.css';
 import '../App.css';
 import '../css/IngredientTable.css';
+import { addFavorite } from '../services/FavoriteService';
 
-const MealPlanResultsTable = ({ mealPlans = [] }) =>
+const MealPlanResultsTable = ({ mealPlans = [], user, addFavorite }) =>
 
     <div>
         <ul className="recipe-list">
@@ -15,6 +16,8 @@ const MealPlanResultsTable = ({ mealPlans = [] }) =>
                         <Link to={`./mealPlan/${mealPlan.id}`} className="recipe-title">
                             {mealPlan.name}
                         </Link>
+                        <button className="btn btn-outline-secondary" 
+                        onClick={() => addFavorite({followerId: user.id, mealPlanId: mealPlan.id, time: new Date(), mealPlanName: mealPlan.name})}>Add to favorites</button>
                     </li>
                 )
             }
@@ -24,11 +27,13 @@ const MealPlanResultsTable = ({ mealPlans = [] }) =>
 const stateToPropertyMapper = (state) => {
     console.log(state)
     return ({
-        mealPlans: state.mealPlanReducer.mealPlans
+        mealPlans: state.mealPlanReducer.mealPlans,
+        user: state.userReducer.user
     })
 }
 
 const propertyToDispatchMapper = (dispatch) => ({
+    addFavorite: (favorite) => addFavorite(dispatch, favorite)
 })
 
 export default connect

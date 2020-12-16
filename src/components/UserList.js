@@ -31,18 +31,29 @@ class UserList extends React.Component {
         getAllUsers().then(users => this.setState({ ...this.state, users: users }))
     }
 
+    // isAlreadyAdded = (userId) => {
+    //     let isTrue = false
+    //     this.props.following.forEach(f => {
+    //         if(f.id === userId) {
+    //             console.log("true")
+    //             isTrue = true;
+    //         }
+    //     });
+    //     console.log("false")
+    //     return isTrue;
+    // }
+
+    
     isAlreadyAdded = (userId) => {
-        this.props.following.forEach(f => {
-            if(f.id === userId) {
-                return true;
-            }
+        return this.props.following.find(f => {
+            return f.id === userId
         });
-        return false;
     }
 
 
 
     render() {
+        var isthere = this.isAlreadyAdded()
         return (
             <div className="container">
                 <h1>User List</h1>
@@ -69,7 +80,7 @@ class UserList extends React.Component {
                                     <td>
                                         {
                                             this.state.canAdd && user.userType === "creator" &&
-                                            (() => this.isAlreadyAdded(user.id)) &&
+                                            !this.isAlreadyAdded(user.id) &&
                                             <button type="button" 
                                             className="btn btn-outline-secondary inline create"
                                             onClick={() => this.props.addFollowing({ followerId: this.props.user.id, creatorId: user.id, time: new Date() }, user)}>

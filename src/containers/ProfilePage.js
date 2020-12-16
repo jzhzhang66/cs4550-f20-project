@@ -124,9 +124,12 @@ class ProfilePage extends Component {
                         </div>
                     }
                     {this.props.user.userType === "follower" &&
-                        <div className="col-4">
-                            <button className="btn btn-secondary favorite-meal-plan">Favorite Meal Plans</button>
-                        </div>
+                        <Link to="/profile/mealplans/favorites">
+                            <div className="col-4">
+                                <button className="btn btn-secondary favorite-meal-plan">Favorite Meal Plans</button>
+
+                            </div>
+                        </Link>
                     }
                     <div className="col-3">
                         <Link to={'/editprofile'}>
@@ -134,7 +137,7 @@ class ProfilePage extends Component {
                         </Link>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 
