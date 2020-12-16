@@ -9,9 +9,6 @@ const heroku = "https://planme-al.herokuapp.com/api"
 const url = `${localurl}/dailyplans`;
 const mealUrl = `${localurl}/meals`
 
-const url = localurl
-const mealUrl = localmealUrl
-
 export const findMeal = (mealId) =>
     fetch(`${mealUrl}/${mealId}`).then(response => response.json())
 
