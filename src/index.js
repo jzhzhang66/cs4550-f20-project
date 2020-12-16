@@ -11,6 +11,7 @@ import { combineReducers, createStore } from "redux";
 import FavoriteMealPlans from "./containers/FavoriteMealPlans"
 import RecipeSelector from "./containers/RecipeSelector";
 import IngredientSelector from "./containers/IngredientSelector";
+import MealPlanSelector from "./containers/MealPlanSelector";
 import recipeReducer from "./reducers/recipeReducer";
 import RecipeDetails from "./containers/RecipeDetails";
 import IngredientDetails from "./containers/IngredientDetails";
@@ -34,6 +35,7 @@ import recipesAndIngredientsReducer from "./reducers/recipesAndIngredientsReduce
 import Search from "./containers/Search"
 import UserList from "./components/UserList";
 
+
 const rootReducer = combineReducers({
   recipeReducer, profileReducer, homeReducer, userReducer, mealPlanReducer, mealReducer, 
   dailyPlanReducer, recipesAndIngredientsReducer, ingredientReducer
@@ -52,6 +54,7 @@ ReactDOM.render(
       <Route path="/search" exact component={Search} />
       <Route path="/search/recipes" exact component={RecipeSelector} />
       <Route path="/search/ingredients" exact component={IngredientSelector} />
+      <Route path="/search/mealplans" exact component={MealPlanSelector} />
       <Route path={["/recipes/:recipeId",
       "/edit/:mealPlanId/dailyPlans/:dailyPlanId/meals/:mealId/recipesAndIngredients/search/recipes/:recipeId"]} 
       exact component={RecipeDetails}/>

@@ -26,12 +26,12 @@ class IngredientDetails extends React.Component {
         return (
             <div className="container">
                 <h1 className="ingredient-header">{this.props.ingredient.name}</h1>
-                
-                    <Link to={`/edit/${this.props.match.params.mealPlanId}/dailyPlans/${this.props.match.params.dailyPlanId}/meals/${this.props.match.params.mealId}/recipesAndIngredients`}>
-                        <button className="btn btn-outline-secondary add-ingredient"
-                            onClick={() => this.props.addIngredientForMeal(this.props.match.params.mealId, this.props.ingredient)}>Add</button>
-                    </ Link>
-            
+                {this.props.match.params.mealId && 
+                                  <Link to={`/edit/${this.props.match.params.mealPlanId}/dailyPlans/${this.props.match.params.dailyPlanId}/meals/${this.props.match.params.mealId}/recipesAndIngredients`}>
+                                  <button className="btn btn-outline-secondary add-ingredient"
+                                      onClick={() => this.props.addIngredientForMeal(this.props.match.params.mealId, this.props.ingredient)}>Add</button>
+                              </ Link>
+                }
 
                 <table className="table">
                     <thead>

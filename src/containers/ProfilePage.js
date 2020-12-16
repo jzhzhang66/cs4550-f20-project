@@ -118,11 +118,8 @@ class ProfilePage extends Component {
                         <div>
                             <div className="col-4">
                                 <Link to="/mealplans">
-                                    <button className="btn btn-secondary create-meal-plan">Create Meal Plan</button>
+                                    <button className="btn btn-secondary create-meal-plan">Manage Meal Plans</button>
                                 </Link>
-                            </div>
-                            <div className="col-5">
-                                <button className="btn btn-secondary my-meal-plans">My Meal Plans</button>
                             </div>
                         </div>
                     }

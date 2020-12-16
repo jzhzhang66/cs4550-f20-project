@@ -2,12 +2,14 @@ import MealPlanService from "../services/MealPlanService"
 export const FIND_ALL_MEAL_PLANS = "FIND_ALL_MEAL_PLANS";
 export const FIND_MEAL_PLAN_BY_ID = "FIND_MEAL_PLAN_BY_ID";
 export const FIND_MEAL_PLANS_BY_CREATOR = "FIND_MEAL_PLANS_BY_CREATOR";
+export const FIND_MEAL_PLANS_BY_NAME = "FIND_MEAL_PLANS_BY_NAME";
 export const DELETE_MEAL_PLAN = "DELETE_MEAL_PLAN";
 export const CREATE_MEAL_PLAN = "CREATE_MEAL_PLAN";
 export const UPDATE_MEAL_PLAN = "UPDATE_MEAL_PLAN";
 export const CHANGE_DISPLAY = "CHANGE_DISPLAY";
 export const ENTER_TITLE = "ENTER_TITLE";
 export const UPDATE_TITLE = "UPDATE_TITLE";
+export const UPDATE_KEYWORD = "UPDATE_KEYWORD";
 export const GET_FAVORITE_MEAL_PLANS_BY_FOLLOWER = "GET_FAVORITE_MEAL_PLANS_BY_FOLLOWER"
 
 export const findAllMealPlans = (dispatch) =>
@@ -23,6 +25,25 @@ export const findMealPlanById = (dispatch, mealPlanId) =>
             type: FIND_MEAL_PLAN_BY_ID,
             mealPlan
         }))
+
+export const findMealPlansByName = (dispatch, mealPlanName) => {
+    debugger
+    return MealPlanService.findMealPlansByName(mealPlanName)
+        .then(mealPlans => dispatch({
+            type: FIND_MEAL_PLANS_BY_NAME,
+            mealPlans
+        }))
+}
+
+
+
+export const updateKeyword = (dispatch, keyword) => {
+    return dispatch({
+        type: UPDATE_KEYWORD,
+        keyword
+    })
+}
+
 
 export const findMealPlansByCreator = (dispatch, creatorId) => {
     return MealPlanService.findMealPlansByCreator(creatorId)

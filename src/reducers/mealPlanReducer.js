@@ -2,12 +2,14 @@ import {
     FIND_MEAL_PLAN_BY_ID,
     FIND_MEAL_PLANS_BY_CREATOR,
     FIND_ALL_MEAL_PLANS,
+    FIND_MEAL_PLANS_BY_NAME,
     DELETE_MEAL_PLAN,
     CREATE_MEAL_PLAN,
     UPDATE_MEAL_PLAN,
     CHANGE_DISPLAY,
     ENTER_TITLE,
     UPDATE_TITLE,
+    UPDATE_KEYWORD,
     GET_FAVORITE_MEAL_PLANS_BY_FOLLOWER
 } from "../actions/mealPlanActions"
 
@@ -41,6 +43,16 @@ const mealPlanReducer = (state = initialState, action) => {
             return {
                 ...state,
                 mealPlans: action.mealPlans
+            }
+        case FIND_MEAL_PLANS_BY_NAME:
+            return {
+                ...state,
+                mealPlans: action.mealPlans
+            }
+        case UPDATE_KEYWORD:
+            return {
+                ...state,
+                keyword: action.keyword
             }
         case FIND_MEAL_PLAN_BY_ID:
             return {

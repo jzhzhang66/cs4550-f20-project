@@ -45,10 +45,13 @@ class RecipeDetails extends React.Component {
                     <h3>Estimated Time: {this.props.recipe.readyInMinutes} minutes</h3>
                     <h3>Health Score: {this.props.recipe.healthScore} </h3>
                 </div>
-                <Link to={`/edit/${this.props.match.params.mealPlanId}/dailyPlans/${this.props.match.params.dailyPlanId}/meals/${this.props.match.params.mealId}/recipesAndIngredients`}>
-                    <button className="btn btn-outline-secondary add-ingredient"
-                        onClick={() => this.props.addRecipeForMeal(this.props.match.params.mealId, this.props.recipe)}>Add</button>
-                </Link>
+                {this.props.match.params.mealId && 
+                                <Link to={`/edit/${this.props.match.params.mealPlanId}/dailyPlans/${this.props.match.params.dailyPlanId}/meals/${this.props.match.params.mealId}/recipesAndIngredients`}>
+                                <button className="btn btn-outline-secondary add-ingredient"
+                                    onClick={() => this.props.addRecipeForMeal(this.props.match.params.mealId, this.props.recipe)}>Add</button>
+                            </Link>
+                }
+
                 <div className="row">
                     <div className="col-3">
                         <IngredientsComponent />

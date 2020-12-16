@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import SearchIngredient from "../components/SearchIngredient";
-import IngredientTable from '../components/IngredientTable';
+import SearchMealPlan from "../components/SearchMealPlan";
+import MealPlanResultsTable from '../components/MealPlanResultsTable';
 
 // put the router in here
-class IngredientSelector extends React.Component {
+class MealPlanSelector extends React.Component {
   constructor(props) {
     super(props)
   }
@@ -14,8 +14,8 @@ class IngredientSelector extends React.Component {
   render() {
     return (
         <div className="container">
-          <SearchIngredient/>
-          <IngredientTable />
+          <SearchMealPlan/>
+          <MealPlanResultsTable/>
         </div>
     )
   }
@@ -30,4 +30,4 @@ const propertyToDispatchMapper = (dispatch) => ({
 
 export default connect
     (stateToPropertyMapper, propertyToDispatchMapper)
-    (IngredientSelector)
+    (MealPlanSelector)

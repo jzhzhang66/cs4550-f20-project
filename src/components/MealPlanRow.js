@@ -42,7 +42,7 @@ class MealPlanRow extends React.Component {
                 <td className="priority-1">
                 {
                     this.state.editing &&
-                        <button className="btn" onClick={() => this.props.updateMealPlan(this.mealPlan)}>
+                        <button className="btn" onClick={() => this.props.updateMealPlan(this.state.mealPlan)}>
                             <i className="fa fa-check" aria-hidden="true"/>
                         </button>
                 }
@@ -55,7 +55,7 @@ class MealPlanRow extends React.Component {
                 {
                     !this.state.editing &&
                     <button className="btn">
-                        <i class="fa fa-trash" onClick={() => this.props.deleteMealPlan(this.props.mealPlan)} aria-hidden="true"/>
+                        <i class="fa fa-trash" onClick={() => this.props.deleteMealPlan(this.state.mealPlan)} aria-hidden="true"/>
                     </button>
                 }
                 </td>
@@ -77,7 +77,7 @@ const stateToPropertyMapper = (state) => ({
 
 const propertyToDispatchMapper = (dispatch) => ({
     deleteMealPlan: (mealPlan) => deleteMealPlan(dispatch, mealPlan),
-    updateMealPlan: (mealPlanId, newMealPlan) => updateMealPlan(dispatch, mealPlanId, newMealPlan),
+    updateMealPlan: (mealPlan) => updateMealPlan(dispatch, mealPlan),
     updateTitle: (newTitle) => updateTitle(dispatch, newTitle),
     changeDisplay: () => changeDisplay(dispatch)
 })
