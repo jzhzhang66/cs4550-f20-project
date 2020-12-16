@@ -35,12 +35,12 @@ export const getAllRecentFollowing = (uid) => {
         .then(response => response.json())
 }
 
-export const deleteFollowing = (fid) => {
-    debugger
-    return fetch(`${url}/followings/${fid}`, {
-        method: 'DELETE'
-    }).then(response => response.json())
-}
+// export const deleteFollowing = (fid) => {
+//     debugger
+//     return fetch(`${url}/followings/${fid}`, {
+//         method: 'DELETE'
+//     }).then(response => response.json())
+// }
 
 export const deleteFollowingByFollowerAndCreator = (fid, cid) => {
     debugger
@@ -62,7 +62,6 @@ export const addFollowing = (newFollowing) => {
 export default {
     getFollowingById,
     getAllRecentFollowing,
-    deleteFollowing,
     addFollowing,
     getFollowingsByFollower,
     getUserFollowingsByFollower,

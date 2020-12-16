@@ -6,8 +6,8 @@ const local = 'http://localhost:8080/api'
 
 const heroku = "https://planme-al.herokuapp.com/api"
 
-// const url = `${heroku}/dailyplans`;
-// const mealUrl = `${heroku}/meals`
+const url = `${localurl}/dailyplans`;
+const mealUrl = `${localurl}/meals`
 
 const url = localurl
 const mealUrl = localmealUrl
