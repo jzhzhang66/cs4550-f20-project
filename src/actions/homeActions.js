@@ -1,18 +1,19 @@
-import FollowingService from "../services/FollowingService";
-import FavoriteService from "../services/FavoriteService";
+import {getAllRecentFavorites} from "../services/FavoriteService";
+import {getAllRecentFollowing} from "../services/FollowingService";
+
 export const GET_RECENT_FOLLOWINGS = "GET_RECENT_FOLLOWINGS";
 export const GET_RECENT_FAVORITES = "GET_RECENT_FAVORITES";
 
 
 export const getRecentFollowings = (dispatch, userId) => {
-  return FollowingService.getAllRecentFollowing(userId).then(followings => dispatch({
+  return getAllRecentFollowing(userId).then(followings => dispatch({
     type: GET_RECENT_FOLLOWINGS,
     followings
   }))
 }
 
 export const getRecentFavorites = (dispatch, userId) => {
-  FavoriteService.getAllRecentFavorites(userId).then(favorites => dispatch({
+  return getAllRecentFavorites(userId).then(favorites => dispatch({
     type: GET_RECENT_FAVORITES,
     favorites
   }))

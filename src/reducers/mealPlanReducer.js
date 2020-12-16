@@ -23,6 +23,7 @@ const initialState = {
 const mealPlanReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_FAVORITE_MEAL_PLANS_BY_FOLLOWER:
+            debugger
             return {
                 ...state,
                 mealPlans: action.mealPlans
@@ -40,6 +41,7 @@ const mealPlanReducer = (state = initialState, action) => {
                 title: ""
             }
         case FIND_MEAL_PLANS_BY_CREATOR:
+            debugger
             return {
                 ...state,
                 mealPlans: action.mealPlans

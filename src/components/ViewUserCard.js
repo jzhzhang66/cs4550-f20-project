@@ -10,7 +10,7 @@ class ViewUserCard extends React.Component {
 
   render() {
     return (
-        <div className="card">
+        <div className="card border-secondary">
           <div className="card-body card-styling">
             <Link to={`/profile/${this.props.user.id}`}><h4 className="card-title">{this.props.user.username}</h4></Link>
           </div>

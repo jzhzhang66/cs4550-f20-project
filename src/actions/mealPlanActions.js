@@ -27,7 +27,6 @@ export const findMealPlanById = (dispatch, mealPlanId) =>
         }))
 
 export const findMealPlansByName = (dispatch, mealPlanName) => {
-    debugger
     return MealPlanService.findMealPlansByName(mealPlanName)
         .then(mealPlans => dispatch({
             type: FIND_MEAL_PLANS_BY_NAME,
@@ -46,7 +45,7 @@ export const updateKeyword = (dispatch, keyword) => {
 
 
 export const findMealPlansByCreator = (dispatch, creatorId) => {
-    return MealPlanService.findMealPlansByCreator(creatorId)
+      return MealPlanService.findMealPlansByCreator(creatorId)
         .then(mealPlans => dispatch({
             type: FIND_MEAL_PLANS_BY_CREATOR,
             mealPlans
@@ -54,11 +53,10 @@ export const findMealPlansByCreator = (dispatch, creatorId) => {
 }
 
 export const getFavoriteMealPlansByFollowerId = (dispatch, uid) => {
-    debugger
     return MealPlanService.getFavoriteMealPlansByFollowerId(uid)
         .then(mealPlans => dispatch({
-            type: FIND_MEAL_PLANS_BY_CREATOR,
-            uid
+            type: GET_FAVORITE_MEAL_PLANS_BY_FOLLOWER,
+            mealPlans
         }))
 }
 

@@ -13,12 +13,12 @@ const homeReducer = (state = initialState, action) => {
     case GET_RECENT_FOLLOWINGS:
       return {
         ...state,
-        recentFollowings: action.recentFollowings
+        recentFollowings: action.followings.reverse()
       }
     case GET_RECENT_FAVORITES:
       return{
         ...state,
-        recentFavorites: action.recentFavorites
+        recentFavorites: action.favorites.reverse()
       }
     default:
       return state

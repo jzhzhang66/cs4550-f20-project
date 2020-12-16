@@ -13,7 +13,7 @@ class ViewMealPlanCard extends React.Component {
 
   render() {
     return (
-        <div className="card">
+        <div className="card border-secondary">
           <div className="card-body card-styling">
             <Link to={`/edit/${this.props.mealPlan.id}`}><h4 className="card-title">{this.props.mealPlan.name}</h4></Link>
             <p className="card-text">{this.props.mealPlan.diet} diet</p>
