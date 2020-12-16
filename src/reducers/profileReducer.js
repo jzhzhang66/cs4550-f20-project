@@ -51,7 +51,7 @@ const profileReducer = (state = initialState, action) => {
             debugger
             return {
                 ...state,
-                following: state.following.filter(f => f.id !== action.following.id)
+                following: state.following.filter(f => f.id !== action.following.creatorId)
             }
         default:
             return state
