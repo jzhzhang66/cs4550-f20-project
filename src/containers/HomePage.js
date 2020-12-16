@@ -16,7 +16,7 @@ class HomePage extends React.Component {
     super(props);
     this.state = {
       mealPlans: [],
-      shortenedMealPlans: []
+      randomIndex: ''
     }
   }
 
@@ -30,8 +30,11 @@ class HomePage extends React.Component {
             mealPlans => this.setState({mealPlans: mealPlans.mealPlans}))
       }
     })
-    this.props.findAllMealPlans().then(mealPlans => this.setState(
-        {shortenedMealPlans: mealPlans.mealPlans.slice(3)}))
+    this.props.findAllMealPlans().then(mealPlans => this.setRandomIndex(mealPlans.mealPlans.length))
+  }
+
+  setRandomIndex(length) {
+    this.setState({randomIndex: Math.floor(Math.random() * length - 4)});
   }
 
   // to do: pass in the correct user to map, limit array shown, possibly implement arrow keys to continue browsing
@@ -40,25 +43,24 @@ class HomePage extends React.Component {
         <div className="container">
           <h3 className="header-styling">Meal Plans</h3>
           <div className="card-deck">
-            {this.props.mealPlans.map(mealPlan =>
+            {this.props.mealPlans.slice(0, 8).map(mealPlan =>
                 <div className="col-md-3">
                   <ViewMealPlanCard
                       mealPlan={mealPlan}
                       creator={this.props.user}/>
                 </div>
             )}
-            {/*{this.state.shortenedMealPlans.map(mealPlan =>*/}
-            {/*    <ViewMealPlanCard*/}
-            {/*        mealPlan={mealPlan}*/}
-            {/*        creator={this.props.user}/>)}*/}
-
           </div>
 
           {
             this.props.user.userType === 'follower' && <div>
               <h3 className="header-styling">Your recently favorited plans</h3>
+              {this.props.recentFavorites.length === 0 &&
+              <h4>It looks like you haven't favorited anything. Click <Link
+                  to="/search/mealplans">HERE</Link> to search for your favorite meal plans!</h4>
+              }
               <div className="card-deck">
-                {this.props.recentFavorites.map(mealPlan =>
+                {this.props.recentFavorites.slice(0, 4).map(mealPlan =>
                     <div className="col-md-3">
                       <ViewMealPlanCard
                           mealPlan={mealPlan}
@@ -69,10 +71,15 @@ class HomePage extends React.Component {
             </div>
           }
 
+
           {
             this.props.user.userType === 'creator' && <div>
               <h3 className="header-styling">Users that recently followed
                 you</h3>
+              {this.props.recentFollowings.length === 0 &&
+              <h4>It looks like you don't have any followers. Click <Link
+                  to="/mealplans">HERE</Link> to make your next meal plan!</h4>
+              }
               <div className="card-deck">
                 {this.props.recentFollowings.map(user =>
                     <div className="col-md-3">
