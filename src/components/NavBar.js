@@ -32,9 +32,11 @@ class NavBar extends React.Component {
     this.props.profile()
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props.user.id === undefined || this.props.user.id === "") {
-      this.props.profile()
+      if(this.props.user.id !== this.props.prevProps.user.id){
+        this.props.profile()
+      }
     }
   }
 
