@@ -5,7 +5,7 @@ const localdailyPlanUrl = 'http://localhost:8080/api/dailyplans';
 
 const heroku = "https://planme-al.herokuapp.com/api";
 
-const url = localurl;
+const url = heroku;
 const dailyPlanUrl = `${url}/dailyplans`
 
 export const findDailyPlan = (dailyPlanId) =>
