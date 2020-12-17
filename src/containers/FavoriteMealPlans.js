@@ -3,7 +3,8 @@ import '../css/FavoriteMealPlans.css';
 import React, { Component } from 'react';
 import {
   getFavoritesByFollowerId, 
-  deleteFavorite
+  deleteFavorite,
+  getFavoriteById
 } from '../actions/favoriteActions';
 import { profile } from "../actions/userActions";
 import {
@@ -26,6 +27,7 @@ class FavoriteMealPlans extends Component {
       })
     }
   }
+
 
   render() {
     return (

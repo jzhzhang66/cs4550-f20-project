@@ -44,11 +44,14 @@ export const deleteFavorite = (dispatch, favorite) => {
 
 }
 
-export const addFavorite = (dispatch, favorite) =>
-    FavoriteService.addFavorite(favorite)
+export const addFavorite = (dispatch, favorite) => {
+    debugger
+    return FavoriteService.addFavorite(favorite)
         .then(status =>
             dispatch({
                 type: ADD_FAVORITE,
                 favorite
             }))
+
+}
 
