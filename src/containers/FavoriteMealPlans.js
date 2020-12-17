@@ -2,7 +2,8 @@ import { connect } from "react-redux";
 import '../css/FavoriteMealPlans.css';
 import React, { Component } from 'react';
 import {
-  getFavoritesByFollowerId
+  getFavoritesByFollowerId, 
+  deleteFavorite
 } from '../actions/favoriteActions';
 import { profile } from "../actions/userActions";
 import {
@@ -32,7 +33,10 @@ class FavoriteMealPlans extends Component {
         <h1 className="header">My Favorite Meal Plans</h1>
         <ul className="favorites-list">
           {
-            this.props.favorites.map(favorite => <li>{favorite.mealPlanName}</li>)
+            this.props.favorites.map(favorite => 
+            <li>{favorite.mealPlanName}
+            <button onClick={() => this.props.deleteFavorite(favorite)} className="btn btn-outline-danger">Remove</button>
+            </li>)
           }
         </ul>
       </div>
@@ -54,6 +58,7 @@ const stateToPropertyMapper = (state) => {
 const propertyToDispatchMapper = (dispatch) => ({
   getFavoritesByFollowerId: (followerId) => getFavoritesByFollowerId(dispatch, followerId),
   profile: () => profile(dispatch),
+  deleteFavorite: (favorite) => deleteFavorite(dispatch, favorite)
 })
 
 export default connect

@@ -1,12 +1,12 @@
 // const url = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/courses2'
 // const dailyPlanUrl = 'https://wbdv-generic-server.herokuapp.com/api/ericli0303/modules'
-export const URL = heroku;
-
 const localurl = "http://localhost:8080/api";
-const heroku = "https://planme-al.herokuapp.com/api";
 
+const heroku = "https://planme-al.herokuapp.com/api";
+export const URL = heroku;
 const url = URL;
 const dailyPlanUrl = `${URL}/dailyplans`
+
 
 export const findDailyPlan = (dailyPlanId) =>
     fetch(`${dailyPlanUrl}/${dailyPlanId}`)

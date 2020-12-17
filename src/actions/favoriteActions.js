@@ -33,13 +33,16 @@ export const getAllRecentFavorites = (dispatch, followerId) =>
         }))
 
 
-export const deleteFavorite = (dispatch, favorite) =>
-    FavoriteService.deleteFavorite(favorite.id)
+export const deleteFavorite = (dispatch, favorite) => {
+    debugger
+    return FavoriteService.deleteFavorite(favorite.id)
         .then(status =>
             dispatch({
                 type: DELETE_FAVORITE,
                 favorite
             }))
+
+}
 
 export const addFavorite = (dispatch, favorite) =>
     FavoriteService.addFavorite(favorite)

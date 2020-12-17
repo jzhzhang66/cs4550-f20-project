@@ -19,10 +19,10 @@ export const getAllRecentFavorites = (uid) =>
     .then(response => response.json())
 
 
-export const deleteFavorite = (fid) =>
+export const deleteFavorite = (fid) => 
   fetch(`${url}/favorites/${fid}`, {
     method: 'DELETE'
-  }).then(response => response.json())
+  }).then(response => console.log(response))
 
 
 export const addFavorite = (favorite) =>

@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import '../css/RecipeTable.css';
 import '../App.css';
 import '../css/IngredientTable.css';
-import { addFavorite } from '../services/FavoriteService';
+import { addFavorite } from '../actions/favoriteActions';
 
-const MealPlanResultsTable = ({ mealPlans = [], user, addFavorite }) =>
+const MealPlanResultsTable = ({ mealPlans = [], user, addFavorite}) =>
 
     <div>
         <ul className="recipe-list">
