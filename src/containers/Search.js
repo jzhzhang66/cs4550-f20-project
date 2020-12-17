@@ -13,10 +13,10 @@ class Search extends Component {
                 </div>
                 </div>
                 <div className="row">
-                    <div className="col-1"></div>
-                    <div className="col-6">
+                    <div className="col-2"></div>
+                    <div className="col-4">
                         <Link to="/search/recipes">
-                            <button className="btn btn-outline-secondary recipes-button">
+                            <button className="btn btn-outline-secondary ingredients-button">
                             <h2>Recipes</h2>
                             </button>
                         </Link>
@@ -30,8 +30,8 @@ class Search extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-1"></div>
-                    <div className="col-6">
+                    <div className="col-2"></div>
+                    <div className="col-4">
                     <Link to="/userlist">
                     <button className="btn btn-outline-secondary ingredients-button">
                       <h2>User List</h2>
