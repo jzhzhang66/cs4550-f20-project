@@ -45,20 +45,14 @@ class MealPlanManager extends React.Component {
                         </div>
                     </div>
                 </nav>
-                <MealPlanTable/>
-                {/* {
+                {
                     this.props.isTable &&
                     <MealPlanTable />
-                } */}
-                {/* {
+                } 
+                {
                     !this.props.isTable &&
-                    <MealPlanGrid
-                        mealPlans={this.state.mealPlans}
-                        deleteMealPlan={this.deleteMealPlan}
-                        updateMealPlan={this.updateMealPlan}
-                        changeDisplay={this.changeDisplay}
-                        updateTitle={this.updateTitle} />
-                } */}
+                    <MealPlanGrid />
+                }
 
             </div>
         )
@@ -72,7 +66,8 @@ const stateToPropertyMapper = (state) => {
     return ({
         creatorId: state.userReducer.user.id,
         mealPlans: state.mealPlanReducer.mealPlans,
-        title: state.mealPlanReducer.title
+        title: state.mealPlanReducer.title,
+        isTable: state.mealPlanReducer.isTable
     })
 }
 

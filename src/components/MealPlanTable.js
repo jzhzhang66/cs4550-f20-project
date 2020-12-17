@@ -32,7 +32,7 @@ class MealPlanTable extends React.Component {
                             Created
                         </th>
                         <th className="priority-1" scope="col" width="3%">
-                            <div onClick={changeDisplay}>
+                            <div onClick={this.props.changeDisplay}>
                                 <i className="fa fa-th-large"
                                    aria-hidden="true"/>
                             </div>

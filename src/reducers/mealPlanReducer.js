@@ -73,6 +73,7 @@ const mealPlanReducer = (state = initialState, action) => {
                 mealPlans: state.mealPlans.filter(mealPlan => mealPlan.id !== action.mealPlan.id)
             }
         case CHANGE_DISPLAY:
+            debugger
             return {
                 ...state,
                 isTable: !state.isTable
