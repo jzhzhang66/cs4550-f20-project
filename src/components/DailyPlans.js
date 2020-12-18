@@ -8,16 +8,22 @@ import {
 } from "../actions/dailyPlanActions"
 import "../css/DailyPlans.css";
 
+
+
 const DailyPlans = (
   { mealPlan, dailyPlans = [],
-  deleteDailyPlan, createDailyPlan, updateDailyPlan}) =>
-  <div>
+  deleteDailyPlan, createDailyPlan, updateDailyPlan, canEdit}) => {
+debugger
+return  <div>
   <h3 className="daily-plans-header">Daily Plans</h3>
   <div className="modules">
   <ul className="list-group">
       {
           dailyPlans.map(dailyPlan =>
               <li className="list-group-item" key={dailyPlan.id}>
+                  {
+                      !canEdit &&
+                  <div>
                   <button type="button" className="btn btn-outline-danger inline" onClick={() => deleteDailyPlan(dailyPlan)}>
                       <i className="fa fa-trash"></i>
                   </button>
@@ -43,6 +49,12 @@ const DailyPlans = (
                           </button>
                           <Link className="link" to={`/edit/${mealPlan.id}/dailyPlans/${dailyPlan.id}`}>{dailyPlan.name}</Link>
                       </div>}
+                      </div>
+                  }
+                  {
+                      canEdit &&
+                      <Link className="link" to={`/edit/${mealPlan.id}/dailyPlans/${dailyPlan.id}`}>{dailyPlan.name}</Link>
+                  }
 
               </li>
 
@@ -55,7 +67,7 @@ const DailyPlans = (
 </div>
 </div>
 
-
+    }
 const stateToPropertyMapper = (state) => ({
   dailyPlans: state.dailyPlanReducer.dailyPlans,
   mealPlan: state.mealPlanReducer.mealPlan

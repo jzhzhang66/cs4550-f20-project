@@ -46,12 +46,12 @@ class MealPlanRow extends React.Component {
                             <i className="fa fa-check" aria-hidden="true"/>
                         </button>
                 }
-                {
+                {/* {
                     !this.state.editing &&
                     <button className="btn">
                         <i className="fa fa-pen" onClick={() => this.setState({ editing: true })} aria-hidden="true"/>
                     </button>
-                }
+                } */}
                 {
                     !this.state.editing &&
                     <button className="btn">

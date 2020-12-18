@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import '../css/FavoriteMealPlans.css';
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import {
   getFavoritesByFollowerId, 
   deleteFavorite,
@@ -28,7 +29,6 @@ class FavoriteMealPlans extends Component {
     }
   }
 
-
   render() {
     return (
       <div>
@@ -36,9 +36,11 @@ class FavoriteMealPlans extends Component {
         <ul className="favorites-list">
           {
             this.props.favorites.map(favorite => 
+              <Link to={`/edit/${favorite.mealPlanId}`}>
             <li>{favorite.mealPlanName}
             <button onClick={() => this.props.deleteFavorite(favorite)} className="btn btn-outline-danger">Remove</button>
-            </li>)
+            </li>
+            </Link>)
           }
         </ul>
       </div>
@@ -46,15 +48,12 @@ class FavoriteMealPlans extends Component {
   }
 }
 
-
-
 const stateToPropertyMapper = (state) => {
   console.log(state)
   return ({
     favorites: state.favoriteReducer.favorites,
     user: state.userReducer.user
   })
-
 }
 
 const propertyToDispatchMapper = (dispatch) => ({

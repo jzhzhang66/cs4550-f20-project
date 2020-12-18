@@ -50,14 +50,14 @@ class MealPlanCard extends React.Component {
                             </button>
                         </td>
                     }
-                    {
+                    {/* {
                         !this.state.editing &&
                         <td className="priority-1">
                             <button onClick={() => this.setState({ editing: true })} className="btn btn-outline-secondary">
                                 <i className="fa fa-edit" aria-hidden="true"></i>
                             </button>
                         </td>
-                    }
+                    } */}
                     {
                         !this.state.editing &&
                         <td className="priority-1">

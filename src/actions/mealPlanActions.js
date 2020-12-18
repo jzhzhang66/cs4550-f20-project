@@ -45,6 +45,7 @@ export const updateKeyword = (dispatch, keyword) => {
 
 
 export const findMealPlansByCreator = (dispatch, creatorId) => {
+    debugger
       return MealPlanService.findMealPlansByCreator(creatorId)
         .then(mealPlans => dispatch({
             type: FIND_MEAL_PLANS_BY_CREATOR,

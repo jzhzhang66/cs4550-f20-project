@@ -9,22 +9,25 @@ import DailyPlans from "../components/DailyPlans";
 import RecipesAndIngredients from "../components/RecipesAndIngredients";
 import { findDailyPlansForMealPlan} from "../actions/dailyPlanActions";
 import { findDailyPlan } from "../actions/dailyPlanActions";
-import { findMealPlanById } from "../actions/mealPlanActions";
+import { findMealPlanById, findMealPlansByCreator } from "../actions/mealPlanActions";
 import { findMealsForDailyPlan } from "../actions/mealActions";
 import { findMeal } from "../actions/mealActions"
 import { findRecipesForMeal, findIngredientsForMeal } from "../actions/recipeAndIngredientActions"
+import { profile } from "../actions/userActions";
 
 import "../App.css";
-
 
 class MealPlanEditor extends React.Component {
     componentDidMount() {
         console.log(this.props)
+        this.props.profile().then(() => {
+            this.props.findMealPlansByCreator(this.props.user.id)
+            }
+        )
         const mealPlanId = this.props.match.params.mealPlanId
         debugger
         const dailyPlanId = this.props.match.params.dailyPlanId
         const mealId = this.props.match.params.mealId
-        const topicId = this.props.match.params.topicId
         this.props.findMealPlanById(mealPlanId)
         this.props.findDailyPlansForMealPlan(mealPlanId)
         if (dailyPlanId) {
@@ -35,10 +38,15 @@ class MealPlanEditor extends React.Component {
             this.props.findRecipesForMeal(mealId)
             this.props.findIngredientsForMeal(mealId)
         }
-        if (topicId) {
-          //  this.props.findTopicById(topicId)
-        }
     }
+
+    canEdit = (mealPlanId) => {
+        debugger
+        return this.props.mealPlans.some(mp => 
+            mp.id === mealPlanId)
+    }
+    
+    
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const dailyPlanId = this.props.match.params.dailyPlanId
@@ -55,12 +63,6 @@ class MealPlanEditor extends React.Component {
            this.props.findRecipesForMeal(mealId)
            this.props.findIngredientsForMeal(mealId)
         }
-        //const topicId = this.props.match.params.topicId
-       // console.log(topicId);
-       // const previousTopicId = prevProps.match.params.topicId
-       // if (topicId !== previousTopicId) {
-          //  this.props.findWidgetsForTopic(topicId)
-        //}
     }
 
     render() {
@@ -71,7 +73,7 @@ class MealPlanEditor extends React.Component {
                 </h2>
                 <div className="row">
                     <div className="col-4">
-                    <DailyPlans />
+                    <DailyPlans canEdit={this.canEdit(this.props.match.params.mealPlanId)}/>
                     </div>
                     <div className="col-8">
                         <Meals />
@@ -83,9 +85,14 @@ class MealPlanEditor extends React.Component {
 }
 }
 
-const stateToPropertyMapper = (state) => ({
+const stateToPropertyMapper = (state) => {
+    debugger
+    return({
+        user: state.userReducer.user,
+        mealPlans: state.mealPlanReducer.mealPlans
+    })
+}
 
-})
 
 const propertyToDispatchMapper = (dispatch) => ({
     findDailyPlansForMealPlan: (mealPlanId) => findDailyPlansForMealPlan(dispatch, mealPlanId),
@@ -94,7 +101,9 @@ const propertyToDispatchMapper = (dispatch) => ({
     findMealsForDailyPlan: (dailyPlanId) => findMealsForDailyPlan(dispatch, dailyPlanId),
     findMeal: (mealId) => findMeal(dispatch, mealId),
     findRecipesForMeal: (mealId) => findRecipesForMeal(dispatch, mealId),
-    findIngredientsForMeal: (mealId) => findIngredientsForMeal(dispatch, mealId)
+    findIngredientsForMeal: (mealId) => findIngredientsForMeal(dispatch, mealId),
+    findMealPlansByCreator: (creatorId) => findMealPlansByCreator(dispatch, creatorId),
+    profile: () => profile(dispatch)
 })
 
 export default connect
